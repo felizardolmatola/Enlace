@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel do Casal — Enlace</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="./output.css" rel="stylesheet">
+<style>
+  :root{
+    --branco-gelo:#FFFFFF;
+    --preto-grafite:#1F1F1F;
+    --dourado:#C8A951;
+    --verde-salvia:#A3B18A;
+    --cinza-claro:#F5F5F5;
+  }
+  body{font-family:'Inter',sans-serif; color:var(--preto-grafite); background:var(--cinza-claro);}
+  .font-display{font-family:'Playfair Display',serif;}
+  .btn-gold{background:var(--dourado); color:var(--preto-grafite); transition:transform .2s ease, box-shadow .2s ease;}
+  .btn-gold:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px rgba(200,169,81,.55);}
+  .nav-item{transition:background .15s ease, color .15s ease;}
+  .nav-item:hover{background:#F5F5F5;}
+  .nav-item.active{background:rgba(200,169,81,.12); color:var(--preto-grafite); font-weight:600;}
+  .nav-item.active .nav-dot{background:var(--dourado);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .progress-fill{background:linear-gradient(90deg,#C8A951,#e0c477);}
+  .status-pill{font-size:11px; font-weight:600; padding:3px 10px; border-radius:9999px;}
+  .card{transition:box-shadow .2s ease, border-color .2s ease;}
+  .card:hover{box-shadow:0 16px 32px -20px rgba(31,31,31,.18); border-color:var(--dourado);}
+  ::-webkit-scrollbar{width:8px; height:8px;}
+  ::-webkit-scrollbar-thumb{background:#E2DECF; border-radius:4px;}
+</style>
+</head>
+<body class="antialiased">
+
+<div class="min-h-screen flex">
+
+  <!-- SIDEBAR -->
+  <aside class="hidden lg:flex flex-col w-64 bg-white border-r border-[#EFEBE2] shrink-0">
+    <div class="h-20 flex items-center px-7 border-b border-[#EFEBE2]">
+      <a href="index.html" class="font-display text-2xl" style="color:var(--dourado)">Enlace</a>
+    </div>
+    <nav class="flex-1 py-6 px-4 space-y-1">
+      <button class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="visao-geral">
+        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-transparent"></span> Visão geral
+      </button>
+      <button class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="convidados">
+        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-transparent"></span> Convidados
+      </button>
+      <button class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="orcamento">
+        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-transparent"></span> Orçamento
+      </button>
+      <button class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="fornecedores">
+        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-transparent"></span> Fornecedores
+      </button>
+    </nav>
+    <div class="p-5 border-t border-[#EFEBE2]">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center font-display text-sm text-white" style="background:var(--preto-grafite)">J&A</div>
+        <div class="text-xs">
+          <p class="font-semibold">João &amp; Ana</p>
+          <p class="text-[#888]">15 de Maio, 2027</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 min-w-0">
+
+    <!-- TOPBAR -->
+    <header class="h-20 bg-white border-b border-[#EFEBE2] flex items-center justify-between px-6 lg:px-10">
+      <div>
+        <p id="page-title" class="font-display text-2xl">Visão geral</p>
+      </div>
+      <a href="#" class="px-5 py-2.5 rounded-full text-sm font-semibold btn-gold">+ Nova tarefa</a>
+    </header>
+
+    <main class="p-6 lg:p-10 max-w-6xl mx-auto">
+
+      <!-- VISÃO GERAL -->
+      <section class="tab-panel active" id="visao-geral">
+        <div class="grid sm:grid-cols-3 gap-5 mb-8">
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <p class="text-xs text-[#888] mb-1">Faltam</p>
+            <p class="font-display text-3xl">128 dias</p>
+          </div>
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <p class="text-xs text-[#888] mb-1">Orçamento usado</p>
+            <p class="font-display text-3xl">62%</p>
+          </div>
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <p class="text-xs text-[#888] mb-1">Convidados confirmados</p>
+            <p class="font-display text-3xl">84 / 120</p>
+          </div>
+        </div>
+
+        <div class="card bg-white rounded-2xl p-8 border border-transparent mb-8">
+          <div class="flex justify-between text-xs font-medium mb-2">
+            <span>Progresso do planeamento</span>
+            <span style="color:var(--dourado)">68%</span>
+          </div>
+          <div class="h-2.5 rounded-full w-full" style="background:#E7E2D6">
+            <div class="progress-fill h-2.5 rounded-full" style="width:68%"></div>
+          </div>
+        </div>
+
+        <div class="card bg-white rounded-2xl p-8 border border-transparent">
+          <p class="font-display text-lg mb-5">Próximas tarefas</p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 shrink-0" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Local reservado</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 shrink-0" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Fotógrafo confirmado</span>
+            </div>
+            <div class="flex items-center gap-3 font-medium">
+              <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+              <span class="text-sm">Enviar convites — urgente</span>
+            </div>
+            <div class="flex items-center gap-3 text-[#888]">
+              <svg class="w-5 h-5 shrink-0 text-[#C9C3B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+              <span class="text-sm">Escolher o menu</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONVIDADOS -->
+      <section class="tab-panel" id="convidados">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex gap-2">
+            <span class="status-pill" style="background:rgba(163,177,138,.18); color:#5c6b47">84 confirmados</span>
+            <span class="status-pill" style="background:#F0EEE9; color:#888">24 por confirmar</span>
+            <span class="status-pill" style="background:#F0EEE9; color:#888">12 recusados</span>
+          </div>
+          <a href="#" class="px-4 py-2 rounded-full text-xs font-semibold btn-gold">+ Adicionar convidado</a>
+        </div>
+        <div class="card bg-white rounded-2xl border border-transparent overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-left text-[#888] text-xs uppercase tracking-wide border-b border-[#EFEBE2]">
+                <th class="px-6 py-4 font-medium">Nome</th>
+                <th class="px-6 py-4 font-medium">Mesa</th>
+                <th class="px-6 py-4 font-medium">Restrições</th>
+                <th class="px-6 py-4 font-medium">Estado</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#F0EEE9]">
+              <tr>
+                <td class="px-6 py-4">Mariana Costa</td>
+                <td class="px-6 py-4 text-[#666]">Mesa 3</td>
+                <td class="px-6 py-4 text-[#666]">Vegetariana</td>
+                <td class="px-6 py-4"><span class="status-pill" style="background:rgba(163,177,138,.18); color:#5c6b47">Confirmado</span></td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4">Pedro Alves</td>
+                <td class="px-6 py-4 text-[#666]">Mesa 1</td>
+                <td class="px-6 py-4 text-[#666]">—</td>
+                <td class="px-6 py-4"><span class="status-pill" style="background:rgba(163,177,138,.18); color:#5c6b47">Confirmado</span></td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4">Sofia Ribeiro</td>
+                <td class="px-6 py-4 text-[#666]">—</td>
+                <td class="px-6 py-4 text-[#666]">Sem glúten</td>
+                <td class="px-6 py-4"><span class="status-pill" style="background:#F0EEE9; color:#888">Por confirmar</span></td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4">Tiago Fernandes</td>
+                <td class="px-6 py-4 text-[#666]">Mesa 5</td>
+                <td class="px-6 py-4 text-[#666]">—</td>
+                <td class="px-6 py-4"><span class="status-pill" style="background:rgba(31,31,31,.06); color:#1F1F1F">Recusado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ORÇAMENTO -->
+      <section class="tab-panel" id="orcamento">
+        <div class="grid sm:grid-cols-3 gap-5 mb-8">
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <p class="text-xs text-[#888] mb-1">Orçamento total</p>
+            <p class="font-display text-2xl">€ 18.000</p>
+          </div>
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <p class="text-xs text-[#888] mb-1">Gasto até agora</p>
+            <p class="font-display text-2xl" style="color:var(--dourado)">€ 11.160</p>
+          </div>
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <p class="text-xs text-[#888] mb-1">Restante</p>
+            <p class="font-display text-2xl">€ 6.840</p>
+          </div>
+        </div>
+
+        <div class="card bg-white rounded-2xl p-8 border border-transparent space-y-6">
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>Local &amp; catering</span><span class="text-[#888]">€ 6.200 / € 8.000</span></div>
+            <div class="h-2 rounded-full" style="background:#E7E2D6"><div class="progress-fill h-2 rounded-full" style="width:78%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>Fotografia &amp; vídeo</span><span class="text-[#888]">€ 2.400 / € 3.000</span></div>
+            <div class="h-2 rounded-full" style="background:#E7E2D6"><div class="progress-fill h-2 rounded-full" style="width:80%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>Vestido &amp; fato</span><span class="text-[#888]">€ 1.560 / € 2.500</span></div>
+            <div class="h-2 rounded-full" style="background:#E7E2D6"><div class="progress-fill h-2 rounded-full" style="width:62%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>Decoração &amp; flores</span><span class="text-[#888]">€ 1.000 / € 2.500</span></div>
+            <div class="h-2 rounded-full" style="background:#E7E2D6"><div class="progress-fill h-2 rounded-full" style="width:40%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORNECEDORES -->
+      <section class="tab-panel" id="fornecedores">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <div class="flex items-center justify-between mb-3">
+              <p class="font-display text-lg">Quinta da Rosa</p>
+              <span class="status-pill" style="background:rgba(163,177,138,.18); color:#5c6b47">Contratado</span>
+            </div>
+            <p class="text-sm text-[#666]">Espaço &amp; catering</p>
+            <p class="text-sm text-[#888] mt-3">Sinal pago · € 3.000</p>
+          </div>
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <div class="flex items-center justify-between mb-3">
+              <p class="font-display text-lg">Estúdio Lume</p>
+              <span class="status-pill" style="background:rgba(163,177,138,.18); color:#5c6b47">Contratado</span>
+            </div>
+            <p class="text-sm text-[#666]">Fotografia &amp; vídeo</p>
+            <p class="text-sm text-[#888] mt-3">Sinal pago · € 800</p>
+          </div>
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <div class="flex items-center justify-between mb-3">
+              <p class="font-display text-lg">Ateliê Flor de Lis</p>
+              <span class="status-pill" style="background:#F0EEE9; color:#888">Em negociação</span>
+            </div>
+            <p class="text-sm text-[#666]">Decoração &amp; flores</p>
+            <p class="text-sm text-[#888] mt-3">Orçamento recebido</p>
+          </div>
+          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+            <div class="flex items-center justify-between mb-3">
+              <p class="font-display text-lg">DJ Marco Reis</p>
+              <span class="status-pill" style="background:#F0EEE9; color:#888">A contactar</span>
+            </div>
+            <p class="text-sm text-[#666]">Música &amp; som</p>
+            <p class="text-sm text-[#888] mt-3">Sem resposta ainda</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.nav-item');
+  const panels = document.querySelectorAll('.tab-panel');
+  const title = document.getElementById('page-title');
+  const titles = {
+    'visao-geral':'Visão geral',
+    'convidados':'Convidados',
+    'orcamento':'Orçamento',
+    'fornecedores':'Fornecedores'
+  };
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      document.getElementById(tab).classList.add('active');
+      title.textContent = titles[tab];
+    });
+  });
+</script>
+
+</body>
+</html>

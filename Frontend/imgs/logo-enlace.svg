@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200">
+  <defs>
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0C477"/>
+      <stop offset="100%" stop-color="#C8A951"/>
+    </linearGradient>
+    <linearGradient id="sageRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B7C39E"/>
+      <stop offset="100%" stop-color="#A3B18A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dois anéis entrelaçados -->
+  <g transform="translate(90,100)">
+    <circle cx="-18" cy="0" r="34" fill="none" stroke="url(#goldRing)" stroke-width="9"/>
+    <circle cx="18" cy="0" r="34" fill="none" stroke="url(#sageRing)" stroke-width="9"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="175" y="94" font-family="'Playfair Display', Georgia, serif" font-size="46" font-weight="500" fill="#1F1F1F">Enlace</text>
+  <text x="177" y="122" font-family="Inter, Arial, sans-serif" font-size="13" letter-spacing="3" fill="#8a8a8a">PLANEAMENTO DE CASAMENTO</text>
+</svg>

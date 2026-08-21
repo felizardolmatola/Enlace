@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Casamento — Planeamento</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --branco-gelo:#FFFFFF;
+    --preto-grafite:#1F1F1F;
+    --dourado:#C8A951;
+    --verde-salvia:#A3B18A;
+    --cinza-claro:#F5F5F5;
+  }
+  body{font-family:'Inter',sans-serif; color:var(--preto-grafite); background:var(--branco-gelo);}
+  .font-display{font-family:'Playfair Display',serif;}
+  .btn-gold{
+    background:var(--dourado);
+    color:var(--preto-grafite);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-gold:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px rgba(200,169,81,.55);}
+  .btn-outline-gold{
+    border:1.5px solid var(--dourado);
+    color:var(--preto-grafite);
+    transition:background .2s ease;
+  }
+  .btn-outline-gold:hover{background:rgba(200,169,81,.08);}
+  .card{
+    border:1px solid transparent;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    border-color:var(--dourado);
+    transform:translateY(-3px);
+    box-shadow:0 20px 40px -20px rgba(31,31,31,.15);
+  }
+  .progress-fill{background:linear-gradient(90deg,#C8A951,#e0c477);}
+  .fade-up{animation:fadeUp .7s ease both;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){
+    .fade-up{animation:none;}
+    .btn-gold:hover, .card:hover{transform:none;}
+  }
+
+  /* EFEITO KEN BURNS NA IMAGEM DO HERO */
+  .hero-img{
+    animation:kenBurns 22s ease-in-out infinite alternate;
+    will-change:transform;
+  }
+  @keyframes kenBurns{
+    0%{   transform:scale(1)     translate(0,0); }
+    100%{ transform:scale(1.12)  translate(-1.5%,-2%); }
+  }
+
+  /* PARALLAX NO SCROLL (CONTAINER DO HERO) */
+  .hero-parallax{
+    position:absolute;
+    left:0; right:0;
+    top:-8%;
+    height:116%;
+    will-change:transform;
+  }
+
+  /* PARTICULAS DE LUZ AMBIENTE */
+  .hero-glow{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:4;
+  }
+  .glow-dot{
+    position:absolute;
+    bottom:-5%;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,224,158,.9) 0%, rgba(255,224,158,0) 70%);
+    opacity:0;
+    animation-name:glowRise;
+    animation-timing-function:ease-in-out;
+    animation-iteration-count:infinite;
+    will-change:transform, opacity;
+  }
+  @keyframes glowRise{
+    0%{ transform:translateY(0) scale(.6); opacity:0; }
+    15%{ opacity:.8; }
+    50%{ transform:translateY(-50vh) scale(1); }
+    85%{ opacity:.5; }
+    100%{ transform:translateY(-100vh) scale(.4); opacity:0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-img{ animation:none; }
+    .glow-dot{ animation:none; opacity:0; }
+    .hero-parallax{ transform:none !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+  <!-- HEADER -->
+  <header class="bg-white sticky top-0 z-40 border-b border-[#F0EEE9]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+        <!-- Logotipo -->
+    <a href="#" class="flex items-center">
+      <img src="./logo-enlace.svg" alt="Nome da Empresa" class="h-16 w-auto">
+    </a>
+      <nav class="hidden md:flex items-center gap-10 text-[15px] font-medium">
+        <a href="#recursos" class="hover:text-[#C8A951] transition-colors">Funcionalidades</a>
+        <a href="#galeria" class="hover:text-[#C8A951] transition-colors">Galeria</a>
+        <a href="#como-funciona" class="hover:text-[#C8A951] transition-colors">Como funciona</a>
+        <a href="#dashboard" class="hover:text-[#C8A951] transition-colors">Sobre nós</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="/login.html" class="hidden sm:inline-block px-5 py-2.5 rounded-full text-sm font-semibold btn-outline-gold">Entrar</a>
+        <a href="/registo.html" class="px-5 py-2.5 rounded-full text-sm font-semibold btn-gold">Começar agora</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER PRINCIPAL -->
+  <section id="hero-section" class="relative h-[870px] flex items-center justify-center text-center overflow-hidden">
+    <div class="hero-parallax" id="heroParallax">
+      <img src="./hero.png" alt="Casal ao pôr do sol" class="hero-img absolute inset-0 w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- PARTICULAS DE LUZ AMBIENTE -->
+    <div class="hero-glow" aria-hidden="true">
+      <div class="glow-dot" style="left:8%;  width:10px; height:10px; animation-duration:9s;  animation-delay:0s;"></div>
+      <div class="glow-dot" style="left:18%; width:6px;  height:6px;  animation-duration:7.5s;animation-delay:2s;"></div>
+      <div class="glow-dot" style="left:28%; width:14px; height:14px; animation-duration:11s; animation-delay:4.5s;"></div>
+      <div class="glow-dot" style="left:40%; width:8px;  height:8px;  animation-duration:8s;  animation-delay:1.2s;"></div>
+      <div class="glow-dot" style="left:55%; width:12px; height:12px; animation-duration:10s; animation-delay:5.8s;"></div>
+      <div class="glow-dot" style="left:66%; width:7px;  height:7px;  animation-duration:8.8s;animation-delay:3.3s;"></div>
+      <div class="glow-dot" style="left:78%; width:16px; height:16px; animation-duration:12s; animation-delay:0.6s;"></div>
+      <div class="glow-dot" style="left:88%; width:9px;  height:9px;  animation-duration:9.5s;animation-delay:6.4s;"></div>
+      <div class="glow-dot" style="left:95%; width:6px;  height:6px;  animation-duration:7s;  animation-delay:2.8s;"></div>
+    </div>
+
+    <div class="relative z-10 px-6 fade-up">
+      <p class="uppercase tracking-[0.3em] text-white/80 text-xs font-semibold mb-5">Planeamento de casamento, sem stress</p>
+      <h1 class="font-display text-white text-4xl sm:text-5xl lg:text-6xl leading-tight max-w-3xl mx-auto">
+        Planeie o seu casamento perfeito
+      </h1>
+      <p class="text-white/85 mt-6 max-w-xl mx-auto text-base sm:text-lg">
+        Convidados, orçamento e fornecedores — tudo num só lugar, do "sim" ao grande dia.
+      </p>
+      <a href="/registo.html" class="inline-block mt-9 px-8 py-3.5 rounded-full font-semibold btn-gold">
+        Começar Agora
+      </a>
+    </div>
+  </section>
+
+  <!-- CARDS DE FUNCIONALIDADES -->
+  <section id="recursos" class="py-24 px-6 lg:px-10" style="background:var(--cinza-claro)">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--verde-salvia)">Tudo organizado</p>
+        <h2 class="font-display text-3xl sm:text-4xl mt-3">Três ferramentas, um só painel</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="card bg-white rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(163,177,138,0.15)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-2">Lista de convidados</h3>
+          <p class="text-sm text-[#555] leading-relaxed">Confirmações, mesas e restrições alimentares organizadas automaticamente.</p>
+        </div>
+
+        <div class="card bg-white rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(163,177,138,0.15)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .672-3 1.5S10.343 11 12 11s3 .672 3 1.5-1.343 1.5-3 1.5m0-6V6m0 8v1.5M5 12a7 7 0 1114 0 7 7 0 01-14 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-2">Orçamento</h3>
+          <p class="text-sm text-[#555] leading-relaxed">Acompanhe cada despesa em tempo real e saiba exatamente onde está o dinheiro.</p>
+        </div>
+
+        <div class="card bg-white rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(163,177,138,0.15)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-2">Fornecedores</h3>
+          <p class="text-sm text-[#555] leading-relaxed">Contratos, pagamentos e contactos de todos os fornecedores centralizados.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE INSPIRADORA -->
+  <section class="quote-rings relative py-28 px-6 lg:px-10 text-center overflow-hidden" style="background:var(--preto-grafite)">
+
+    <!-- ANEIS DECORATIVOS (aparecem no hover) -->
+    <div class="quote-rings-wrap" aria-hidden="true">
+      <svg class="quote-ring quote-ring-1" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--dourado)" stroke-width="3"/>
+      </svg>
+      <svg class="quote-ring quote-ring-2" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--verde-salvia)" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-10 h-10 mx-auto mb-8 opacity-60 relative z-10" style="color:var(--dourado)" fill="currentColor">
+      <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.320 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.320 3.996-5.849h-3.983v-10h9.983z"/>
+    </svg>
+    <blockquote class="max-w-3xl mx-auto relative z-10">
+      <p class="font-display text-2xl sm:text-3xl lg:text-4xl leading-snug text-white">
+        O amor não se planeia sozinho, mas o grande dia sim — deixem-nos cuidar dos detalhes enquanto vocês vivem cada momento.
+      </p>
+      <footer class="mt-8 uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--dourado)">
+        Equipa Enlace
+      </footer>
+    </blockquote>
+  </section>
+
+  <style>
+    .quote-rings-wrap{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+      z-index:1;
+    }
+    .quote-ring{
+      position:absolute;
+      width:220px;
+      height:220px;
+      opacity:0;
+      transition:opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1);
+    }
+    .quote-ring-1{
+      transform:translateX(-60vw) scale(.7);
+    }
+    .quote-ring-2{
+      transform:translateX(60vw) scale(.7);
+    }
+    .quote-rings:hover .quote-ring-1{
+      opacity:.4;
+      transform:translateX(22px) scale(1);
+    }
+    .quote-rings:hover .quote-ring-2{
+      opacity:.4;
+      transform:translateX(-22px) scale(1);
+    }
+    @media (max-width:640px){
+      .quote-ring{width:150px; height:150px;}
+      .quote-ring-1{transform:translateX(-100vw) scale(.7);}
+      .quote-ring-2{transform:translateX(100vw) scale(.7);}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .quote-ring{transition:none;}
+    }
+  </style>
+
+  <!-- CARROSSEL 3D DE IMAGENS -->
+  <section id="galeria" class="py-24 px-6 lg:px-10 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--verde-salvia)">Momentos</p>
+        <h2 class="font-display text-3xl sm:text-4xl mt-3">Inspiração para o vosso dia</h2>
+      </div>
+
+      <div class="carousel-3d-viewport">
+        <div class="carousel-3d-ring" id="carousel3dRing">
+          <div class="carousel-3d-item">
+            <img src="./hero.png" alt="Decoração de casamento" onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/C8A951?text=Foto+1&font=playfair-display';">
+          </div>
+          <div class="carousel-3d-item">
+            <img src="./gallery-2.jpg" alt="Buquê de noiva" onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/1F1F1F?text=Foto+2&font=playfair-display';">
+          </div>
+          <div class="carousel-3d-item">
+            <img src="./gallery-3.jpg" alt="Mesa de convidados" onerror="this.onerror=null;this.src='https://placehold.co/420x560/C8A951/1F1F1F?text=Foto+3&font=playfair-display';">
+          </div>
+          <div class="carousel-3d-item">
+            <img src="./gallery-4.jpg" alt="Aliancas de casamento" onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/A3B18A?text=Foto+4&font=playfair-display';">
+          </div>
+          <div class="carousel-3d-item">
+            <img src="./gallery-5.jpg" alt="Bolo de casamento" onerror="this.onerror=null;this.src='https://placehold.co/420x560/F5F5F5/1F1F1F?text=Foto+5&font=playfair-display';">
+          </div>
+          <div class="carousel-3d-item">
+            <img src="./gallery-6.jpg" alt="Casal a dancar" onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/FFFFFF?text=Foto+6&font=playfair-display';">
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-6 mt-10">
+        <button id="carouselPrev" aria-label="Imagem anterior" class="w-11 h-11 rounded-full btn-outline-gold flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <button id="carouselPlayPause" aria-label="Pausar rotacao" class="w-11 h-11 rounded-full btn-gold flex items-center justify-center">
+          <svg id="iconPause" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          <svg id="iconPlay" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button id="carouselNext" aria-label="Proxima imagem" class="w-11 h-11 rounded-full btn-outline-gold flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .carousel-3d-viewport{
+      position:relative;
+      height:420px;
+      perspective:1400px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .carousel-3d-ring{
+      position:relative;
+      width:280px;
+      height:380px;
+      transform-style:preserve-3d;
+      transition:transform 1s cubic-bezier(.22,.61,.36,1);
+      /* --angle e --radius sao definidos via JS consoante o numero de itens,
+         garantindo que todas as imagens ficam sempre no mesmo sentido circular */
+    }
+    .carousel-3d-item{
+      position:absolute;
+      top:0; left:0;
+      width:280px; height:380px;
+      border-radius:16px;
+      overflow:hidden;
+      backface-visibility:hidden;
+      box-shadow:0 20px 45px -18px rgba(31,31,31,.35);
+      border:2px solid rgba(200,169,81,.25);
+    }
+    .carousel-3d-item img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    @media (max-width:640px){
+      .carousel-3d-viewport{height:340px;}
+      .carousel-3d-ring{width:210px; height:290px;}
+      .carousel-3d-item{width:210px; height:290px;}
+    }
+  </style>
+
+  <script>
+    (function(){
+      const ring = document.getElementById('carousel3dRing');
+      const items = ring.querySelectorAll('.carousel-3d-item');
+      const total = items.length;
+      const angleStep = 360 / total;
+      // Radio calculado a partir da largura do item para que o circulo feche
+      // perfeitamente e as imagens fiquem sempre viradas para fora, seguindo
+      // o mesmo sentido de rotacao (circulatorio) sem se sobreporem.
+      const itemWidth = window.innerWidth <= 640 ? 210 : 280;
+      // Multiplicador ajustado para controlar o afastamento entre os cartões
+      const radius = Math.round(((itemWidth / 2) / Math.tan(Math.PI / total)) * 0.98);
+
+      items.forEach((item, i) => {
+        const angle = angleStep * i;
+        item.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+      });
+
+      let currentIndex = 0;   // indice da imagem virada para a frente
+      let direction = 1;      // 1 = sentido horario, -1 = sentido anti-horario
+      let rotation = 0;       // angulo acumulado do anel (mantem o sentido continuo)
+      let isPlaying = true;
+      let autoTimer = null;
+
+      function applyRotation(){
+        ring.style.transform = `rotateY(${rotation}deg)`;
+      }
+
+      function step(dir){
+        direction = dir;
+        rotation += -dir * angleStep; // sentido circulatorio consistente
+        currentIndex = (currentIndex - dir + total) % total;
+        applyRotation();
+      }
+
+      function startAuto(){
+        stopAuto();
+        autoTimer = setInterval(() => step(1), 2800);
+      }
+      function stopAuto(){
+        if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
+      }
+
+      document.getElementById('carouselNext').addEventListener('click', () => { step(1); if(isPlaying) startAuto(); });
+      document.getElementById('carouselPrev').addEventListener('click', () => { step(-1); if(isPlaying) startAuto(); });
+
+      const playPauseBtn = document.getElementById('carouselPlayPause');
+      const iconPause = document.getElementById('iconPause');
+      const iconPlay = document.getElementById('iconPlay');
+      playPauseBtn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if(isPlaying){
+          startAuto();
+          iconPause.classList.remove('hidden');
+          iconPlay.classList.add('hidden');
+        } else {
+          stopAuto();
+          iconPause.classList.add('hidden');
+          iconPlay.classList.remove('hidden');
+        }
+      });
+
+      ring.addEventListener('mouseenter', stopAuto);
+      ring.addEventListener('mouseleave', () => { if(isPlaying) startAuto(); });
+
+      applyRotation();
+      startAuto();
+    })();
+  </script>
+
+  <!-- DASHBOARD DO CASAL -->
+  <section id="dashboard" class="py-24 px-6 lg:px-10 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-14">
+        <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--dourado)">O vosso painel</p>
+        <h2 class="font-display text-3xl sm:text-4xl mt-3">O casamento, de relance</h2>
+      </div>
+
+      <div class="rounded-2xl border border-[#EFEBE2] p-8 lg:p-10" style="background:var(--cinza-claro)">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          <div>
+            <p class="text-sm text-[#666]">Faltam</p>
+            <p class="font-display text-3xl">128 dias</p>
+          </div>
+          <div class="w-full sm:w-2/3">
+            <div class="flex justify-between text-xs font-medium mb-2">
+              <span>Progresso do planeamento</span>
+              <span style="color:var(--dourado)">68%</span>
+            </div>
+            <div class="h-2.5 rounded-full w-full" style="background:#E7E2D6">
+              <div class="progress-fill h-2.5 rounded-full" style="width:68%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span class="text-sm">Local reservado</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span class="text-sm">Fotógrafo confirmado</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+            <span class="text-sm">Enviar convites — urgente</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-[#C9C3B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+            <span class="text-sm text-[#666]">Escolher o menu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NÓS / PERGUNTAS FREQUENTES -->
+  <section id="sobre-nos" class="py-24 px-6 lg:px-10" style="background:var(--cinza-claro)">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--verde-salvia)">Sobre nós</p>
+        <h2 class="font-display text-3xl sm:text-4xl mt-3">Quem somos e como podemos ajudar</h2>
+        <p class="text-sm sm:text-base text-[#555] leading-relaxed mt-6">
+          A Enlace nasceu para simplificar o planeamento de casamentos. Juntamos convidados, orçamento e fornecedores num único painel, para que cada casal viva a preparação do grande dia com calma, clareza e menos stress.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-3" id="faqAccordion">
+
+        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+            <span>Como funciona a Enlace?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+            <p class="pb-5">Criam a vossa conta, adicionam os dados do casamento e o painel organiza automaticamente convidados, orçamento e fornecedores num só lugar, com progresso atualizado em tempo real.</p>
+          </div>
+        </div>
+
+        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+            <span>A Enlace tem algum custo?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+            <p class="pb-5">Podem começar a usar as funcionalidades essenciais gratuitamente. Existem também planos com recursos adicionais para quem quer um acompanhamento mais completo.</p>
+          </div>
+        </div>
+
+        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+            <span>Posso gerir a lista de convidados e as mesas?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+            <p class="pb-5">Sim. Podem organizar confirmações, distribuição por mesas e restrições alimentares diretamente no painel, com tudo atualizado automaticamente.</p>
+          </div>
+        </div>
+
+        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+            <span>Como acompanho o orçamento do casamento?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+            <p class="pb-5">Cada despesa fica registada em tempo real, permitindo ver exatamente onde está o dinheiro e evitar surpresas antes do grande dia.</p>
+          </div>
+        </div>
+
+        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+            <span>Consigo falar com os fornecedores pela plataforma?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+            <p class="pb-5">Sim. Contratos, pagamentos e contactos de todos os fornecedores ficam centralizados, facilitando a comunicação em cada etapa do planeamento.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+    }
+    .faq-item.open .faq-answer{
+      max-height:220px;
+    }
+    .faq-icon{
+      transition:transform .3s ease;
+    }
+    .faq-item.open .faq-icon{
+      transform:rotate(180deg);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .faq-answer, .faq-icon{transition:none;}
+    }
+  </style>
+
+  <script>
+    (function(){
+      document.querySelectorAll('#faqAccordion .faq-item').forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('#faqAccordion .faq-item.open').forEach(openItem => {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if(!isOpen){
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="py-10 px-6 lg:px-10" style="background:var(--preto-grafite)">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-white/70 text-sm">
+      <span class="font-display text-lg" style="color:var(--dourado)">Enlace</span>
+      <p>© 2026 Enlace. Todos os direitos reservados.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+        <a href="#" class="hover:text-white transition-colors">Termos de Serviço</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // PARALLAX NO SCROLL DA IMAGEM DO HERO
+    (function(){
+      const section = document.getElementById('hero-section');
+      const wrap = document.getElementById('heroParallax');
+      if(!section || !wrap) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduceMotion) return; // parallax já desativado via CSS
+
+      const speed = 0.18;   // intensidade do parallax
+      let maxOffset = 0;
+      let ticking = false;
+
+      function calcMaxOffset(){
+        maxOffset = section.offsetHeight * 0.08; // combina com o "top:-8%; height:116%" do CSS
+      }
+
+      function updateParallax(){
+        const rect = section.getBoundingClientRect();
+        let offset = -rect.top * speed;
+        offset = Math.max(-maxOffset, Math.min(maxOffset, offset));
+        wrap.style.transform = `translateY(${offset}px)`;
+        ticking = false;
+      }
+
+      function onScroll(){
+        if(!ticking){
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }
+
+      calcMaxOffset();
+      updateParallax();
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('resize', () => { calcMaxOffset(); updateParallax(); });
+    })();
+  </script>
+</body>
+</html>
