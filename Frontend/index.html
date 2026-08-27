@@ -106,7 +106,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
         <!-- Logotipo -->
     <a href="#" class="flex items-center">
-      <img src="./logo-enlace.svg" alt="Nome da Empresa" class="h-16 w-auto">
+      <img src="/Frontend/imgs/logo-enlace.svg" alt="Nome da Empresa" class="h-16 w-auto">
     </a>
       <nav class="hidden md:flex items-center gap-10 text-[15px] font-medium">
         <a href="#recursos" class="hover:text-[#C8A951] transition-colors">Funcionalidades</a>
@@ -115,8 +115,8 @@
         <a href="#dashboard" class="hover:text-[#C8A951] transition-colors">Sobre nós</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a href="/login.html" class="hidden sm:inline-block px-5 py-2.5 rounded-full text-sm font-semibold btn-outline-gold">Entrar</a>
-        <a href="/registo.html" class="px-5 py-2.5 rounded-full text-sm font-semibold btn-gold">Começar agora</a>
+        <a href="/login.html" class="hidden sm:inline-block px-5 py-2.5 rounded text-sm font-semibold btn-outline-gold">Entrar</a>
+        <a href="/registo.html" class="px-5 py-2.5 text-sm rounded font-semibold btn-gold">Começar agora</a>
       </div>
     </div>
   </header>
@@ -124,7 +124,7 @@
   <!-- BANNER PRINCIPAL -->
   <section id="hero-section" class="relative h-[870px] flex items-center justify-center text-center overflow-hidden">
     <div class="hero-parallax" id="heroParallax">
-      <img src="./hero.png" alt="Casal ao pôr do sol" class="hero-img absolute inset-0 w-full h-full object-cover">
+      <img src="/Frontend/imgs/hero.png" alt="Casal ao pôr do sol" class="hero-img absolute inset-0 w-full h-full object-cover">
     </div>
     <div class="absolute inset-0 bg-black/40"></div>
 
@@ -144,12 +144,12 @@
     <div class="relative z-10 px-6 fade-up">
       <p class="uppercase tracking-[0.3em] text-white/80 text-xs font-semibold mb-5">Planeamento de casamento, sem stress</p>
       <h1 class="font-display text-white text-4xl sm:text-5xl lg:text-6xl leading-tight max-w-3xl mx-auto">
-        Planeie o seu casamento perfeito
+        Planeje o seu casamento perfeito
       </h1>
       <p class="text-white/85 mt-6 max-w-xl mx-auto text-base sm:text-lg">
         Convidados, orçamento e fornecedores — tudo num só lugar, do "sim" ao grande dia.
       </p>
-      <a href="/registo.html" class="inline-block mt-9 px-8 py-3.5 rounded-full font-semibold btn-gold">
+      <a href="/registo.html" class="inline-block mt-9 px-8 py-3.5 rounded font-semibold btn-gold">
         Começar Agora
       </a>
     </div>
@@ -160,7 +160,14 @@
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-16">
         <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--verde-salvia)">Tudo organizado</p>
-        <h2 class="font-display text-3xl sm:text-4xl mt-3">Três ferramentas, um só painel</h2>
+        <h2 class="font-display text-3xl sm:text-4xl mt-3 flex items-center justify-center gap-3">
+          <span class="w-10 h-10  flex items-center justify-center shrink-0" style="background:#C8A951;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" style="color:var(--preto)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6"/>
+            </svg>
+          </span>
+          Três ferramentas, um só painel
+        </h2>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
@@ -197,6 +204,193 @@
       </div>
     </div>
   </section>
+
+  <!-- CALENDÁRIO EM TEMPO REAL -->
+  <section id="calendario" class="py-24 px-6 lg:px-10 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--verde-salvia)">Sempre atualizado</p>
+        <h2 class="font-display text-3xl sm:text-4xl mt-3">O vosso calendário em tempo real</h2>
+        <p class="text-sm sm:text-base text-[#555] leading-relaxed mt-4">Prazos, reuniões com fornecedores e tarefas — tudo sincronizado ao minuto, para nunca perderem uma data importante.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-[1.35fr_1fr] gap-6">
+
+        <!-- GRELHA DO CALENDARIO -->
+        <div class="card bg-white rounded-2xl p-6 sm:p-8 border border-[#EFEBE2]">
+          <div class="flex items-center justify-between mb-6">
+            <button id="calPrevMonth" aria-label="Mês anterior" class="w-9 h-9 rounded-full btn-outline-gold flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="text-center">
+              <h3 id="calMonthLabel" class="font-display text-xl sm:text-2xl capitalize"></h3>
+              <p id="calLiveClock" class="text-xs tracking-wide text-[#888] mt-1"></p>
+            </div>
+            <button id="calNextMonth" aria-label="Mês seguinte" class="w-9 h-9 rounded-full btn-outline-gold flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold uppercase tracking-wide text-[#999] mb-2">
+            <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+          </div>
+          <div id="calGrid" class="grid grid-cols-7 gap-1"></div>
+
+          <div class="flex items-center gap-5 mt-6 pt-6 border-t border-[#F0EEE9] text-xs text-[#666]">
+            <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:var(--dourado)"></span>Hoje</span>
+            <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:var(--verde-salvia)"></span>Evento agendado</span>
+          </div>
+        </div>
+
+        <!-- PROXIMOS EVENTOS -->
+        <div class="card bg-white rounded-2xl p-6 sm:p-8 border border-[#EFEBE2] flex flex-col">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-display text-xl">Próximos compromissos</h3>
+            <span class="relative flex h-2.5 w-2.5" title="A sincronizar em tempo real">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style="background:var(--verde-salvia)"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5" style="background:var(--verde-salvia)"></span>
+            </span>
+          </div>
+
+          <ul id="calEventList" class="space-y-4 flex-1"></ul>
+
+          <a href="/registo.html" class="inline-block mt-8 text-center px-6 py-3 font-semibold btn-gold rounded">Sincronizar o meu calendário</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // CALENDARIO EM TEMPO REAL
+    (function(){
+      const monthLabelEl = document.getElementById('calMonthLabel');
+      const clockEl      = document.getElementById('calLiveClock');
+      const gridEl       = document.getElementById('calGrid');
+      const eventListEl  = document.getElementById('calEventList');
+      const prevBtn      = document.getElementById('calPrevMonth');
+      const nextBtn      = document.getElementById('calNextMonth');
+      if(!gridEl) return;
+
+      const hoje = new Date();
+      let viewYear  = hoje.getFullYear();
+      let viewMonth = hoje.getMonth();
+
+      // Eventos de exemplo, relativos a hoje, para mostrar o calendário sempre "vivo"
+      function addDays(base, days){
+        const d = new Date(base);
+        d.setDate(d.getDate() + days);
+        return d;
+      }
+      const eventos = [
+        { data: addDays(hoje, 2),  titulo: 'Prova de bolo',            tipo: 'Fornecedor' },
+        { data: addDays(hoje, 6),  titulo: 'Reunião com florista',     tipo: 'Fornecedor' },
+        { data: addDays(hoje, 11), titulo: 'Prazo de RSVP',            tipo: 'Convidados' },
+        { data: addDays(hoje, 18), titulo: 'Pagamento ao espaço',      tipo: 'Orçamento' },
+        { data: addDays(hoje, 27), titulo: 'Última prova de vestido',  tipo: 'Fornecedor' }
+      ];
+
+      const eventDayKeys = new Set(eventos.map(e => e.data.toDateString()));
+
+      const mesesNomes = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+
+      function renderClock(){
+        const agora = new Date();
+        const dataFmt = agora.toLocaleDateString('pt-PT', { weekday:'long', day:'2-digit', month:'long' });
+        const horaFmt = agora.toLocaleTimeString('pt-PT', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+        clockEl.textContent = dataFmt.charAt(0).toUpperCase() + dataFmt.slice(1) + ' · ' + horaFmt;
+      }
+
+      function renderCalendar(){
+        monthLabelEl.textContent = mesesNomes[viewMonth] + ' de ' + viewYear;
+        gridEl.innerHTML = '';
+
+        const primeiroDia = new Date(viewYear, viewMonth, 1);
+        const offset = primeiroDia.getDay();
+        const diasNoMes = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+        for(let i = 0; i < offset; i++){
+          const empty = document.createElement('div');
+          gridEl.appendChild(empty);
+        }
+
+        for(let dia = 1; dia <= diasNoMes; dia++){
+          const cellDate = new Date(viewYear, viewMonth, dia);
+          const isToday = cellDate.toDateString() === hoje.toDateString();
+          const hasEvent = eventDayKeys.has(cellDate.toDateString());
+
+          const cell = document.createElement('div');
+          cell.className = 'aspect-square flex flex-col items-center justify-center rounded-lg text-sm relative';
+
+          if(isToday){
+            cell.style.background = 'var(--dourado)';
+            cell.style.color = 'var(--preto-grafite)';
+            cell.classList.add('font-semibold');
+          } else {
+            cell.classList.add('hover:bg-[#F5F5F5]');
+          }
+
+          const num = document.createElement('span');
+          num.textContent = dia;
+          cell.appendChild(num);
+
+          if(hasEvent){
+            const dot = document.createElement('span');
+            dot.className = 'w-1.5 h-1.5 rounded-full mt-0.5';
+            dot.style.background = isToday ? 'var(--preto-grafite)' : 'var(--verde-salvia)';
+            cell.appendChild(dot);
+          }
+
+          gridEl.appendChild(cell);
+        }
+      }
+
+      function renderEventList(){
+        eventListEl.innerHTML = '';
+        const proximos = eventos
+          .filter(e => e.data >= new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()))
+          .sort((a,b) => a.data - b.data)
+          .slice(0, 5);
+
+        proximos.forEach(ev => {
+          const dataFmt = ev.data.toLocaleDateString('pt-PT', { day:'2-digit', month:'short' });
+          const li = document.createElement('li');
+          li.className = 'flex items-start gap-4';
+          li.innerHTML = `
+            <div class="shrink-0 w-12 h-12 rounded-lg flex flex-col items-center justify-center font-display leading-none" style="background:var(--cinza-claro)">
+              <span class="text-base font-semibold">${ev.data.getDate()}</span>
+              <span class="text-[10px] uppercase tracking-wide text-[#888]">${mesesNomes[ev.data.getMonth()].slice(0,3)}</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold">${ev.titulo}</p>
+              <p class="text-xs text-[#888] mt-0.5">${ev.tipo}</p>
+            </div>
+          `;
+          eventListEl.appendChild(li);
+        });
+
+        if(proximos.length === 0){
+          eventListEl.innerHTML = '<li class="text-sm text-[#888]">Sem compromissos agendados para este período.</li>';
+        }
+      }
+
+      prevBtn.addEventListener('click', () => {
+        viewMonth--;
+        if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+        renderCalendar();
+      });
+      nextBtn.addEventListener('click', () => {
+        viewMonth++;
+        if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+        renderCalendar();
+      });
+
+      renderCalendar();
+      renderEventList();
+      renderClock();
+      setInterval(renderClock, 1000);
+    })();
+  </script>
 
   <!-- FRASE INSPIRADORA -->
   <section class="quote-rings relative py-28 px-6 lg:px-10 text-center overflow-hidden" style="background:var(--preto-grafite)">
@@ -297,16 +491,16 @@
       </div>
 
       <div class="flex items-center justify-center gap-6 mt-10">
-        <button id="carouselPrev" aria-label="Imagem anterior" class="w-11 h-11 rounded-full btn-outline-gold flex items-center justify-center">
+        <button id="carouselPrev" aria-label="Imagem anterior" class="w-11 h-11 rounded btn-outline-gold flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
           </svg>
         </button>
-        <button id="carouselPlayPause" aria-label="Pausar rotacao" class="w-11 h-11 rounded-full btn-gold flex items-center justify-center">
+        <button id="carouselPlayPause" aria-label="Pausar rotacao" class="w-11 h-11 rounded btn-gold flex items-center justify-center">
           <svg id="iconPause" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
           <svg id="iconPlay" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </button>
-        <button id="carouselNext" aria-label="Proxima imagem" class="w-11 h-11 rounded-full btn-outline-gold flex items-center justify-center">
+        <button id="carouselNext" aria-label="Proxima imagem" class="w-11 h-11 rounded btn-outline-gold flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
           </svg>
@@ -433,7 +627,7 @@
         <h2 class="font-display text-3xl sm:text-4xl mt-3">O casamento, de relance</h2>
       </div>
 
-      <div class="rounded-2xl border border-[#EFEBE2] p-8 lg:p-10" style="background:var(--cinza-claro)">
+      <div class="rounded border border-[#EFEBE2] p-8 lg:p-10" style="background:var(--cinza-claro)">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
             <p class="text-sm text-[#666]">Faltam</p>
@@ -444,32 +638,32 @@
               <span>Progresso do planeamento</span>
               <span style="color:var(--dourado)">68%</span>
             </div>
-            <div class="h-2.5 rounded-full w-full" style="background:#E7E2D6">
+            <div class="h-2.5 rounded w-full" style="background:#E7E2D6">
               <div class="progress-fill h-2.5 rounded-full" style="width:68%"></div>
             </div>
           </div>
         </div>
 
         <div class="grid sm:grid-cols-2 gap-3">
-          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4">
+          <div class="flex items-center gap-3 bg-white rounded px-5 py-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
             <span class="text-sm">Local reservado</span>
           </div>
-          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4">
+          <div class="flex items-center gap-3 bg-white rounded px-5 py-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
             <span class="text-sm">Fotógrafo confirmado</span>
           </div>
-          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4 font-medium">
+          <div class="flex items-center gap-3 bg-white rounded px-5 py-4 font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="9"/>
             </svg>
             <span class="text-sm">Enviar convites — urgente</span>
           </div>
-          <div class="flex items-center gap-3 bg-white rounded-xl px-5 py-4">
+          <div class="flex items-center gap-3 bg-white rounded px-5 py-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-[#C9C3B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="9"/>
             </svg>
@@ -493,7 +687,7 @@
 
       <div class="max-w-3xl mx-auto space-y-3" id="faqAccordion">
 
-        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+        <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
             <span>Como funciona a Enlace?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -505,7 +699,7 @@
           </div>
         </div>
 
-        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+        <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
             <span>A Enlace tem algum custo?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -517,7 +711,7 @@
           </div>
         </div>
 
-        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+        <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
             <span>Posso gerir a lista de convidados e as mesas?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -529,7 +723,7 @@
           </div>
         </div>
 
-        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+        <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
             <span>Como acompanho o orçamento do casamento?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -541,7 +735,7 @@
           </div>
         </div>
 
-        <div class="faq-item rounded-xl border border-[#EFEBE2] bg-white overflow-hidden">
+        <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
             <span>Consigo falar com os fornecedores pela plataforma?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0" style="color:var(--dourado)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
