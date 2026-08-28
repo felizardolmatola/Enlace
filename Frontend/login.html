@@ -7,11 +7,12 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/Frontend/imgs/icon.png">
 <style>
   :root{
     --branco-gelo:#FFFFFF;
     --preto-grafite:#1F1F1F;
-    --dourado:#C8A951;
+    --azul-claro:#0B4870;
     --verde-salvia:#A3B18A;
     --cinza-claro:#F5F5F5;
   }
@@ -19,36 +20,36 @@
   .font-display{font-family:'Playfair Display',serif;}
 
   .btn-gold{
-    background:var(--dourado);
-    color:var(--preto-grafite);
+    background:var(--azul-claro);
+    color:#FFFFFF;
     transition:transform .2s ease, box-shadow .2s ease;
   }
-  .btn-gold:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px rgba(200,169,81,.55);}
+  .btn-gold:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px rgba(11,72,112,.55);}
   .btn-gold:disabled{opacity:.6; transform:none; box-shadow:none; cursor:not-allowed;}
 
   .input-field{
-    border:1.5px solid #E7E2D6;
-    background:#FCFBF8;
+    border:1.5px solid #E2E7EB;
+    background:#F8FAFB;
     transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
   }
   .input-field:focus{
     outline:none;
-    border-color:var(--dourado);
+    border-color:var(--azul-claro);
     background:#fff;
-    box-shadow:0 0 0 4px rgba(200,169,81,.14);
+    box-shadow:0 0 0 4px rgba(11,72,112,.14);
   }
   .input-field.field-error{
     border-color:#C0524A;
     background:#FBF3F2;
   }
 
-  .divider-line{background:#E7E2D6;}
+  .divider-line{background:#E2E7EB;}
 
   .social-btn{
-    border:1.5px solid #E7E2D6;
+    border:1.5px solid #E2E7EB;
     transition:border-color .2s ease, background .2s ease, transform .2s ease;
   }
-  .social-btn:hover{border-color:var(--dourado); background:#FCFAF3; transform:translateY(-1px);}
+  .social-btn:hover{border-color:var(--azul-claro); background:#F5F8FA; transform:translateY(-1px);}
 
   .fade-up{animation:fadeUp .7s ease both;}
   @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
@@ -77,7 +78,7 @@
   }
 
   .checkbox-gold{
-    accent-color:var(--dourado);
+    accent-color:var(--azul-claro);
   }
 </style>
 </head>
@@ -90,16 +91,16 @@
 
       <!-- Logotipo -->
       <a href="index.html" class="flex items-center w-fit">
-        <img src="/Frontend/imgs/logo-enlace.svg" alt="Enlace" class="h-12 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <span class="font-display text-2xl hidden" style="color:var(--dourado)">Enlace</span>
+        <img src="/Frontend/imgs/logo.png" alt="Enlace" class="h-12 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="font-display text-2xl hidden" style="color:var(--azul-claro)">Enlace</span>
       </a>
 
       <!-- Formulário -->
       <div class="w-full max-w-sm mx-auto fade-up">
-        <p class="uppercase tracking-[0.3em] text-xs font-semibold mb-3" style="color:var(--verde-salvia)">Bem-vindos de volta</p>
+        <p class="uppercase tracking-[0.3em] text-xs font-semibold mb-3" style="color:var(--azul-claro)">Bem-vindos de volta</p>
         <h1 class="font-display text-3xl sm:text-4xl leading-tight">Entrar na vossa conta</h1>
         <p class="text-[#666] text-sm mt-3">
-          Continuem o planeamento exatamente onde ficaram.
+          Continuem o planejamento exatamente onde ficaram.
         </p>
 
         <form id="loginForm" class="mt-9 space-y-5" novalidate>
@@ -117,7 +118,7 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <label for="password" class="block text-sm font-semibold">Palavra-passe</label>
-              <a href="#" class="text-xs font-medium hover:underline" style="color:var(--dourado)">Esqueceram-se?</a>
+              <a href="#" class="text-xs font-medium hover:underline" style="color:var(--azul-claro)">Esqueceram-se?</a>
             </div>
             <div class="relative">
               <input type="password" id="password" name="password" autocomplete="current-password"
@@ -145,7 +146,7 @@
 
           <!-- Botão submeter -->
           <button type="submit" id="submitBtn"
-                  class="btn-gold w-full py-3.5 rounded-full text-sm font-semibold mt-2">
+                  class="btn-gold w-full py-3.5 rounded text-sm font-semibold mt-2">
             Entrar
           </button>
         </form>
@@ -159,11 +160,11 @@
 
         <!-- Social login -->
         <div class="grid grid-cols-2 gap-3">
-          <button type="button" class="social-btn flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium bg-white">
+          <button type="button" class="social-btn flex items-center justify-center gap-2 py-3 rounded text-sm font-medium bg-white">
             <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47a5.54 5.54 0 01-2.4 3.63v3.02h3.89c2.28-2.1 3.53-5.2 3.53-8.89z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.07 7.93-2.9l-3.89-3.02c-1.08.72-2.45 1.15-4.04 1.15-3.1 0-5.73-2.1-6.67-4.92H1.3v3.09A12 12 0 0012 24z"/><path fill="#FBBC05" d="M5.33 14.31A7.2 7.2 0 015 12c0-.8.14-1.57.33-2.31V6.6H1.3A12 12 0 000 12c0 1.94.46 3.77 1.3 5.4l4.03-3.09z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.35.6 4.6 1.8l3.45-3.45C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.69 1.3 6.6l4.03 3.09C6.27 6.87 8.9 4.77 12 4.77z"/></svg>
             Google
           </button>
-          <button type="button" class="social-btn flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium bg-white">
+          <button type="button" class="social-btn flex items-center justify-center gap-2 py-3 rounded text-sm font-medium bg-white">
             <svg class="w-4 h-4" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
             Facebook
           </button>
@@ -171,7 +172,7 @@
 
         <p class="text-center text-sm text-[#666] mt-9">
           Ainda não têm conta?
-          <a href="registo.html" class="font-semibold hover:underline" style="color:var(--dourado)">Criar conta gratuita</a>
+          <a href="registo.html" class="font-semibold hover:underline" style="color:var(--azul-claro)">Criar conta gratuita</a>
         </p>
       </div>
 
@@ -180,7 +181,7 @@
 
     <!-- COLUNA DIREITA — IMAGEM DECORATIVA -->
     <div class="hidden lg:block relative overflow-hidden">
-      <img src="/Frontend/imgs/hero.png" alt="Casal ao pôr do sol" class="hero-img absolute inset-0 w-full h-full object-cover">
+      <img src="/Frontend/imgs/hero.jpg" alt="Casal ao pôr do sol" class="hero-img absolute inset-0 w-full h-full object-cover">
       <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(31,31,31,.15) 0%, rgba(31,31,31,.55) 100%);"></div>
 
       <div class="relative z-10 h-full flex flex-col justify-end p-14">

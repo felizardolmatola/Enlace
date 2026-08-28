@@ -8,30 +8,33 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="./output.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/Frontend/imgs/icon.png">
 <style>
   :root{
     --branco-gelo:#FFFFFF;
     --preto-grafite:#1F1F1F;
-    --dourado:#C8A951;
+    --azul-claro:#0B4870;
     --verde-salvia:#A3B18A;
     --cinza-claro:#F5F5F5;
   }
   body{font-family:'Inter',sans-serif; color:var(--preto-grafite); background:var(--cinza-claro);}
   .font-display{font-family:'Playfair Display',serif;}
-  .btn-gold{background:var(--dourado); color:var(--preto-grafite); transition:transform .2s ease, box-shadow .2s ease;}
-  .btn-gold:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px rgba(200,169,81,.55);}
+  .btn-gold{background:var(--azul-claro); color:#FFFFFF; transition:transform .2s ease, box-shadow .2s ease;}
+  .btn-gold:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px rgba(11,72,112,.55);}
+  .btn-outline-gold{border:1.5px solid var(--azul-claro); color:var(--preto-grafite); transition:background .2s ease;}
+  .btn-outline-gold:hover{background:rgba(11,72,112,.08);}
   .nav-item{transition:background .15s ease, color .15s ease;}
   .nav-item:hover{background:#F5F5F5;}
-  .nav-item.active{background:rgba(200,169,81,.12); color:var(--preto-grafite); font-weight:600;}
-  .nav-item.active .nav-dot{background:var(--dourado);}
+  .nav-item.active{background:rgba(11,72,112,.08); color:var(--preto-grafite); font-weight:600;}
+  .nav-item.active .nav-dot{background:var(--azul-claro);}
   .tab-panel{display:none;}
   .tab-panel.active{display:block;}
-  .progress-fill{background:linear-gradient(90deg,#C8A951,#e0c477);}
+  .progress-fill{background:linear-gradient(90deg,#0B4870,#3d7ba8);}
   .status-pill{font-size:11px; font-weight:600; padding:3px 10px; border-radius:9999px;}
-  .card{transition:box-shadow .2s ease, border-color .2s ease;}
-  .card:hover{box-shadow:0 16px 32px -20px rgba(31,31,31,.18); border-color:var(--dourado);}
+  .card{transition:box-shadow .2s ease, border-color .2s ease, transform .2s ease; border:1px solid transparent;}
+  .card:hover{box-shadow:0 16px 32px -20px rgba(11,72,112,.18); border-color:var(--azul-claro); transform:translateY(-2px);}
   ::-webkit-scrollbar{width:8px; height:8px;}
-  ::-webkit-scrollbar-thumb{background:#E2DECF; border-radius:4px;}
+  ::-webkit-scrollbar-thumb{background:#DCE3E9; border-radius:4px;}
 </style>
 </head>
 <body class="antialiased">
@@ -41,7 +44,9 @@
   <!-- SIDEBAR -->
   <aside class="hidden lg:flex flex-col w-64 bg-white border-r border-[#EFEBE2] shrink-0">
     <div class="h-20 flex items-center px-7 border-b border-[#EFEBE2]">
-      <a href="index.html" class="font-display text-2xl" style="color:var(--dourado)">Enlace</a>
+      <a href="index.html" class="flex items-center">
+        <img src="/Frontend/imgs/logo.png" alt="Enlace" class="h-12 w-auto">
+      </a>
     </div>
     <nav class="flex-1 py-6 px-4 space-y-1">
       <button class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="visao-geral">
@@ -76,7 +81,7 @@
       <div>
         <p id="page-title" class="font-display text-2xl">Visão geral</p>
       </div>
-      <a href="#" class="px-5 py-2.5 rounded-full text-sm font-semibold btn-gold">+ Nova tarefa</a>
+      <a href="#" class="px-5 py-2.5 rounded text-sm font-semibold btn-gold">+ Nova tarefa</a>
     </header>
 
     <main class="p-6 lg:p-10 max-w-6xl mx-auto">
@@ -101,7 +106,7 @@
         <div class="card bg-white rounded-2xl p-8 border border-transparent mb-8">
           <div class="flex justify-between text-xs font-medium mb-2">
             <span>Progresso do planeamento</span>
-            <span style="color:var(--dourado)">68%</span>
+            <span style="color:var(--azul-claro)">68%</span>
           </div>
           <div class="h-2.5 rounded-full w-full" style="background:#E7E2D6">
             <div class="progress-fill h-2.5 rounded-full" style="width:68%"></div>
@@ -139,7 +144,7 @@
             <span class="status-pill" style="background:#F0EEE9; color:#888">24 por confirmar</span>
             <span class="status-pill" style="background:#F0EEE9; color:#888">12 recusados</span>
           </div>
-          <a href="#" class="px-4 py-2 rounded-full text-xs font-semibold btn-gold">+ Adicionar convidado</a>
+          <a href="#" class="px-4 py-2 rounded text-xs font-semibold btn-gold">+ Adicionar convidado</a>
         </div>
         <div class="card bg-white rounded-2xl border border-transparent overflow-hidden">
           <table class="w-full text-sm">
@@ -190,7 +195,7 @@
           </div>
           <div class="card bg-white rounded-2xl p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Gasto até agora</p>
-            <p class="font-display text-2xl" style="color:var(--dourado)">€ 11.160</p>
+            <p class="font-display text-2xl" style="color:var(--azul-claro)">€ 11.160</p>
           </div>
           <div class="card bg-white rounded-2xl p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Restante</p>
