@@ -33,6 +33,9 @@
   .status-pill{font-size:11px; font-weight:600; padding:3px 10px; border-radius:9999px;}
   .card{transition:box-shadow .2s ease, border-color .2s ease, transform .2s ease; border:1px solid transparent;}
   .card:hover{box-shadow:0 16px 32px -20px rgba(11,72,112,.18); border-color:var(--azul-claro); transform:translateY(-2px);}
+  .rsvp-choice-btn{background:#fff; color:#666;}
+  .rsvp-choice-btn.selected-yes{background:rgba(163,177,138,.18); color:#5c6b47; border-color:var(--verde-salvia) !important;}
+  .rsvp-choice-btn.selected-no{background:rgba(31,31,31,.06); color:#1F1F1F; border-color:#1F1F1F !important;}
   ::-webkit-scrollbar{width:8px; height:8px;}
   ::-webkit-scrollbar-thumb{background:#DCE3E9; border-radius:4px;}
 </style>
@@ -60,6 +63,9 @@
       </button>
       <button class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="fornecedores">
         <span class="nav-dot w-1.5 h-1.5 rounded-full bg-transparent"></span> Fornecedores
+      </button>
+      <button class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="convite">
+        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-transparent"></span> Convite
       </button>
     </nav>
     <div class="p-5 border-t border-[#EFEBE2]">
@@ -261,6 +267,137 @@
         </div>
       </section>
 
+      <!-- CONVITE -->
+      <section class="tab-panel" id="convite">
+        <div class="grid lg:grid-cols-2 gap-6 items-start">
+
+          <!-- FORM -->
+          <div class="card bg-white rounded-2xl p-8 border border-transparent">
+            <p class="font-display text-lg mb-1">Editar convite</p>
+            <p class="text-xs text-[#888] mb-6">As alterações aparecem na pré-visualização ao lado.</p>
+
+            <div class="space-y-5">
+              <div>
+                <label class="text-xs font-medium text-[#666] block mb-2">Foto do convite</label>
+                <div class="flex items-center gap-4">
+                  <div id="invite-photo-preview-wrap" class="w-20 h-20 rounded-xl overflow-hidden bg-[#F0EEE9] border border-[#EFEBE2] flex items-center justify-center shrink-0">
+                    <img id="invite-photo-preview" src="" alt="" class="w-full h-full object-cover hidden">
+                    <svg id="invite-photo-placeholder" class="w-7 h-7 text-[#C9C3B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5V6a1.5 1.5 0 011.5-1.5h15A1.5 1.5 0 0121 6v10.5M3 16.5A1.5 1.5 0 004.5 18h15a1.5 1.5 0 001.5-1.5M3 16.5l5.03-5.03a1.5 1.5 0 012.12 0L12 13.31m9 3.19l-4.66-4.66a1.5 1.5 0 00-2.12 0L12 13.31m0 0L14.5 15.8"/><circle cx="8" cy="9" r="1.5"/></svg>
+                  </div>
+                  <div class="flex-1">
+                    <label for="invite-photo-input" class="inline-block px-4 py-2 rounded text-xs font-semibold btn-outline-gold cursor-pointer">Carregar foto</label>
+                    <input id="invite-photo-input" type="file" accept="image/*" class="hidden">
+                    <p id="invite-photo-filename" class="text-xs text-[#888] mt-2">Nenhuma foto escolhida</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="text-xs font-medium text-[#666] block mb-2">Nome do noivo</label>
+                  <input id="invite-nome1" type="text" value="João" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-[#666] block mb-2">Nome da noiva</label>
+                  <input id="invite-nome2" type="text" value="Ana" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                </div>
+              </div>
+
+              <div>
+                <label class="text-xs font-medium text-[#666] block mb-2">Data do casamento</label>
+                <input id="invite-data" type="text" value="15 de Maio, 2027" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+              </div>
+
+              <div>
+                <label class="text-xs font-medium text-[#666] block mb-2">Local</label>
+                <input id="invite-local" type="text" value="Quinta da Rosa, Sintra" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+              </div>
+
+              <div>
+                <label class="text-xs font-medium text-[#666] block mb-2">Mensagem</label>
+                <textarea id="invite-mensagem" rows="4" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)] resize-none">Com a bênção de Deus e das nossas famílias, convidamos com muito carinho para celebrar o nosso casamento.</textarea>
+              </div>
+
+              <div>
+                <label class="text-xs font-medium text-[#666] block mb-2">WhatsApp para receber as confirmações</label>
+                <input id="invite-rsvp-whatsapp" type="tel" placeholder="+351 912 345 678" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                <p class="text-xs text-[#888] mt-1.5">Quando um convidado confirmar presença, abre o WhatsApp com a resposta pronta a enviar para este número.</p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <button id="invite-save-btn" class="px-5 py-2.5 rounded text-sm font-semibold btn-gold">Guardar convite</button>
+                <button id="invite-share-btn" class="px-5 py-2.5 rounded text-sm font-semibold btn-outline-gold flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342a3 3 0 100 2.316m0-2.316a3 3 0 100-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 10.632a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/></svg>
+                  Partilhar convite
+                </button>
+                <button id="invite-reset-btn" class="px-5 py-2.5 rounded text-sm font-semibold" style="color:#888">Repor</button>
+              </div>
+              <p id="invite-status-msg" class="text-xs opacity-0 transition-opacity" style="color:var(--verde-salvia)">Guardado ✓</p>
+            </div>
+          </div>
+
+          <!-- LIVE PREVIEW -->
+          <div class="lg:sticky lg:top-6">
+            <p class="text-xs text-[#888] mb-3 uppercase tracking-wide font-medium">Pré-visualização</p>
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-[#EFEBE2]" style="background:var(--branco-gelo)">
+              <div id="invite-preview-photo-wrap" class="w-full h-64 bg-[#EFEBE2] flex items-center justify-center">
+                <img id="invite-preview-photo" src="" alt="" class="w-full h-full object-cover hidden">
+                <span id="invite-preview-photo-placeholder" class="text-xs text-[#888]">Sem foto carregada</span>
+              </div>
+              <div class="px-8 py-10 text-center">
+                <p class="text-xs tracking-[0.2em] uppercase text-[#888] mb-4">Convite de casamento</p>
+                <p id="invite-preview-nomes" class="font-display text-3xl mb-4">João &amp; Ana</p>
+                <div class="w-10 h-px mx-auto mb-4" style="background:var(--azul-claro)"></div>
+                <p id="invite-preview-mensagem" class="text-sm text-[#666] leading-relaxed mb-6">Com a bênção de Deus e das nossas famílias, convidamos com muito carinho para celebrar o nosso casamento.</p>
+                <p id="invite-preview-data" class="font-display text-lg mb-1">15 de Maio, 2027</p>
+                <p id="invite-preview-local" class="text-xs text-[#888]">Quinta da Rosa, Sintra</p>
+              </div>
+
+              <!-- RSVP -->
+              <div class="border-t border-[#EFEBE2] px-8 py-8">
+                <div id="rsvp-form">
+                  <p class="font-display text-base text-center mb-5">Confirmar presença</p>
+
+                  <label class="text-xs font-medium text-[#666] block mb-2">O seu nome</label>
+                  <input id="rsvp-nome" type="text" placeholder="Escreva o seu nome" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm mb-4 focus:outline-none focus:border-[var(--azul-claro)]">
+
+                  <div class="grid grid-cols-2 gap-3 mb-4">
+                    <button type="button" id="rsvp-yes-btn" data-attending="true" class="rsvp-choice-btn px-4 py-2.5 rounded-lg text-sm font-semibold border transition-colors" style="border-color:var(--verde-salvia)">Vou comparecer</button>
+                    <button type="button" id="rsvp-no-btn" data-attending="false" class="rsvp-choice-btn px-4 py-2.5 rounded-lg text-sm font-semibold border transition-colors" style="border-color:#DCD6C8">Não poderei ir</button>
+                  </div>
+
+                  <div id="rsvp-extra-fields" class="hidden space-y-4 mb-4">
+                    <div>
+                      <label class="text-xs font-medium text-[#666] block mb-2">Número de pessoas (incluindo você)</label>
+                      <select id="rsvp-guests" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="text-xs font-medium text-[#666] block mb-2">Restrições alimentares (opcional)</label>
+                      <input id="rsvp-restricoes" type="text" placeholder="ex: vegetariano, sem glúten" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                    </div>
+                  </div>
+
+                  <button id="rsvp-submit-btn" class="w-full px-4 py-2.5 rounded text-sm font-semibold btn-gold" disabled>Enviar confirmação</button>
+                  <p id="rsvp-hint" class="text-xs text-[#888] text-center mt-2">Escolha uma opção acima.</p>
+                </div>
+
+                <div id="rsvp-thankyou" class="hidden text-center">
+                  <svg class="w-9 h-9 mx-auto mb-3" style="color:var(--verde-salvia)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <p class="font-display text-base mb-1">Obrigado pela confirmação!</p>
+                  <p id="rsvp-thankyou-msg" class="text-xs text-[#888]"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
     </main>
   </div>
 </div>
@@ -273,18 +410,327 @@
     'visao-geral':'Visão geral',
     'convidados':'Convidados',
     'orcamento':'Orçamento',
-    'fornecedores':'Fornecedores'
+    'fornecedores':'Fornecedores',
+    'convite':'Convite'
   };
+  function goToTab(tab){
+    const btn = document.querySelector(`.nav-item[data-tab="${tab}"]`);
+    if(!btn) return;
+    buttons.forEach(b=>b.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(tab).classList.add('active');
+    title.textContent = titles[tab];
+  }
+
   buttons.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      buttons.forEach(b=>b.classList.remove('active'));
-      panels.forEach(p=>p.classList.remove('active'));
-      btn.classList.add('active');
-      const tab = btn.dataset.tab;
-      document.getElementById(tab).classList.add('active');
-      title.textContent = titles[tab];
-    });
+    btn.addEventListener('click', ()=> goToTab(btn.dataset.tab));
   });
+
+  // Abre diretamente numa aba específica se vier ?tab=... na URL
+  // (ex: link "Orçamento" na página inicial -> dashboard.html?tab=orcamento)
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab');
+    if(tabParam && titles.hasOwnProperty(tabParam)){
+      goToTab(tabParam);
+    }
+  })();
+
+  // ---- CONVITE (invitation editor) ----
+  (function(){
+    const STORAGE_KEY = 'enlace-convite';
+
+    const fields = {
+      nome1: document.getElementById('invite-nome1'),
+      nome2: document.getElementById('invite-nome2'),
+      data: document.getElementById('invite-data'),
+      local: document.getElementById('invite-local'),
+      mensagem: document.getElementById('invite-mensagem'),
+      rsvpWhatsapp: document.getElementById('invite-rsvp-whatsapp'),
+    };
+
+    const preview = {
+      nomes: document.getElementById('invite-preview-nomes'),
+      data: document.getElementById('invite-preview-data'),
+      local: document.getElementById('invite-preview-local'),
+      mensagem: document.getElementById('invite-preview-mensagem'),
+      photo: document.getElementById('invite-preview-photo'),
+      photoPlaceholder: document.getElementById('invite-preview-photo-placeholder'),
+    };
+
+    const photoInput = document.getElementById('invite-photo-input');
+    const photoFilename = document.getElementById('invite-photo-filename');
+    const photoPreview = document.getElementById('invite-photo-preview');
+    const photoPlaceholderIcon = document.getElementById('invite-photo-placeholder');
+    const saveBtn = document.getElementById('invite-save-btn');
+    const shareBtn = document.getElementById('invite-share-btn');
+    const resetBtn = document.getElementById('invite-reset-btn');
+    const statusMsg = document.getElementById('invite-status-msg');
+
+    let statusTimer = null;
+    function showStatus(text){
+      statusMsg.textContent = text;
+      statusMsg.classList.remove('opacity-0');
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(() => statusMsg.classList.add('opacity-0'), 2600);
+    }
+
+    let photoDataUrl = '';
+
+    const defaults = {
+      nome1: 'João',
+      nome2: 'Ana',
+      data: '15 de Maio, 2027',
+      local: 'Quinta da Rosa, Sintra',
+      mensagem: 'Com a bênção de Deus e das nossas famílias, convidamos com muito carinho para celebrar o nosso casamento.',
+      photo: '',
+      rsvpWhatsapp: ''
+    };
+
+    function updatePreview(){
+      preview.nomes.textContent = `${fields.nome1.value || defaults.nome1} & ${fields.nome2.value || defaults.nome2}`;
+      preview.data.textContent = fields.data.value || defaults.data;
+      preview.local.textContent = fields.local.value || defaults.local;
+      preview.mensagem.textContent = fields.mensagem.value || defaults.mensagem;
+
+      if(photoDataUrl){
+        preview.photo.src = photoDataUrl;
+        preview.photo.classList.remove('hidden');
+        preview.photoPlaceholder.classList.add('hidden');
+        photoPreview.src = photoDataUrl;
+        photoPreview.classList.remove('hidden');
+        photoPlaceholderIcon.classList.add('hidden');
+      } else {
+        preview.photo.classList.add('hidden');
+        preview.photoPlaceholder.classList.remove('hidden');
+        photoPreview.classList.add('hidden');
+        photoPlaceholderIcon.classList.remove('hidden');
+      }
+    }
+
+    function applyData(data){
+      fields.nome1.value = data.nome1 ?? defaults.nome1;
+      fields.nome2.value = data.nome2 ?? defaults.nome2;
+      fields.data.value = data.data ?? defaults.data;
+      fields.local.value = data.local ?? defaults.local;
+      fields.mensagem.value = data.mensagem ?? defaults.mensagem;
+      fields.rsvpWhatsapp.value = data.rsvpWhatsapp ?? defaults.rsvpWhatsapp;
+      photoDataUrl = data.photo ?? '';
+      photoFilename.textContent = photoDataUrl ? 'Foto carregada' : 'Nenhuma foto escolhida';
+      updatePreview();
+    }
+
+    function loadSaved(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(raw){
+          applyData(JSON.parse(raw));
+          return;
+        }
+      }catch(e){}
+      applyData(defaults);
+    }
+
+    Object.values(fields).forEach(el => el.addEventListener('input', updatePreview));
+
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if(!file) return;
+      if(!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        photoDataUrl = reader.result;
+        photoFilename.textContent = file.name;
+        updatePreview();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function currentData(){
+      return {
+        nome1: fields.nome1.value,
+        nome2: fields.nome2.value,
+        data: fields.data.value,
+        local: fields.local.value,
+        mensagem: fields.mensagem.value,
+        rsvpWhatsapp: fields.rsvpWhatsapp.value,
+        photo: photoDataUrl,
+      };
+    }
+
+    saveBtn.addEventListener('click', () => {
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData()));
+      }catch(e){}
+      showStatus('Guardado ✓');
+    });
+
+    resetBtn.addEventListener('click', () => {
+      try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+      photoInput.value = '';
+      applyData(defaults);
+    });
+
+    // ---- Partilhar convite ----
+    // Photos are included in the share link only while small enough to fit a URL;
+    // very large photos are left out so the link still works everywhere.
+    const MAX_PHOTO_URL_CHARS = 60000;
+
+    function buildShareUrl(){
+      const data = currentData();
+      if(data.photo && data.photo.length > MAX_PHOTO_URL_CHARS){
+        data.photo = ''; // too big to embed in a link
+      }
+      const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+      const base = location.origin + location.pathname;
+      return { url: `${base}?convite=${encoded}#convite`, photoOmitted: !!currentData().photo && !data.photo };
+    }
+
+    async function shareInvite(){
+      const { url, photoOmitted } = buildShareUrl();
+      const nome1 = fields.nome1.value || defaults.nome1;
+      const nome2 = fields.nome2.value || defaults.nome2;
+      const dataTxt = fields.data.value || defaults.data;
+      const localTxt = fields.local.value || defaults.local;
+      const shareText = `${nome1} & ${nome2} convidam-te para o casamento • ${dataTxt} • ${localTxt}`;
+
+      if(navigator.share){
+        try{
+          await navigator.share({ title: 'Convite de casamento', text: shareText, url });
+          return;
+        }catch(err){
+          if(err && err.name === 'AbortError') return; // user cancelled
+        }
+      }
+
+      try{
+        await navigator.clipboard.writeText(url);
+        showStatus(photoOmitted ? 'Link copiado ✓ (a foto ficou de fora por ser grande)' : 'Link copiado ✓');
+      }catch(e){
+        window.prompt('Copie o link do convite:', url);
+      }
+    }
+
+    shareBtn.addEventListener('click', shareInvite);
+
+    // ---- Confirmar presença (RSVP) ----
+    (function(){
+      const nomeInput = document.getElementById('rsvp-nome');
+      const yesBtn = document.getElementById('rsvp-yes-btn');
+      const noBtn = document.getElementById('rsvp-no-btn');
+      const extraFields = document.getElementById('rsvp-extra-fields');
+      const guestsSelect = document.getElementById('rsvp-guests');
+      const restricoesInput = document.getElementById('rsvp-restricoes');
+      const submitBtn = document.getElementById('rsvp-submit-btn');
+      const hint = document.getElementById('rsvp-hint');
+      const form = document.getElementById('rsvp-form');
+      const thankyou = document.getElementById('rsvp-thankyou');
+      const thankyouMsg = document.getElementById('rsvp-thankyou-msg');
+
+      let attending = null;
+
+      function refreshSubmitState(){
+        const ready = attending !== null && nomeInput.value.trim().length > 0;
+        submitBtn.disabled = !ready;
+        submitBtn.classList.toggle('opacity-50', !ready);
+        hint.textContent = ready
+          ? 'Tudo pronto para enviar.'
+          : (attending === null ? 'Escolha uma opção acima.' : 'Escreva o seu nome.');
+      }
+
+      yesBtn.addEventListener('click', () => {
+        attending = true;
+        yesBtn.classList.add('selected-yes');
+        noBtn.classList.remove('selected-no');
+        extraFields.classList.remove('hidden');
+        refreshSubmitState();
+      });
+
+      noBtn.addEventListener('click', () => {
+        attending = false;
+        noBtn.classList.add('selected-no');
+        yesBtn.classList.remove('selected-yes');
+        extraFields.classList.add('hidden');
+        refreshSubmitState();
+      });
+
+      nomeInput.addEventListener('input', refreshSubmitState);
+
+      submitBtn.addEventListener('click', () => {
+        if(submitBtn.disabled) return;
+        const guestName = nomeInput.value.trim();
+        const coupleNames = `${fields.nome1.value || defaults.nome1} & ${fields.nome2.value || defaults.nome2}`;
+        const guests = guestsSelect.value;
+        const restricoes = restricoesInput.value.trim();
+
+        let bodyLines = [`Confirmação de presença para o casamento de ${coupleNames}.`, '', `Nome: ${guestName}`];
+        if(attending){
+          bodyLines.push('Presença: Vou comparecer');
+          bodyLines.push(`Número de pessoas: ${guests}`);
+          if(restricoes) bodyLines.push(`Restrições alimentares: ${restricoes}`);
+        } else {
+          bodyLines.push('Presença: Não poderei ir');
+        }
+        const message = bodyLines.join('\n');
+
+        const rawNumber = fields.rsvpWhatsapp.value.trim();
+        const digitsOnly = rawNumber.replace(/\D/g, '');
+        if(digitsOnly){
+          const waUrl = `https://wa.me/${digitsOnly}?text=${encodeURIComponent(message)}`;
+          window.open(waUrl, '_blank');
+        }
+
+        // Keep a local copy of this guest's own response on their device
+        try{
+          localStorage.setItem('enlace-rsvp-resposta', JSON.stringify({
+            nome: guestName, attending, guests, restricoes, respondedAt: new Date().toISOString()
+          }));
+        }catch(e){}
+
+        form.classList.add('hidden');
+        thankyou.classList.remove('hidden');
+        thankyouMsg.textContent = attending
+          ? (digitsOnly ? 'O WhatsApp abriu com a sua resposta — só falta enviar.' : 'A sua presença foi registada.')
+          : 'Lamentamos que não possa vir. Obrigado por avisar!';
+      });
+
+      // Restore a previous response from this device, if any
+      try{
+        const prev = JSON.parse(localStorage.getItem('enlace-rsvp-resposta') || 'null');
+        if(prev){
+          form.classList.add('hidden');
+          thankyou.classList.remove('hidden');
+          thankyouMsg.textContent = prev.attending
+            ? 'Já confirmou a sua presença. Obrigado!'
+            : 'Já respondeu que não poderá vir. Obrigado por avisar!';
+        }
+      }catch(e){}
+
+      refreshSubmitState();
+    })();
+
+    // If this page was opened via a shared invite link, load that data instead
+    function loadFromUrlIfPresent(){
+      const params = new URLSearchParams(location.search);
+      const encoded = params.get('convite');
+      if(!encoded) return false;
+      try{
+        const data = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+        applyData(data);
+        return true;
+      }catch(e){
+        return false;
+      }
+    }
+
+    if(loadFromUrlIfPresent()){
+      const conviteBtn = document.querySelector('.nav-item[data-tab="convite"]');
+      if(conviteBtn) conviteBtn.click();
+    } else {
+      loadSaved();
+    }
+  })();
 </script>
 
 </body>
