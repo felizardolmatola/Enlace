@@ -1,204 +1,369 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nosso Casamento — Planeamento</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          primary: '#0B4870',   // antigo --azul-claro
-          ink: '#1F1F1F',       // antigo --preto-grafite
-          paper: '#FFFFFF',     // antigo --branco-gelo
-          mist: '#F5F5F5',      // antigo --cinza-claro
-          line: '#EFEBE2',      // contorno usado nos cartões
-        },
-        fontFamily: {
-          display: ['"Playfair Display"', 'serif'],
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Casamento — Planeamento</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0B4870',   // antigo --azul-claro
+            ink: '#1F1F1F',       // antigo --preto-grafite
+            paper: '#FFFFFF',     // antigo --branco-gelo
+            mist: '#F5F5F5',      // antigo --cinza-claro
+            line: '#EFEBE2',      // contorno usado nos cartões
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+          },
         },
       },
-    },
-  };
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="/Frontend/imgs/icon.png">
-<style>
-  :root{
-    --branco-gelo:#FFFFFF;
-    --preto-grafite:#1F1F1F;
-    --cinza-claro:#F5F5F5;
-     --azul-claro:#0B4870;
-  }
-  body{font-family:'Inter',sans-serif; color:var(--preto-grafite); background:var(--branco-gelo);}
-  .font-display{font-family:'Playfair Display',serif;}
-  .btn-gold{
-    background:var(--azul-claro);
-    color:#FFFFFF;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .btn-gold:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px rgba(11,72,112,.55);}
-  .btn-outline-gold{
-    border:1.5px solid var(--azul-claro);
-    color:var(--preto-grafite);
-    transition:background .2s ease;
-  }
-  .btn-outline-gold:hover{background:rgba(11,72,112,.08);}
-  .card{
-    border:1px solid transparent;
-    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
-  }
-  .card:hover{
-    border-color:var(--azul-claro);
-    transform:translateY(-3px);
-    box-shadow:0 20px 40px -20px rgba(11,72,112,.15);
-  }
-  .progress-fill{background:linear-gradient(90deg,#0B4870,#0B4870);}
-  .fade-up{animation:fadeUp .7s ease both;}
-  @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
-  @media (prefers-reduced-motion: reduce){
-    .fade-up{animation:none;}
-    .btn-gold:hover, .card:hover{transform:none;}
-  }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="/Frontend/imgs/icon.png">
+  <style>
+    :root {
+      --branco-gelo: #FFFFFF;
+      --preto-grafite: #1F1F1F;
+      --cinza-claro: #F5F5F5;
+      --azul-claro: #0B4870;
+    }
 
-  /* EFEITO DE REVELACAO AO DESLIZAR (SCROLL REVEAL) */
-  .reveal{
-    opacity:0;
-    transform:translateY(28px);
-    transition:opacity .8s ease, transform .8s ease;
-  }
-  .reveal.is-visible{
-    opacity:1;
-    transform:translateY(0);
-  }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--preto-grafite);
+      background: var(--branco-gelo);
+    }
 
-  /* HEADER QUE ESCONDE AO DESLIZAR PARA BAIXO */
-  header{
-    transition:transform .35s ease, box-shadow .35s ease;
-  }
-  header.header-hidden{
-    transform:translateY(-100%);
-    box-shadow:none;
-  }
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
 
-  /* EFEITO KEN BURNS NA IMAGEM DO HERO */
-  .hero-img{
-    animation:kenBurns 22s ease-in-out infinite alternate;
-    will-change:transform;
-  }
-  @keyframes kenBurns{
-    0%{   transform:scale(1)     translate(0,0); }
-    100%{ transform:scale(1.12)  translate(-1.5%,-2%); }
-  }
+    .btn-gold {
+      background: var(--azul-claro);
+      color: #FFFFFF;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
 
-  /* PARALLAX NO SCROLL (CONTAINER DO HERO) */
-  .hero-parallax{
-    position:absolute;
-    left:0; right:0;
-    top:-8%;
-    height:116%;
-    will-change:transform;
-  }
+    .btn-gold:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px -8px rgba(11, 72, 112, .55);
+    }
 
-  /* PARTICULAS DE LUZ AMBIENTE */
-  .hero-glow{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:4;
-  }
-  .glow-dot{
-    position:absolute;
-    bottom:-5%;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(255,224,158,.9) 0%, rgba(255,224,158,0) 70%);
-    opacity:0;
-    animation-name:glowRise;
-    animation-timing-function:ease-in-out;
-    animation-iteration-count:infinite;
-    will-change:transform, opacity;
-  }
-  @keyframes glowRise{
-    0%{ transform:translateY(0) scale(.6); opacity:0; }
-    15%{ opacity:.8; }
-    50%{ transform:translateY(-50vh) scale(1); }
-    85%{ opacity:.5; }
-    100%{ transform:translateY(-100vh) scale(.4); opacity:0; }
-  }
+    .btn-outline-gold {
+      border: 1.5px solid var(--azul-claro);
+      color: var(--preto-grafite);
+      transition: background .2s ease;
+    }
 
-  @media (prefers-reduced-motion: reduce){
-    .hero-img{ animation:none; }
-    .glow-dot{ animation:none; opacity:0; }
-    .hero-parallax{ transform:none !important; }
-  }
+    .btn-outline-gold:hover {
+      background: rgba(11, 72, 112, .08);
+    }
 
-  /* IMAGEM DO CASAL ACIMA DO TITULO */
-  .tracos-casal-wrap{
-    position:relative;
-    width:150px;
-    height:150px;
-    margin:0 auto 16px;
-    overflow:hidden;
-    border-radius:12px;
-  }
-  .tracos-casal-img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-</style>
+    .card {
+      border: 1px solid transparent;
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--azul-claro);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px -20px rgba(11, 72, 112, .15);
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, #0B4870, #0B4870);
+    }
+
+    .fade-up {
+      animation: fadeUp .7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        animation: none;
+      }
+
+      .btn-gold:hover,
+      .card:hover {
+        transform: none;
+      }
+    }
+
+    /* EFEITO DE REVELACAO AO DESLIZAR (SCROLL REVEAL) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* HEADER QUE ESCONDE AO DESLIZAR PARA BAIXO */
+    header {
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    header.header-hidden {
+      transform: translateY(-100%);
+      box-shadow: none;
+    }
+
+    /* EFEITO KEN BURNS NA IMAGEM DO HERO */
+    .hero-img {
+      animation: kenBurns 22s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes kenBurns {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+
+      100% {
+        transform: scale(1.12) translate(-1.5%, -2%);
+      }
+    }
+
+    /* PARALLAX NO SCROLL (CONTAINER DO HERO) */
+    .hero-parallax {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -8%;
+      height: 116%;
+      will-change: transform;
+    }
+
+    /* PARTICULAS DE LUZ AMBIENTE */
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .glow-dot {
+      position: absolute;
+      bottom: -5%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 224, 158, .9) 0%, rgba(255, 224, 158, 0) 70%);
+      opacity: 0;
+      animation-name: glowRise;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes glowRise {
+      0% {
+        transform: translateY(0) scale(.6);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: .8;
+      }
+
+      50% {
+        transform: translateY(-50vh) scale(1);
+      }
+
+      85% {
+        opacity: .5;
+      }
+
+      100% {
+        transform: translateY(-100vh) scale(.4);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-img {
+        animation: none;
+      }
+
+      .glow-dot {
+        animation: none;
+        opacity: 0;
+      }
+
+      .hero-parallax {
+        transform: none !important;
+      }
+    }
+
+    /* IMAGEM DO CASAL ACIMA DO TITULO */
+    .tracos-casal-wrap {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 16px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .tracos-casal-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
+
 <body class="antialiased">
 
   <!-- HEADER -->
   <header class="bg-white sticky top-0 z-40 border-b border-[#F0EEE9]">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-        <!-- Logotipo -->
-    <a href="#" class="flex items-center">
-      <img src="/Frontend/imgs/logo.png" alt="Nome da Empresa" class="h-16 w-auto">
-    </a>
+      <!-- Logotipo -->
+      <a href="#" class="flex items-center">
+        <img src="/Frontend/imgs/logo.png" alt="Nome da Empresa" class="h-16 w-auto">
+      </a>
       <nav class="hidden md:flex items-center gap-10 text-[15px] font-medium">
-        <a href="#recursos" class="hover:text-[#0B4870] transition-colors">Funcionalidades</a>
-        <a href="#galeria" class="hover:text-[#0B4870] transition-colors">Galeria</a>
-        <a href="#dashboard" class="hover:text-[#0B4870] transition-colors">Sobre nós</a>
+        <a href="#recursos" class="hover:text-[#0B4870] transition-colors" data-i18n="nav_recursos">Funcionalidades</a>
+        <a href="#galeria" class="hover:text-[#0B4870] transition-colors" data-i18n="nav_galeria">Galeria</a>
+        <a href="#dashboard" class="hover:text-[#0B4870] transition-colors" data-i18n="nav_sobre">Sobre nós</a>
       </nav>
+
+      <!-- BARRA DE PESQUISA -->
+      <div class="hidden lg:flex items-center relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 absolute left-3.5 text-[#9A9A9A] pointer-events-none"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+        </svg>
+        <input id="headerSearchInput" type="search" data-i18n-placeholder="search_placeholder"
+          placeholder="Pesquisar..."
+          class="w-48 xl:w-64 pl-10 pr-3 py-2.5 rounded border border-[#E5E1D8] bg-mist text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4870]/30 focus:border-[#0B4870] focus:bg-white transition-colors">
+      </div>
+
       <div class="flex items-center gap-3">
-        <a href="/Frontend/login.html" class="hidden sm:inline-block px-5 py-2.5 rounded text-sm font-semibold btn-outline-gold">Entrar</a>
-        <a href="/Frontend/registo.html" class="px-5 py-2.5 text-sm rounded font-semibold btn-gold">Começar agora</a>
+        <!-- ÍCONE DE PESQUISA (MOBILE) -->
+        <button id="mobileSearchBtn" type="button" aria-label="Pesquisar"
+          class="lg:hidden w-9 h-9 flex items-center justify-center rounded hover:bg-mist transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+          </svg>
+        </button>
+
+        <!-- SELETOR DE IDIOMA -->
+        <div class="relative">
+          <button id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false"
+            class="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded  font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#0B4870]" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 12h18M12 3c2.5 2.8 3.8 6.2 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-6.2-3.8-9s1.3-6.2 3.8-9zM3 12a9 9 0 0018 0 9 9 0 00-18 0z" />
+            </svg>
+            <span id="langBtnLabel">PT</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[#9A9A9A]" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="langMenu" role="listbox"
+            class="hidden absolute right-0 mt-2 w-40 bg-white rounded-lg border border-[#EFEBE2] shadow-lg overflow-hidden z-50">
+            <button type="button" data-lang="pt" role="option"
+              class="lang-option w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-mist transition-colors text-left">
+              <span>🇵🇹</span><span>Português</span>
+            </button>
+            <button type="button" data-lang="en" role="option"
+              class="lang-option w-full flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-mist transition-colors text-left">
+              <span>🇬🇧</span><span>English</span>
+            </button>
+          </div>
+        </div>
+
+        <a href="/Frontend/login.html" data-i18n="btn_entrar"
+          class="hidden sm:inline-block px-5 py-2.5 rounded text-sm font-semibold btn-outline-gold">Entrar</a>
+        <a href="/Frontend/registo.html" data-i18n="btn_comecar"
+          class="px-5 py-2.5 text-sm rounded font-semibold btn-gold">Criar conta</a>
+      </div>
+    </div>
+
+    <!-- BARRA DE PESQUISA MOBILE (EXPANSÍVEL) -->
+    <div id="mobileSearchBar" class="hidden lg:hidden px-6 pb-4">
+      <div class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9A9A9A]" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+        </svg>
+        <input type="search" data-i18n-placeholder="search_placeholder" placeholder="Pesquisar..."
+          class="w-full pl-10 pr-3 py-2.5 rounded border border-[#E5E1D8] bg-mist text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4870]/30 focus:border-[#0B4870] focus:bg-white">
       </div>
     </div>
   </header>
-  
+
 
   <!-- BANNER PRINCIPAL -->
   <section id="hero-section" class="relative h-[870px] flex items-center justify-center text-center overflow-hidden">
     <div class="hero-parallax" id="heroParallax">
-      <img src="/Frontend/imgs/hero.jpg" alt="Casal ao pôr do sol" class="hero-img absolute inset-0 w-full h-full object-cover">
+      <img src="/Frontend/imgs/hero.jpg" alt="Casal ao pôr do sol"
+        class="hero-img absolute inset-0 w-full h-full object-cover">
     </div>
     <!-- PARTICULAS DE LUZ AMBIENTE -->
     <div class="hero-glow" aria-hidden="true">
-      <div class="glow-dot" style="left:8%;  width:10px; height:10px; animation-duration:9s;  animation-delay:0s;"></div>
-      <div class="glow-dot" style="left:18%; width:6px;  height:6px;  animation-duration:7.5s;animation-delay:2s;"></div>
-      <div class="glow-dot" style="left:28%; width:14px; height:14px; animation-duration:11s; animation-delay:4.5s;"></div>
-      <div class="glow-dot" style="left:40%; width:8px;  height:8px;  animation-duration:8s;  animation-delay:1.2s;"></div>
-      <div class="glow-dot" style="left:55%; width:12px; height:12px; animation-duration:10s; animation-delay:5.8s;"></div>
-      <div class="glow-dot" style="left:66%; width:7px;  height:7px;  animation-duration:8.8s;animation-delay:3.3s;"></div>
-      <div class="glow-dot" style="left:78%; width:16px; height:16px; animation-duration:12s; animation-delay:0.6s;"></div>
-      <div class="glow-dot" style="left:88%; width:9px;  height:9px;  animation-duration:9.5s;animation-delay:6.4s;"></div>
-      <div class="glow-dot" style="left:95%; width:6px;  height:6px;  animation-duration:7s;  animation-delay:2.8s;"></div>
+      <div class="glow-dot" style="left:8%;  width:10px; height:10px; animation-duration:9s;  animation-delay:0s;">
+      </div>
+      <div class="glow-dot" style="left:18%; width:6px;  height:6px;  animation-duration:7.5s;animation-delay:2s;">
+      </div>
+      <div class="glow-dot" style="left:28%; width:14px; height:14px; animation-duration:11s; animation-delay:4.5s;">
+      </div>
+      <div class="glow-dot" style="left:40%; width:8px;  height:8px;  animation-duration:8s;  animation-delay:1.2s;">
+      </div>
+      <div class="glow-dot" style="left:55%; width:12px; height:12px; animation-duration:10s; animation-delay:5.8s;">
+      </div>
+      <div class="glow-dot" style="left:66%; width:7px;  height:7px;  animation-duration:8.8s;animation-delay:3.3s;">
+      </div>
+      <div class="glow-dot" style="left:78%; width:16px; height:16px; animation-duration:12s; animation-delay:0.6s;">
+      </div>
+      <div class="glow-dot" style="left:88%; width:9px;  height:9px;  animation-duration:9.5s;animation-delay:6.4s;">
+      </div>
+      <div class="glow-dot" style="left:95%; width:6px;  height:6px;  animation-duration:7s;  animation-delay:2.8s;">
+      </div>
     </div>
 
-    <div class="relative z-10 px-6 fade-up">
-      <p class="uppercase tracking-[0.3em] text-white/80 text-xs font-semibold mb-5">Planeamento de casamento, sem stress</p>
+    <div class="relative z-10 px-8 fade-up">
+      <p class="uppercase tracking-[0.3em] text-white/80 text-xs font-semibold mb-5">Planeamento de casamento, sem
+        stress</p>
       <h1 class="font-display text-white text-4xl sm:text-5xl lg:text-6xl leading-tight max-w-3xl mx-auto">
         <span class="relative inline-block">
           <span class="absolute left-1/3 -translate-x-1/2 -top-6 w-12 h-1 rounded-full bg-primary"></span>
@@ -221,8 +386,9 @@
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Tudo organizado</p>
         <h2 class="font-display text-3xl sm:text-4xl mt-3 flex items-center justify-center gap-3">
           <span class="w-10 h-10  flex items-center justify-center shrink-0" style="background:#0B4870;">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-paper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-paper" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
             </svg>
           </span>
           Três ferramentas, um só painel
@@ -232,33 +398,42 @@
 
         <a href="/Frontend/dashboard.html?tab=orcamento" class="card bg-white rounded-2xl p-8 block cursor-pointer">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .672-3 1.5S10.343 11 12 11s3 .672 3 1.5-1.343 1.5-3 1.5m0-6V6m0 8v1.5M5 12a7 7 0 1114 0 7 7 0 01-14 0z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8c-1.657 0-3 .672-3 1.5S10.343 11 12 11s3 .672 3 1.5-1.343 1.5-3 1.5m0-6V6m0 8v1.5M5 12a7 7 0 1114 0 7 7 0 01-14 0z" />
             </svg>
           </div>
           <h3 class="font-display text-xl mb-2">Orçamento</h3>
-          <p class="text-sm text-[#555] leading-relaxed">Acompanhe cada despesa em tempo real e saiba exatamente onde está o dinheiro.</p>
+          <p class="text-sm text-[#555] leading-relaxed">Acompanhe cada despesa em tempo real e saiba exatamente onde
+            está o dinheiro.</p>
         </a>
 
         <a href="/Frontend/dashboard.html?tab=fornecedores" class="card bg-white rounded-2xl p-8 block cursor-pointer">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h3l1.5-2h5L16 5h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 13h8"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 7a2 2 0 012-2h3l1.5-2h5L16 5h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 13h8" />
             </svg>
           </div>
           <h3 class="font-display text-xl mb-2">Fornecedores</h3>
-          <p class="text-sm text-[#555] leading-relaxed">Contratos, pagamentos e contactos de todos os fornecedores centralizados.</p>
+          <p class="text-sm text-[#555] leading-relaxed">Contratos, pagamentos e contactos de todos os fornecedores
+            centralizados.</p>
         </a>
 
         <a href="/Frontend/dashboard.html?tab=convidados" class="card bg-white rounded-2xl p-8 block cursor-pointer">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4" />
             </svg>
           </div>
           <h3 class="font-display text-xl mb-2">Convidados</h3>
-          <p class="text-sm text-[#555] leading-relaxed">Gira a lista de convidados, confirmações de presença e lugares à mesa num só lugar.</p>
+          <p class="text-sm text-[#555] leading-relaxed">Gira a lista de convidados, confirmações de presença e lugares
+            à mesa num só lugar.</p>
         </a>
 
       </div>
@@ -270,8 +445,9 @@
     <div class="max-w-6xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-16">
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Sempre atualizado</p>
-        <h2 class="font-display text-3xl sm:text-4xl mt-3">O vosso calendário em tempo real</h2>
-        <p class="text-sm sm:text-base text-[#555] leading-relaxed mt-4">Prazos, reuniões com fornecedores e tarefas — tudo sincronizado ao minuto, para nunca perderem uma data importante.</p>
+        <h2 class="font-display text-3xl sm:text-4xl mt-3">Calendário em tempo real</h2>
+        <p class="text-sm sm:text-base text-[#555] leading-relaxed mt-4">Prazos, reuniões com fornecedores e tarefas —
+          tudo sincronizado ao minuto, para nunca perderem uma data importante.</p>
       </div>
 
       <div class="grid lg:grid-cols-[1.35fr_1fr] gap-6">
@@ -279,26 +455,36 @@
         <!-- GRELHA DO CALENDARIO -->
         <div class="card bg-white rounded p-6 sm:p-8 border border-[#EFEBE2]">
           <div class="flex items-center justify-between mb-6">
-            <button id="calPrevMonth" aria-label="Mês anterior" class="w-9 h-9 rounded btn-outline-gold flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            <button id="calPrevMonth" aria-label="Mês anterior"
+              class="w-9 h-9 rounded btn-outline-gold flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
             <div class="text-center">
               <h3 id="calMonthLabel" class="font-display text-xl sm:text-2xl capitalize"></h3>
               <p id="calLiveClock" class="text-xs tracking-wide text-[#888] mt-1"></p>
             </div>
-            <button id="calNextMonth" aria-label="Mês seguinte" class="w-9 h-9 rounded btn-outline-gold flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <button id="calNextMonth" aria-label="Mês seguinte"
+              class="w-9 h-9 rounded btn-outline-gold flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
 
-          <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold uppercase tracking-wide text-[#999] mb-2">
+          <div
+            class="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold uppercase tracking-wide text-[#999] mb-2">
             <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
           </div>
           <div id="calGrid" class="grid grid-cols-7 gap-1"></div>
 
           <div class="flex items-center gap-5 mt-6 pt-6 border-t border-[#F0EEE9] text-xs text-[#666]">
             <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded bg-primary"></span>Hoje</span>
-            <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded bg-primary"></span>Evento agendado</span>
+            <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded bg-primary"></span>Evento
+              agendado</span>
           </div>
         </div>
 
@@ -314,7 +500,9 @@
 
           <ul id="calEventList" class="space-y-4 flex-1"></ul>
 
-          <a href="/Frontend/registo.html" class="inline-block mt-8 text-center px-6 py-3 font-semibold btn-gold rounded">Sincronizar o meu calendário</a>
+          <a href="/Frontend/registo.html"
+            class="inline-block mt-8 text-center px-6 py-3 font-semibold btn-gold rounded">Sincronizar o meu
+            calendário</a>
         </div>
 
       </div>
@@ -323,45 +511,39 @@
 
   <script>
     // CALENDARIO EM TEMPO REAL
-    (function(){
+    (function () {
       const monthLabelEl = document.getElementById('calMonthLabel');
-      const clockEl      = document.getElementById('calLiveClock');
-      const gridEl       = document.getElementById('calGrid');
-      const eventListEl  = document.getElementById('calEventList');
-      const prevBtn      = document.getElementById('calPrevMonth');
-      const nextBtn      = document.getElementById('calNextMonth');
-      if(!gridEl) return;
+      const clockEl = document.getElementById('calLiveClock');
+      const gridEl = document.getElementById('calGrid');
+      const eventListEl = document.getElementById('calEventList');
+      const prevBtn = document.getElementById('calPrevMonth');
+      const nextBtn = document.getElementById('calNextMonth');
+      if (!gridEl) return;
 
       const hoje = new Date();
-      let viewYear  = hoje.getFullYear();
+      let viewYear = hoje.getFullYear();
       let viewMonth = hoje.getMonth();
 
       // Eventos de exemplo, relativos a hoje, para mostrar o calendário sempre "vivo"
-      function addDays(base, days){
+      function addDays(base, days) {
         const d = new Date(base);
         d.setDate(d.getDate() + days);
         return d;
       }
-      const eventos = [
-        { data: addDays(hoje, 2),  titulo: 'Prova de bolo',            tipo: 'Fornecedor' },
-        { data: addDays(hoje, 6),  titulo: 'Reunião com florista',     tipo: 'Fornecedor' },
-        { data: addDays(hoje, 11), titulo: 'Prazo de RSVP',            tipo: 'Convidados' },
-        { data: addDays(hoje, 18), titulo: 'Pagamento ao espaço',      tipo: 'Orçamento' },
-        { data: addDays(hoje, 27), titulo: 'Última prova de vestido',  tipo: 'Fornecedor' }
-      ];
+      const eventos = [];
 
       const eventDayKeys = new Set(eventos.map(e => e.data.toDateString()));
 
-      const mesesNomes = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+      const mesesNomes = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
 
-      function renderClock(){
+      function renderClock() {
         const agora = new Date();
-        const dataFmt = agora.toLocaleDateString('pt-PT', { weekday:'long', day:'2-digit', month:'long' });
-        const horaFmt = agora.toLocaleTimeString('pt-PT', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+        const dataFmt = agora.toLocaleDateString('pt-PT', { weekday: 'long', day: '2-digit', month: 'long' });
+        const horaFmt = agora.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         clockEl.textContent = dataFmt.charAt(0).toUpperCase() + dataFmt.slice(1) + ' · ' + horaFmt;
       }
 
-      function renderCalendar(){
+      function renderCalendar() {
         monthLabelEl.textContent = mesesNomes[viewMonth] + ' de ' + viewYear;
         gridEl.innerHTML = '';
 
@@ -369,12 +551,12 @@
         const offset = primeiroDia.getDay();
         const diasNoMes = new Date(viewYear, viewMonth + 1, 0).getDate();
 
-        for(let i = 0; i < offset; i++){
+        for (let i = 0; i < offset; i++) {
           const empty = document.createElement('div');
           gridEl.appendChild(empty);
         }
 
-        for(let dia = 1; dia <= diasNoMes; dia++){
+        for (let dia = 1; dia <= diasNoMes; dia++) {
           const cellDate = new Date(viewYear, viewMonth, dia);
           const isToday = cellDate.toDateString() === hoje.toDateString();
           const hasEvent = eventDayKeys.has(cellDate.toDateString());
@@ -382,7 +564,7 @@
           const cell = document.createElement('div');
           cell.className = 'aspect-square flex flex-col items-center justify-center rounded-lg text-sm relative';
 
-          if(isToday){
+          if (isToday) {
             cell.style.background = 'var(--azul-claro)';
             cell.style.color = 'var(--preto-grafite)';
             cell.classList.add('font-semibold');
@@ -394,7 +576,7 @@
           num.textContent = dia;
           cell.appendChild(num);
 
-          if(hasEvent){
+          if (hasEvent) {
             const dot = document.createElement('span');
             dot.className = 'w-1.5 h-1.5 rounded-full mt-0.5';
             dot.style.background = isToday ? 'var(--preto-grafite)' : 'var(--azul-claro)';
@@ -405,21 +587,21 @@
         }
       }
 
-      function renderEventList(){
+      function renderEventList() {
         eventListEl.innerHTML = '';
         const proximos = eventos
           .filter(e => e.data >= new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()))
-          .sort((a,b) => a.data - b.data)
+          .sort((a, b) => a.data - b.data)
           .slice(0, 5);
 
         proximos.forEach(ev => {
-          const dataFmt = ev.data.toLocaleDateString('pt-PT', { day:'2-digit', month:'short' });
+          const dataFmt = ev.data.toLocaleDateString('pt-PT', { day: '2-digit', month: 'short' });
           const li = document.createElement('li');
           li.className = 'flex items-start gap-4';
           li.innerHTML = `
             <div class="shrink-0 w-12 h-12 rounded-lg flex flex-col items-center justify-center font-display leading-none bg-mist">
               <span class="text-base font-semibold">${ev.data.getDate()}</span>
-              <span class="text-[10px] uppercase tracking-wide text-[#888]">${mesesNomes[ev.data.getMonth()].slice(0,3)}</span>
+              <span class="text-[10px] uppercase tracking-wide text-[#888]">${mesesNomes[ev.data.getMonth()].slice(0, 3)}</span>
             </div>
             <div>
               <p class="text-sm font-semibold">${ev.titulo}</p>
@@ -429,19 +611,19 @@
           eventListEl.appendChild(li);
         });
 
-        if(proximos.length === 0){
+        if (proximos.length === 0) {
           eventListEl.innerHTML = '<li class="text-sm text-[#888]">Sem compromissos agendados para este período.</li>';
         }
       }
 
       prevBtn.addEventListener('click', () => {
         viewMonth--;
-        if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+        if (viewMonth < 0) { viewMonth = 11; viewYear--; }
         renderCalendar();
       });
       nextBtn.addEventListener('click', () => {
         viewMonth++;
-        if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+        if (viewMonth > 11) { viewMonth = 0; viewYear++; }
         renderCalendar();
       });
 
@@ -457,12 +639,16 @@
     <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.6fr] gap-12 items-center">
 
       <!-- MENSAGEM (ESQUERDA) -->
-      <blockquote class="relative z-10 text-center md:text-left rounded p-8 sm:p-10" style="background-color:var(--cinza-claro);">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 mb-8 mx-auto md:mx-0 opacity-70 text-primary" fill="currentColor">
-          <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.320 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.320 3.996-5.849h-3.983v-10h9.983z"/>
+      <blockquote class="relative z-10 text-center md:text-left rounded p-8 sm:p-10"
+        style="background-color:var(--cinza-claro);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          class="w-8 h-8 mb-8 mx-auto md:mx-0 opacity-70 text-primary" fill="currentColor">
+          <path
+            d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.320 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.320 3.996-5.849h-3.983v-10h9.983z" />
         </svg>
-        <p class="font-display text-2xl sm:text-3xl lg:text-4xl leading-snug text-ink">
-          O amor não se planeia sozinho, mas o grande dia sim — deixem-nos cuidar dos detalhes enquanto vocês vivem cada momento.
+        <p class="font-display text-2xl sm:text-3xl lg:text-2xl leading-snug text-ink">
+          O amor não se planeia sozinho, mas o grande dia sim — deixem-nos cuidar dos detalhes enquanto vocês vivem cada
+          momento.
         </p>
         <footer class="mt-8 uppercase tracking-[0.25em] text-xs font-semibold text-primary">
           Equipa Enlace
@@ -470,14 +656,16 @@
       </blockquote>
 
       <!-- FUNDO AZUL COM CAMPO DE EMAIL (DIREITA) -->
-      <div id="inspiraAnelBg" class="relative z-10 rounded flex flex-col items-center justify-center text-center p-10 sm:p-12 bg-primary aspect-[4/3] overflow-hidden">
+      <div id="inspiraAnelBg"
+        class="relative z-10 rounded flex flex-col items-center justify-center text-center p-10 sm:p-12 bg-primary aspect-[4/2] overflow-hidden">
         <div class="relative z-10 flex flex-col items-center">
           <div class="tracos-casal-wrap" aria-hidden="true">
             <img src="/Frontend/imgs/casal-tracos.jpg" alt="" class="tracos-casal-img">
           </div>
-          <h3 class="font-display text-2xl sm:text-3xl text-white leading-snug mb-3">Fique a par das novidades</h3>
-          <p class="text-white/85 text-sm sm:text-base mb-8 max-w-md">Subscreva e receba dicas de planeamento diretamente no seu email.</p>
-          <form id="inspiraNewsletterForm" class="w-full max-w-md flex flex-col sm:flex-row gap-3 mt-6">
+          <h3 class="font-display text-2xl sm:text-2xl text-white leading-snug mb-3">Fique a par das novidades</h3>
+          <p class="text-white/85 text-sm sm:text-base mb-8 max-w-md">Subscreva e receba dicas de planeamento
+            diretamente no seu email.</p>
+          <form id="inspiraNewsletterForm" class="w-full max-w-md flex flex-col sm:flex-row gap-3 mt-4">
             <label for="inspiraEmail" class="sr-only">O seu email</label>
             <input id="inspiraEmail" name="email" type="email" required placeholder="o.seu@email.com"
               class="flex-1 px-4 py-3 rounded text-sm text-[#1F1F1F] bg-white focus:outline-none focus:ring-2 focus:ring-white/60"
@@ -486,7 +674,8 @@
               Subscrever
             </button>
           </form>
-          <p id="inspiraNewsletterMsg" class="hidden text-sm text-white/95 mt-4">Obrigado! Verifique o seu email em breve.</p>
+          <p id="inspiraNewsletterMsg" class="hidden text-sm text-white/95 mt-4">Obrigado! Verifique o seu email em
+            breve.</p>
         </div>
       </div>
 
@@ -495,11 +684,11 @@
 
   <script>
     // FORMULARIO DE EMAIL NA SECCAO "FRASE INSPIRADORA"
-    (function(){
+    (function () {
       const form = document.getElementById('inspiraNewsletterForm');
       const msg = document.getElementById('inspiraNewsletterMsg');
-      if(!form) return;
-      form.addEventListener('submit', function(e){
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
         // Aqui pode integrar com o backend / serviço de envio de emails
         msg.classList.remove('hidden');
@@ -519,35 +708,45 @@
       <div class="galeria-horizontal-viewport">
         <div class="galeria-horizontal-track" id="galeriaHorizontalTrack">
           <div class="galeria-horizontal-item">
-            <img src="/Frontend/imgs/hero.jpg" alt="Decoração de casamento" onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/C8A951?text=Foto+1&font=playfair-display';">
+            <img src="/Frontend/imgs/hero.jpg" alt="Decoração de casamento"
+              onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/C8A951?text=Foto+1&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="/Frontend/imgs/hero.jpg" alt="Buquê de noiva" onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/1F1F1F?text=Foto+2&font=playfair-display';">
+            <img src="/Frontend/imgs/hero.jpg" alt="Buquê de noiva"
+              onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/1F1F1F?text=Foto+2&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="/Frontend/imgs/hero.jpg" alt="Mesa de convidados" onerror="this.onerror=null;this.src='https://placehold.co/420x560/C8A951/1F1F1F?text=Foto+3&font=playfair-display';">
+            <img src="/Frontend/imgs/hero.jpg" alt="Mesa de convidados"
+              onerror="this.onerror=null;this.src='https://placehold.co/420x560/C8A951/1F1F1F?text=Foto+3&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="/Frontend/imgs/hero.jpg" alt="Aliancas de casamento" onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/A3B18A?text=Foto+4&font=playfair-display';">
+            <img src="/Frontend/imgs/hero.jpg" alt="Aliancas de casamento"
+              onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/A3B18A?text=Foto+4&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="/Frontend/imgs/hero.jpg" alt="Bolo de casamento" onerror="this.onerror=null;this.src='https://placehold.co/420x560/F5F5F5/1F1F1F?text=Foto+5&font=playfair-display';">
+            <img src="/Frontend/imgs/hero.jpg" alt="Bolo de casamento"
+              onerror="this.onerror=null;this.src='https://placehold.co/420x560/F5F5F5/1F1F1F?text=Foto+5&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="/Frontend/imgs/hero.jpg" alt="Casal a dancar" onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/FFFFFF?text=Foto+6&font=playfair-display';">
+            <img src="/Frontend/imgs/hero.jpg" alt="Casal a dancar"
+              onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/FFFFFF?text=Foto+6&font=playfair-display';">
           </div>
         </div>
       </div>
 
       <div class="flex items-center justify-center gap-6 mt-10">
-        <button id="carouselPrev" aria-label="Imagem anterior" class="w-11 h-11 rounded btn-outline-gold flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        <button id="carouselPrev" aria-label="Imagem anterior"
+          class="w-11 h-11 rounded btn-outline-gold flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <button id="carouselNext" aria-label="Proxima imagem" class="w-11 h-11 rounded btn-outline-gold flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        <button id="carouselNext" aria-label="Proxima imagem"
+          class="w-11 h-11 rounded btn-outline-gold flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
@@ -555,64 +754,82 @@
   </section>
 
   <style>
-    .galeria-horizontal-viewport{
-      position:relative;
-      overflow-x:auto;
-      overflow-y:hidden;
-      scroll-behavior:smooth;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
+    .galeria-horizontal-viewport {
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
       /* Largura fixa para mostrar exatamente 3 cards inteiros,
          evitando que um 4º card apareca cortado (sombra "quebrada"). */
-      max-width:calc(3 * 280px + 2 * 24px);
-      margin:0 auto;
-      padding-bottom:24px;
+      max-width: calc(3 * 280px + 2 * 24px);
+      margin: 0 auto;
+      padding-bottom: 24px;
     }
-    .galeria-horizontal-viewport::-webkit-scrollbar{ display:none; }
-    .galeria-horizontal-track{
-      display:flex;
-      gap:24px;
-      padding:8px 4px 24px;
-      width:max-content;
+
+    .galeria-horizontal-viewport::-webkit-scrollbar {
+      display: none;
     }
-    .galeria-horizontal-item{
-      flex:0 0 auto;
-      width:280px;
-      height:380px;
-      border-radius:16px;
-      overflow:hidden;
-      background:var(--branco-gelo);
-      box-shadow:0 20px 45px -18px rgba(31,31,31,.35);
-      transition:transform .3s ease;
-      scroll-snap-align:start;
+
+    .galeria-horizontal-track {
+      display: flex;
+      gap: 24px;
+      padding: 8px 4px 24px;
+      width: max-content;
     }
-    .galeria-horizontal-item:hover{
-      transform:translateY(-6px);
+
+    .galeria-horizontal-item {
+      flex: 0 0 auto;
+      width: 280px;
+      height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--branco-gelo);
+      box-shadow: 0 20px 45px -18px rgba(31, 31, 31, .35);
+      transition: transform .3s ease;
+      scroll-snap-align: start;
     }
-    .galeria-horizontal-item img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
+
+    .galeria-horizontal-item:hover {
+      transform: translateY(-6px);
     }
-    @media (max-width:900px){
-      .galeria-horizontal-viewport{ max-width:calc(2 * 280px + 24px); }
+
+    .galeria-horizontal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    @media (max-width:640px){
-      .galeria-horizontal-item{width:210px; height:290px;}
-      .galeria-horizontal-viewport{ max-width:calc(2 * 210px + 24px); }
+
+    @media (max-width:900px) {
+      .galeria-horizontal-viewport {
+        max-width: calc(2 * 280px + 24px);
+      }
+    }
+
+    @media (max-width:640px) {
+      .galeria-horizontal-item {
+        width: 210px;
+        height: 290px;
+      }
+
+      .galeria-horizontal-viewport {
+        max-width: calc(2 * 210px + 24px);
+      }
     }
   </style>
 
   <script>
-    (function(){
+    (function () {
       const viewport = document.querySelector('.galeria-horizontal-viewport');
       const track = document.getElementById('galeriaHorizontalTrack');
-      if(!viewport || !track) return;
+      if (!viewport || !track) return;
 
-      function scrollAmount(){
+      function scrollAmount() {
         const item = track.querySelector('.galeria-horizontal-item');
-        if(!item) return 300;
+        if (!item) return 300;
         const gap = 24;
         return item.getBoundingClientRect().width + gap;
       }
@@ -630,7 +847,7 @@
   <section id="dashboard" class="reveal py-24 px-6 lg:px-10 bg-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-14">
-        <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">O vosso painel</p>
+        <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Progresso </p>
         <h2 class="font-display text-3xl sm:text-4xl mt-3">O casamento, de relance</h2>
       </div>
 
@@ -638,44 +855,21 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
             <p class="text-sm text-[#666]">Faltam</p>
-            <p class="font-display text-3xl">128 dias</p>
+            <p class="font-display text-3xl">—</p>
           </div>
           <div class="w-full sm:w-2/3">
             <div class="flex justify-between text-xs font-medium mb-2">
               <span>Progresso do planeamento</span>
-              <span class="text-primary">68%</span>
+              <span class="text-primary">0%</span>
             </div>
             <div class="h-2.5 rounded w-full" style="background:#E7E2D6">
-              <div class="progress-fill h-2.5 rounded-full" style="width:68%"></div>
+              <div class="progress-fill h-2.5 rounded-full" style="width:0%"></div>
             </div>
           </div>
         </div>
 
         <div class="grid sm:grid-cols-2 gap-3">
-          <div class="flex items-center gap-3 bg-white rounded px-5 py-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-            </svg>
-            <span class="text-sm">Local reservado</span>
-          </div>
-          <div class="flex items-center gap-3 bg-white rounded px-5 py-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-            </svg>
-            <span class="text-sm">Fotógrafo confirmado</span>
-          </div>
-          <div class="flex items-center gap-3 bg-white rounded px-5 py-4 font-medium">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="9"/>
-            </svg>
-            <span class="text-sm">Enviar convites — urgente</span>
-          </div>
-          <div class="flex items-center gap-3 bg-white rounded px-5 py-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-[#C9C3B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="9"/>
-            </svg>
-            <span class="text-sm text-[#666]">Escolher o menu</span>
-          </div>
+          <p class="text-sm text-[#666] sm:col-span-2">Ainda sem tarefas adicionadas.</p>
         </div>
       </div>
     </div>
@@ -688,69 +882,90 @@
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Sobre nós</p>
         <h2 class="font-display text-3xl sm:text-4xl mt-3">Quem somos e como podemos ajudar</h2>
         <p class="text-sm sm:text-base text-[#555] leading-relaxed mt-6">
-          A Enlace nasceu para simplificar o planeamento de casamentos. Juntamos convidados, orçamento e fornecedores num único painel, para que cada casal viva a preparação do grande dia com calma, clareza e menos stress.
+          A Enlace nasceu para simplificar o planeamento de casamentos. Juntamos convidados, orçamento e fornecedores
+          num único painel, para que cada casal viva a preparação do grande dia com calma, clareza e menos stress.
         </p>
       </div>
 
       <div class="max-w-3xl mx-auto space-y-3" id="faqAccordion">
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
-          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+          <button
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            aria-expanded="false">
             <span>Como funciona a Enlace?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
-            <p class="pb-5">Criam a vossa conta, adicionam os dados do casamento e o painel organiza automaticamente convidados, orçamento e fornecedores num só lugar, com progresso atualizado em tempo real.</p>
+            <p class="pb-5">Criam a vossa conta, adicionam os dados do casamento e o painel organiza automaticamente
+              convidados, orçamento e fornecedores num só lugar, com progresso atualizado em tempo real.</p>
           </div>
         </div>
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
-          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+          <button
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            aria-expanded="false">
             <span>A Enlace tem algum custo?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
-            <p class="pb-5">Podem começar a usar as funcionalidades essenciais gratuitamente. Existem também planos com recursos adicionais para quem quer um acompanhamento mais completo.</p>
+            <p class="pb-5">Podem começar a usar as funcionalidades essenciais gratuitamente. Existem também planos com
+              recursos adicionais para quem quer um acompanhamento mais completo.</p>
           </div>
         </div>
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
-          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+          <button
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            aria-expanded="false">
             <span>Posso gerir a lista de convidados e as mesas?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
-            <p class="pb-5">Sim. Podem organizar confirmações, distribuição por mesas e restrições alimentares diretamente no painel, com tudo atualizado automaticamente.</p>
+            <p class="pb-5">Sim. Podem organizar confirmações, distribuição por mesas e restrições alimentares
+              diretamente no painel, com tudo atualizado automaticamente.</p>
           </div>
         </div>
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
-          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+          <button
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            aria-expanded="false">
             <span>Como acompanho o orçamento do casamento?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
-            <p class="pb-5">Cada despesa fica registada em tempo real, permitindo ver exatamente onde está o dinheiro e evitar surpresas antes do grande dia.</p>
+            <p class="pb-5">Cada despesa fica registada em tempo real, permitindo ver exatamente onde está o dinheiro e
+              evitar surpresas antes do grande dia.</p>
           </div>
         </div>
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
-          <button class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg" aria-expanded="false">
+          <button
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            aria-expanded="false">
             <span>Consigo falar com os fornecedores pela plataforma?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
-            <p class="pb-5">Sim. Contratos, pagamentos e contactos de todos os fornecedores ficam centralizados, facilitando a comunicação em cada etapa do planeamento.</p>
+            <p class="pb-5">Sim. Contratos, pagamentos e contactos de todos os fornecedores ficam centralizados,
+              facilitando a comunicação em cada etapa do planeamento.</p>
           </div>
         </div>
 
@@ -759,27 +974,35 @@
   </section>
 
   <style>
-    .faq-answer{
-      max-height:0;
-      overflow:hidden;
-      transition:max-height .35s ease;
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
     }
-    .faq-item.open .faq-answer{
-      max-height:220px;
+
+    .faq-item.open .faq-answer {
+      max-height: 220px;
     }
-    .faq-icon{
-      transition:transform .3s ease;
+
+    .faq-icon {
+      transition: transform .3s ease;
     }
-    .faq-item.open .faq-icon{
-      transform:rotate(180deg);
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
     }
-    @media (prefers-reduced-motion: reduce){
-      .faq-answer, .faq-icon{transition:none;}
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .faq-answer,
+      .faq-icon {
+        transition: none;
+      }
     }
   </style>
 
   <script>
-    (function(){
+    (function () {
       document.querySelectorAll('#faqAccordion .faq-item').forEach(item => {
         const btn = item.querySelector('.faq-question');
         btn.addEventListener('click', () => {
@@ -788,7 +1011,7 @@
             openItem.classList.remove('open');
             openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
           });
-          if(!isOpen){
+          if (!isOpen) {
             item.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
           }
@@ -811,23 +1034,23 @@
 
   <script>
     // PARALLAX NO SCROLL DA IMAGEM DO HERO
-    (function(){
+    (function () {
       const section = document.getElementById('hero-section');
       const wrap = document.getElementById('heroParallax');
-      if(!section || !wrap) return;
+      if (!section || !wrap) return;
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(reduceMotion) return; // parallax já desativado via CSS
+      if (reduceMotion) return; // parallax já desativado via CSS
 
       const speed = 0.18;   // intensidade do parallax
       let maxOffset = 0;
       let ticking = false;
 
-      function calcMaxOffset(){
+      function calcMaxOffset() {
         maxOffset = section.offsetHeight * 0.08; // combina com o "top:-8%; height:116%" do CSS
       }
 
-      function updateParallax(){
+      function updateParallax() {
         const rect = section.getBoundingClientRect();
         let offset = -rect.top * speed;
         offset = Math.max(-maxOffset, Math.min(maxOffset, offset));
@@ -835,8 +1058,8 @@
         ticking = false;
       }
 
-      function onScroll(){
-        if(!ticking){
+      function onScroll() {
+        if (!ticking) {
           window.requestAnimationFrame(updateParallax);
           ticking = true;
         }
@@ -844,24 +1067,24 @@
 
       calcMaxOffset();
       updateParallax();
-      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', () => { calcMaxOffset(); updateParallax(); });
     })();
 
     // EFEITO DE REVELACAO AO DESLIZAR (SCROLL REVEAL)
-    (function(){
+    (function () {
       const reveals = document.querySelectorAll('.reveal');
-      if(!reveals.length) return;
+      if (!reveals.length) return;
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(reduceMotion){
+      if (reduceMotion) {
         reveals.forEach(el => el.classList.add('is-visible'));
         return;
       }
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if(entry.isIntersecting){
+          if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
             observer.unobserve(entry.target);
           }
@@ -872,20 +1095,20 @@
     })();
 
     // ESCONDER O HEADER AO DESLIZAR PARA BAIXO, MOSTRAR AO SUBIR
-    (function(){
+    (function () {
       const header = document.querySelector('header');
-      if(!header) return;
+      if (!header) return;
 
       let lastScrollY = window.scrollY;
       let ticking = false;
       const minScroll = 80; // so comeca a esconder depois deste ponto
 
-      function updateHeader(){
+      function updateHeader() {
         const currentScrollY = window.scrollY;
 
-        if(currentScrollY <= minScroll){
+        if (currentScrollY <= minScroll) {
           header.classList.remove('header-hidden');
-        } else if(currentScrollY > lastScrollY){
+        } else if (currentScrollY > lastScrollY) {
           // a deslizar para baixo
           header.classList.add('header-hidden');
         } else {
@@ -898,11 +1121,104 @@
       }
 
       window.addEventListener('scroll', () => {
-        if(!ticking){
+        if (!ticking) {
           window.requestAnimationFrame(updateHeader);
           ticking = true;
         }
-      }, {passive:true});
+      }, { passive: true });
+    })();
+  </script>
+
+  <script>
+    // SELETOR DE IDIOMA (PT / EN)
+    (function () {
+      const translations = {
+        pt: {
+          nav_recursos: 'Funcionalidades',
+          nav_galeria: 'Galeria',
+          nav_sobre: 'Sobre nós',
+          btn_entrar: 'Entrar',
+          btn_comecar: 'Começar agora',
+          search_placeholder: 'Pesquisar...'
+        },
+        en: {
+          nav_recursos: 'Features',
+          nav_galeria: 'Gallery',
+          nav_sobre: 'About us',
+          btn_entrar: 'Sign in',
+          btn_comecar: 'Get started',
+          search_placeholder: 'Search...'
+        }
+      };
+
+      const langBtn = document.getElementById('langBtn');
+      const langMenu = document.getElementById('langMenu');
+      const langBtnLabel = document.getElementById('langBtnLabel');
+      if (!langBtn || !langMenu) return;
+
+      function applyLanguage(lang) {
+        const dict = translations[lang] || translations.pt;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) el.textContent = dict[key];
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (dict[key]) el.setAttribute('placeholder', dict[key]);
+        });
+
+        langBtnLabel.textContent = lang.toUpperCase();
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('siteLang', lang);
+      }
+
+      function openMenu() {
+        langMenu.classList.remove('hidden');
+        langBtn.setAttribute('aria-expanded', 'true');
+      }
+      function closeMenu() {
+        langMenu.classList.add('hidden');
+        langBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langMenu.classList.contains('hidden') ? openMenu() : closeMenu();
+      });
+
+      document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          applyLanguage(opt.getAttribute('data-lang'));
+          closeMenu();
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!langMenu.contains(e.target) && e.target !== langBtn) closeMenu();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Aplica idioma guardado (ou português por defeito)
+      const savedLang = localStorage.getItem('siteLang') || 'pt';
+      applyLanguage(savedLang);
+    })();
+
+    // ALTERNAR BARRA DE PESQUISA NO MOBILE
+    (function () {
+      const btn = document.getElementById('mobileSearchBtn');
+      const bar = document.getElementById('mobileSearchBar');
+      if (!btn || !bar) return;
+      btn.addEventListener('click', () => {
+        bar.classList.toggle('hidden');
+        if (!bar.classList.contains('hidden')) {
+          const input = bar.querySelector('input');
+          if (input) input.focus();
+        }
+      });
     })();
   </script>
 
@@ -910,18 +1226,21 @@
   <button id="feedbackBtn" type="button" aria-haspopup="dialog" aria-controls="feedbackModal"
     class="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2 px-2.5 py-4 rounded-l-lg font-semibold text-sm shadow-lg btn-gold"
     style="box-shadow:0 12px 28px -10px rgba(11,72,112,.55);">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8-1.09 0-2.134-.174-3.096-.492L3 21l1.535-4.605C3.564 15.055 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8-1.09 0-2.134-.174-3.096-.492L3 21l1.535-4.605C3.564 15.055 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
     </svg>
     <span class="tracking-wide" style="writing-mode:vertical-rl; transform:rotate(180deg);">Feedback</span>
   </button>
 
   <!-- ÍCONE FLUTUANTE DE WHATSAPP -->
-  <a href="https://wa.me/258840000000" target="_blank" rel="noopener noreferrer" aria-label="Falar connosco no WhatsApp"
+  <a href="https://wa.me/SEUNUMERO" target="_blank" rel="noopener noreferrer" aria-label="Falar connosco no WhatsApp"
     class="fixed bottom-6 left-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform duration-200 hover:-translate-y-1"
     style="background:#25D366; box-shadow:0 12px 28px -10px rgba(37,211,102,.6);">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-8 h-8" fill="#FFFFFF">
-      <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.7 4.607 1.902 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.9c-1.94 0-3.75-.55-5.29-1.5l-.38-.23-4.58 1.11 1.13-4.47-.25-.39A9.86 9.86 0 0 1 6.1 15c0-5.46 4.44-9.9 9.9-9.9S25.9 9.54 25.9 15s-4.44 9.9-9.896 9.9zm5.43-7.41c-.297-.148-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.148-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.148-1.254-.462-2.388-1.472-.883-.788-1.48-1.762-1.653-2.06-.173-.297-.018-.458.13-.605.134-.133.297-.347.446-.52.148-.174.198-.298.297-.496.099-.198.05-.372-.025-.52-.075-.148-.67-1.612-.918-2.207-.242-.58-.487-.502-.67-.512l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.48s1.065 2.876 1.213 3.074c.148.198 2.096 3.2 5.078 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.412-.074-.124-.272-.198-.57-.347z"/>
+      <path
+        d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.7 4.607 1.902 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.9c-1.94 0-3.75-.55-5.29-1.5l-.38-.23-4.58 1.11 1.13-4.47-.25-.39A9.86 9.86 0 0 1 6.1 15c0-5.46 4.44-9.9 9.9-9.9S25.9 9.54 25.9 15s-4.44 9.9-9.896 9.9zm5.43-7.41c-.297-.148-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.148-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.148-1.254-.462-2.388-1.472-.883-.788-1.48-1.762-1.653-2.06-.173-.297-.018-.458.13-.605.134-.133.297-.347.446-.52.148-.174.198-.298.297-.496.099-.198.05-.372-.025-.52-.075-.148-.67-1.612-.918-2.207-.242-.58-.487-.502-.67-.512l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.48s1.065 2.876 1.213 3.074c.148.198 2.096 3.2 5.078 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.412-.074-.124-.272-.198-.57-.347z" />
     </svg>
   </a>
 
@@ -932,8 +1251,9 @@
     <div class="relative bg-white w-full max-w-md rounded-lg shadow-2xl p-6 sm:p-8 fade-up">
       <button id="feedbackClose" type="button" aria-label="Fechar formulário"
         class="absolute top-4 right-4 text-[#888] hover:text-[#1F1F1F] transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
@@ -971,28 +1291,29 @@
         </div>
 
         <button type="submit" class="w-full py-3 rounded font-semibold text-sm btn-gold">Enviar feedback</button>
-        <p id="fbSuccessMsg" class="hidden text-sm text-center text-green-700 pt-1">Obrigado! O seu feedback foi enviado.</p>
+        <p id="fbSuccessMsg" class="hidden text-sm text-center text-green-700 pt-1">Obrigado! O seu feedback foi
+          enviado.</p>
       </form>
     </div>
   </div>
 
   <script>
     // ABRIR / FECHAR MODAL DE FEEDBACK
-    (function(){
+    (function () {
       const openBtn = document.getElementById('feedbackBtn');
       const modal = document.getElementById('feedbackModal');
       const overlay = document.getElementById('feedbackOverlay');
       const closeBtn = document.getElementById('feedbackClose');
       const form = document.getElementById('feedbackForm');
       const successMsg = document.getElementById('fbSuccessMsg');
-      if(!openBtn || !modal) return;
+      if (!openBtn || !modal) return;
 
-      function openModal(){
+      function openModal() {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
       }
-      function closeModal(){
+      function closeModal() {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
         document.body.style.overflow = '';
@@ -1002,10 +1323,10 @@
       closeBtn.addEventListener('click', closeModal);
       overlay.addEventListener('click', closeModal);
       document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
       });
 
-      form.addEventListener('submit', function(e){
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
         // Aqui pode integrar com o backend / serviço de envio de emails
         successMsg.classList.remove('hidden');
@@ -1015,4 +1336,5 @@
     })();
   </script>
 </body>
+
 </html>
