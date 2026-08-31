@@ -38,20 +38,38 @@
   .rsvp-choice-btn.selected-no{background:rgba(31,31,31,.06); color:#1F1F1F; border-color:#1F1F1F !important;}
   ::-webkit-scrollbar{width:8px; height:8px;}
   ::-webkit-scrollbar-thumb{background:#DCE3E9; border-radius:4px;}
+
+  /* ---- Mobile sidebar drawer ---- */
+  #sidebar-overlay{transition:opacity .2s ease;}
+  @media (max-width: 1023px){
+    #sidebar{
+      position:fixed; inset:0 auto 0 0; z-index:50;
+      transform:translateX(-100%);
+      transition:transform .25s ease;
+      width:min(80vw, 288px);
+    }
+    #sidebar.open{transform:translateX(0);}
+  }
 </style>
 </head>
 <body class="antialiased">
 
 <div class="min-h-screen flex">
 
+  <!-- OVERLAY (mobile only, closes drawer) -->
+  <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+
   <!-- SIDEBAR -->
-  <aside class="hidden lg:flex flex-col w-64 bg-white border-r border-[#EFEBE2] shrink-0">
-    <div class="h-20 flex items-center px-7 border-b border-[#EFEBE2]">
+  <aside id="sidebar" class="flex flex-col w-64 bg-white border-r border-[#EFEBE2] shrink-0 h-screen lg:h-auto">
+    <div class="h-16 lg:h-20 flex items-center justify-between px-5 lg:px-7 border-b border-[#EFEBE2]">
       <a href="index.html" class="flex items-center">
-        <img src="/Frontend/imgs/logo.png" alt="Enlace" class="h-12 w-auto">
+        <img src="/Frontend/imgs/logo.png" alt="Enlace" class="h-10 lg:h-12 w-auto">
       </a>
+      <button id="sidebar-close-btn" class="lg:hidden p-2 -mr-2 text-[#888]" aria-label="Fechar menu">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
     </div>
-    <nav class="flex-1 py-6 px-4 space-y-1">
+    <nav class="flex-1 py-6 px-4 space-y-1 overflow-y-auto">
       <button class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-left" data-tab="visao-geral">
         <span class="nav-dot w-1.5 h-1.5 rounded-full bg-transparent"></span> Visão geral
       </button>
@@ -70,10 +88,10 @@
     </nav>
     <div class="p-5 border-t border-[#EFEBE2]">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center font-display text-sm text-white" style="background:var(--preto-grafite)">--</div>
-        <div class="text-xs">
-          <p class="font-semibold">Nome dos noivos</p>
-          <p class="text-[#888]">Data do casamento</p>
+        <div class="w-9 h-9 rounded-full flex items-center justify-center font-display text-sm text-white shrink-0" style="background:var(--preto-grafite)">--</div>
+        <div class="text-xs min-w-0">
+          <p class="font-semibold truncate">Nome dos noivos</p>
+          <p class="text-[#888] truncate">Data do casamento</p>
         </div>
       </div>
     </div>
@@ -83,33 +101,36 @@
   <div class="flex-1 min-w-0">
 
     <!-- TOPBAR -->
-    <header class="h-20 bg-white border-b border-[#EFEBE2] flex items-center justify-between px-6 lg:px-10">
-      <div>
-        <p id="page-title" class="font-display text-2xl">Visão geral</p>
+    <header class="h-16 lg:h-20 bg-white border-b border-[#EFEBE2] flex items-center justify-between px-4 sm:px-6 lg:px-10 gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <button id="sidebar-open-btn" class="lg:hidden p-2 -ml-2 text-[#1F1F1F] shrink-0" aria-label="Abrir menu">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <p id="page-title" class="font-display text-lg sm:text-2xl truncate">Visão geral</p>
       </div>
-      <a href="#" class="px-5 py-2.5 rounded text-sm font-semibold btn-gold">+ Nova tarefa</a>
+      <a href="#" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded text-xs sm:text-sm font-semibold btn-gold shrink-0 whitespace-nowrap">+ Nova tarefa</a>
     </header>
 
-    <main class="p-6 lg:p-10 max-w-6xl mx-auto">
+    <main class="p-4 sm:p-6 lg:p-10 max-w-6xl mx-auto">
 
       <!-- VISÃO GERAL -->
       <section class="tab-panel active" id="visao-geral">
         <div class="grid sm:grid-cols-3 gap-5 mb-8">
-          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+          <div class="card bg-white rounded-2xl p-4 sm:p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Faltam</p>
             <p class="font-display text-3xl">—</p>
           </div>
-          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+          <div class="card bg-white rounded-2xl p-4 sm:p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Orçamento usado</p>
             <p class="font-display text-3xl">0%</p>
           </div>
-          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+          <div class="card bg-white rounded-2xl p-4 sm:p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Convidados confirmados</p>
             <p class="font-display text-3xl">0 / 0</p>
           </div>
         </div>
 
-        <div class="card bg-white rounded-2xl p-8 border border-transparent mb-8">
+        <div class="card bg-white rounded-2xl p-5 sm:p-8 border border-transparent mb-8">
           <div class="flex justify-between text-xs font-medium mb-2">
             <span>Progresso do planeamento</span>
             <span style="color:var(--azul-claro)">0%</span>
@@ -119,7 +140,7 @@
           </div>
         </div>
 
-        <div class="card bg-white rounded-2xl p-8 border border-transparent">
+        <div class="card bg-white rounded-2xl p-5 sm:p-8 border border-transparent">
           <p class="font-display text-lg mb-5">próximas tarefas</p>
           <div class="space-y-3">
             <p class="text-sm text-[#888]">Ainda sem tarefas adicionadas.</p>
@@ -129,58 +150,60 @@
 
       <!-- CONVIDADOS -->
       <section class="tab-panel" id="convidados">
-        <div class="flex items-center justify-between mb-6">
-          <div class="flex gap-2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+          <div class="flex flex-wrap gap-2">
             <span class="status-pill" style="background:rgba(163,177,138,.18); color:#5c6b47">0 confirmados</span>
             <span class="status-pill" style="background:#F0EEE9; color:#888">0 por confirmar</span>
             <span class="status-pill" style="background:#F0EEE9; color:#888">0 recusados</span>
           </div>
-          <a href="#" class="px-4 py-2 rounded text-xs font-semibold btn-gold">+ Adicionar convidado</a>
+          <a href="#" class="px-4 py-2 rounded text-xs font-semibold btn-gold self-start sm:self-auto">+ Adicionar convidado</a>
         </div>
         <div class="card bg-white rounded-2xl border border-transparent overflow-hidden">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="text-left text-[#888] text-xs uppercase tracking-wide border-b border-[#EFEBE2]">
-                <th class="px-6 py-4 font-medium">Nome</th>
-                <th class="px-6 py-4 font-medium">Mesa</th>
-                <th class="px-6 py-4 font-medium">Restrições</th>
-                <th class="px-6 py-4 font-medium">Estado</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-[#F0EEE9]">
-              <tr>
-                <td class="px-6 py-4 text-[#888]" colspan="4">Ainda sem convidados adicionados.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm min-w-[560px]">
+              <thead>
+                <tr class="text-left text-[#888] text-xs uppercase tracking-wide border-b border-[#EFEBE2]">
+                  <th class="px-6 py-4 font-medium">Nome</th>
+                  <th class="px-6 py-4 font-medium">Mesa</th>
+                  <th class="px-6 py-4 font-medium">Restrições</th>
+                  <th class="px-6 py-4 font-medium">Estado</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#F0EEE9]">
+                <tr>
+                  <td class="px-6 py-4 text-[#888]" colspan="4">Ainda sem convidados adicionados.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       <!-- ORÇAMENTO -->
       <section class="tab-panel" id="orcamento">
         <div class="grid sm:grid-cols-3 gap-5 mb-8">
-          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+          <div class="card bg-white rounded-2xl p-4 sm:p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Orçamento total</p>
             <p class="font-display text-2xl">Mz 0</p>
           </div>
-          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+          <div class="card bg-white rounded-2xl p-4 sm:p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Gasto até agora</p>
             <p class="font-display text-2xl" style="color:var(--azul-claro)">Mz 0</p>
           </div>
-          <div class="card bg-white rounded-2xl p-6 border border-transparent">
+          <div class="card bg-white rounded-2xl p-4 sm:p-6 border border-transparent">
             <p class="text-xs text-[#888] mb-1">Restante</p>
             <p class="font-display text-2xl">Mz 0</p>
           </div>
         </div>
 
-        <div class="card bg-white rounded-2xl p-8 border border-transparent">
+        <div class="card bg-white rounded-2xl p-5 sm:p-8 border border-transparent">
           <p class="text-sm text-[#888]">Ainda sem categorias de orçamento adicionadas.</p>
         </div>
       </section>
 
       <!-- FORNECEDORES -->
       <section class="tab-panel" id="fornecedores">
-        <div class="card bg-white rounded-2xl p-6 border border-transparent">
+        <div class="card bg-white rounded-2xl p-4 sm:p-6 border border-transparent">
           <p class="text-sm text-[#888]">Ainda sem fornecedores adicionados.</p>
         </div>
       </section>
@@ -190,7 +213,7 @@
         <div class="grid lg:grid-cols-2 gap-6 items-start">
 
           <!-- FORM -->
-          <div class="card bg-white rounded-2xl p-8 border border-transparent">
+          <div class="card bg-white rounded-2xl p-5 sm:p-8 border border-transparent">
             <p class="font-display text-lg mb-1">Editar convite</p>
             <p class="text-xs text-[#888] mb-6">As alterações aparecem na pré-visualização ao lado.</p>
 
@@ -210,7 +233,7 @@
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="text-xs font-medium text-[#666] block mb-2">Nome do noivo</label>
                   <input id="invite-nome1" type="text" value="" placeholder="Nome do noivo" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
@@ -226,9 +249,51 @@
                 <input id="invite-data" type="text" value="" placeholder="ex: 15 de Maio, 2027" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
               </div>
 
-              <div>
-                <label class="text-xs font-medium text-[#666] block mb-2">Local</label>
-                <input id="invite-local" type="text" value="" placeholder="ex: Nome do local, Cidade" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+              <div class="space-y-4">
+                <div class="flex items-center gap-2 pt-1">
+                  <svg class="w-4 h-4 shrink-0" style="color:var(--azul-claro)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v2H5V7l7-4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 9v10a1 1 0 001 1h3v-5a2 2 0 114 0v5h3a1 1 0 001-1V9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.2v2"/></svg>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-[#666]">Igreja</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-medium text-[#666] block mb-2">Local</label>
+                    <input id="invite-igreja-local" type="text" value="" placeholder="ex: Igreja de Nossa Senhora" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                  </div>
+                  <div>
+                    <label class="text-xs font-medium text-[#666] block mb-2">Horário</label>
+                    <input id="invite-igreja-horario" type="text" value="" placeholder="ex: 15:00" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 pt-1">
+                  <svg class="w-4 h-4 shrink-0" style="color:var(--azul-claro)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 21V10a1 1 0 011-1h14a1 1 0 011 1v11"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 21h20"/><path stroke-linecap="round" stroke-linejoin="round" d="M4 10l8-6 8 6"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 21v-6h6v6"/></svg>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-[#666]">Salão</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-medium text-[#666] block mb-2">Local</label>
+                    <input id="invite-salao-local" type="text" value="" placeholder="ex: Salão Jardim Real" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                  </div>
+                  <div>
+                    <label class="text-xs font-medium text-[#666] block mb-2">Horário</label>
+                    <input id="invite-salao-horario" type="text" value="" placeholder="ex: 18:00" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 pt-1">
+                  <svg class="w-4 h-4 shrink-0" style="color:var(--azul-claro)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 3h12l-1.2 13.2a4 4 0 01-4 3.8h-1.6a4 4 0 01-4-3.8L6 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6.8 9h10.4"/></svg>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-[#666]">Copo de água</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-medium text-[#666] block mb-2">Local</label>
+                    <input id="invite-copo-local" type="text" value="" placeholder="ex: Terraço do Salão" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                  </div>
+                  <div>
+                    <label class="text-xs font-medium text-[#666] block mb-2">Horário</label>
+                    <input id="invite-copo-horario" type="text" value="" placeholder="ex: 20:00" class="w-full px-4 py-2.5 rounded-lg border border-[#EFEBE2] text-sm focus:outline-none focus:border-[var(--azul-claro)]">
+                  </div>
+                </div>
               </div>
 
               <div>
@@ -262,17 +327,43 @@
                 <img id="invite-preview-photo" src="" alt="" class="w-full h-full object-cover hidden">
                 <span id="invite-preview-photo-placeholder" class="text-xs text-[#888]">Sem foto carregada</span>
               </div>
-              <div class="px-8 py-10 text-center">
+              <div class="px-5 sm:px-8 py-8 sm:py-10 text-center">
                 <p class="text-xs tracking-[0.2em] uppercase text-[#888] mb-4">Convite de casamento</p>
-                <p id="invite-preview-nomes" class="font-display text-3xl mb-4">Nome &amp; Nome</p>
+                <p id="invite-preview-nomes" class="font-display text-2xl sm:text-3xl mb-4">Nome &amp; Nome</p>
                 <div class="w-10 h-px mx-auto mb-4" style="background:var(--azul-claro)"></div>
                 <p id="invite-preview-mensagem" class="text-sm text-[#666] leading-relaxed mb-6"></p>
                 <p id="invite-preview-data" class="font-display text-lg mb-1"></p>
-                <p id="invite-preview-local" class="text-xs text-[#888]"></p>
+
+                <div class="mt-6 space-y-4 text-left max-w-xs mx-auto">
+                  <div id="invite-preview-igreja-wrap" class="flex items-start gap-3 hidden">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--azul-claro)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v2H5V7l7-4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 9v10a1 1 0 001 1h3v-5a2 2 0 114 0v5h3a1 1 0 001-1V9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.2v2"/></svg>
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-wide text-[#888]">Igreja</p>
+                      <p id="invite-preview-igreja-local" class="text-sm"></p>
+                      <p id="invite-preview-igreja-horario" class="text-xs text-[#888]"></p>
+                    </div>
+                  </div>
+                  <div id="invite-preview-salao-wrap" class="flex items-start gap-3 hidden">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--azul-claro)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 21V10a1 1 0 011-1h14a1 1 0 011 1v11"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 21h20"/><path stroke-linecap="round" stroke-linejoin="round" d="M4 10l8-6 8 6"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 21v-6h6v6"/></svg>
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-wide text-[#888]">Salão</p>
+                      <p id="invite-preview-salao-local" class="text-sm"></p>
+                      <p id="invite-preview-salao-horario" class="text-xs text-[#888]"></p>
+                    </div>
+                  </div>
+                  <div id="invite-preview-copo-wrap" class="flex items-start gap-3 hidden">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--azul-claro)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 3h12l-1.2 13.2a4 4 0 01-4 3.8h-1.6a4 4 0 01-4-3.8L6 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6.8 9h10.4"/></svg>
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-wide text-[#888]">Copo de água</p>
+                      <p id="invite-preview-copo-local" class="text-sm"></p>
+                      <p id="invite-preview-copo-horario" class="text-xs text-[#888]"></p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- RSVP -->
-              <div class="border-t border-[#EFEBE2] px-8 py-8">
+              <div class="border-t border-[#EFEBE2] px-5 sm:px-8 py-8">
                 <div id="rsvp-form">
                   <p class="font-display text-base text-center mb-5">Confirmar presença</p>
 
@@ -321,6 +412,34 @@
 </div>
 
 <script>
+  // ---- Menu móvel (drawer) ----
+  (function(){
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const openBtn = document.getElementById('sidebar-open-btn');
+    const closeBtn = document.getElementById('sidebar-close-btn');
+
+    function openSidebar(){
+      sidebar.classList.add('open');
+      overlay.classList.remove('hidden');
+    }
+    function closeSidebar(){
+      sidebar.classList.remove('open');
+      overlay.classList.add('hidden');
+    }
+
+    openBtn.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Fecha o menu ao escolher uma secção (em ecrãs pequenos)
+    document.querySelectorAll('.nav-item').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        if(window.innerWidth < 1024) closeSidebar();
+      });
+    });
+  })();
+
   const buttons = document.querySelectorAll('.nav-item');
   const panels = document.querySelectorAll('.tab-panel');
   const title = document.getElementById('page-title');
@@ -363,7 +482,12 @@
       nome1: document.getElementById('invite-nome1'),
       nome2: document.getElementById('invite-nome2'),
       data: document.getElementById('invite-data'),
-      local: document.getElementById('invite-local'),
+      igrejaLocal: document.getElementById('invite-igreja-local'),
+      igrejaHorario: document.getElementById('invite-igreja-horario'),
+      salaoLocal: document.getElementById('invite-salao-local'),
+      salaoHorario: document.getElementById('invite-salao-horario'),
+      copoLocal: document.getElementById('invite-copo-local'),
+      copoHorario: document.getElementById('invite-copo-horario'),
       mensagem: document.getElementById('invite-mensagem'),
       rsvpWhatsapp: document.getElementById('invite-rsvp-whatsapp'),
     };
@@ -371,10 +495,18 @@
     const preview = {
       nomes: document.getElementById('invite-preview-nomes'),
       data: document.getElementById('invite-preview-data'),
-      local: document.getElementById('invite-preview-local'),
       mensagem: document.getElementById('invite-preview-mensagem'),
       photo: document.getElementById('invite-preview-photo'),
       photoPlaceholder: document.getElementById('invite-preview-photo-placeholder'),
+      igrejaWrap: document.getElementById('invite-preview-igreja-wrap'),
+      igrejaLocal: document.getElementById('invite-preview-igreja-local'),
+      igrejaHorario: document.getElementById('invite-preview-igreja-horario'),
+      salaoWrap: document.getElementById('invite-preview-salao-wrap'),
+      salaoLocal: document.getElementById('invite-preview-salao-local'),
+      salaoHorario: document.getElementById('invite-preview-salao-horario'),
+      copoWrap: document.getElementById('invite-preview-copo-wrap'),
+      copoLocal: document.getElementById('invite-preview-copo-local'),
+      copoHorario: document.getElementById('invite-preview-copo-horario'),
     };
 
     const photoInput = document.getElementById('invite-photo-input');
@@ -400,17 +532,32 @@
       nome1: '',
       nome2: '',
       data: '',
-      local: '',
+      igrejaLocal: '',
+      igrejaHorario: '',
+      salaoLocal: '',
+      salaoHorario: '',
+      copoLocal: '',
+      copoHorario: '',
       mensagem: '',
       photo: '',
       rsvpWhatsapp: ''
     };
 
+    function updatePreviewBlock(wrapEl, localEl, horarioEl, localVal, horarioVal){
+      localEl.textContent = localVal;
+      horarioEl.textContent = horarioVal;
+      const hasContent = !!(localVal || horarioVal);
+      wrapEl.classList.toggle('hidden', !hasContent);
+    }
+
     function updatePreview(){
       preview.nomes.textContent = `${fields.nome1.value || 'Nome'} & ${fields.nome2.value || 'Nome'}`;
       preview.data.textContent = fields.data.value || defaults.data;
-      preview.local.textContent = fields.local.value || defaults.local;
       preview.mensagem.textContent = fields.mensagem.value || defaults.mensagem;
+
+      updatePreviewBlock(preview.igrejaWrap, preview.igrejaLocal, preview.igrejaHorario, fields.igrejaLocal.value, fields.igrejaHorario.value);
+      updatePreviewBlock(preview.salaoWrap, preview.salaoLocal, preview.salaoHorario, fields.salaoLocal.value, fields.salaoHorario.value);
+      updatePreviewBlock(preview.copoWrap, preview.copoLocal, preview.copoHorario, fields.copoLocal.value, fields.copoHorario.value);
 
       if(photoDataUrl){
         preview.photo.src = photoDataUrl;
@@ -431,7 +578,12 @@
       fields.nome1.value = data.nome1 ?? defaults.nome1;
       fields.nome2.value = data.nome2 ?? defaults.nome2;
       fields.data.value = data.data ?? defaults.data;
-      fields.local.value = data.local ?? defaults.local;
+      fields.igrejaLocal.value = data.igrejaLocal ?? defaults.igrejaLocal;
+      fields.igrejaHorario.value = data.igrejaHorario ?? defaults.igrejaHorario;
+      fields.salaoLocal.value = data.salaoLocal ?? defaults.salaoLocal;
+      fields.salaoHorario.value = data.salaoHorario ?? defaults.salaoHorario;
+      fields.copoLocal.value = data.copoLocal ?? defaults.copoLocal;
+      fields.copoHorario.value = data.copoHorario ?? defaults.copoHorario;
       fields.mensagem.value = data.mensagem ?? defaults.mensagem;
       fields.rsvpWhatsapp.value = data.rsvpWhatsapp ?? defaults.rsvpWhatsapp;
       photoDataUrl = data.photo ?? '';
@@ -470,7 +622,12 @@
         nome1: fields.nome1.value,
         nome2: fields.nome2.value,
         data: fields.data.value,
-        local: fields.local.value,
+        igrejaLocal: fields.igrejaLocal.value,
+        igrejaHorario: fields.igrejaHorario.value,
+        salaoLocal: fields.salaoLocal.value,
+        salaoHorario: fields.salaoHorario.value,
+        copoLocal: fields.copoLocal.value,
+        copoHorario: fields.copoHorario.value,
         mensagem: fields.mensagem.value,
         rsvpWhatsapp: fields.rsvpWhatsapp.value,
         photo: photoDataUrl,
@@ -510,8 +667,10 @@
       const nome1 = fields.nome1.value || defaults.nome1;
       const nome2 = fields.nome2.value || defaults.nome2;
       const dataTxt = fields.data.value || defaults.data;
-      const localTxt = fields.local.value || defaults.local;
-      const shareText = `${nome1} & ${nome2} convidam-te para o casamento • ${dataTxt} • ${localTxt}`;
+      const localTxt = fields.igrejaLocal.value || fields.salaoLocal.value || '';
+      const shareText = localTxt
+        ? `${nome1} & ${nome2} convidam-te para o casamento • ${dataTxt} • ${localTxt}`
+        : `${nome1} & ${nome2} convidam-te para o casamento • ${dataTxt}`;
 
       if(navigator.share){
         try{

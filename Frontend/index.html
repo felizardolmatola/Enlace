@@ -229,11 +229,18 @@
     /* IMAGEM DO CASAL ACIMA DO TITULO */
     .tracos-casal-wrap {
       position: relative;
-      width: 150px;
-      height: 150px;
+      width: 110px;
+      height: 110px;
       margin: 0 auto 16px;
       overflow: hidden;
       border-radius: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .tracos-casal-wrap {
+        width: 150px;
+        height: 150px;
+      }
     }
 
     .tracos-casal-img {
@@ -249,11 +256,11 @@
 <body class="antialiased">
 
   <!-- HEADER -->
-  <header class="bg-white sticky top-0 z-40 border-b border-[#F0EEE9]">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+  <header class="relative bg-white sticky top-0 z-40 border-b border-[#F0EEE9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between">
       <!-- Logotipo -->
       <a href="#" class="flex items-center">
-        <img src="/Frontend/imgs/logo.png" alt="Nome da Empresa" class="h-16 w-auto">
+        <img src="/Frontend/imgs/logo.png" alt="Nome da Empresa" class="h-11 sm:h-16 w-auto">
       </a>
       <nav class="hidden md:flex items-center gap-10 text-[15px] font-medium">
         <a href="#recursos" class="hover:text-[#0B4870] transition-colors" data-i18n="nav_recursos">Funcionalidades</a>
@@ -272,7 +279,7 @@
           class="w-48 xl:w-64 pl-10 pr-3 py-2.5 rounded border border-[#E5E1D8] bg-mist text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4870]/30 focus:border-[#0B4870] focus:bg-white transition-colors">
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1.5 sm:gap-3">
         <!-- ÍCONE DE PESQUISA (MOBILE) -->
         <button id="mobileSearchBtn" type="button" aria-label="Pesquisar"
           class="lg:hidden w-9 h-9 flex items-center justify-center rounded hover:bg-mist transition-colors">
@@ -286,13 +293,13 @@
         <!-- SELETOR DE IDIOMA -->
         <div class="relative">
           <button id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false"
-            class="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded  font-medium">
+            class="flex items-center gap-1.5 px-1.5 sm:px-3 py-2 rounded  font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#0B4870]" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M3 12h18M12 3c2.5 2.8 3.8 6.2 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-6.2-3.8-9s1.3-6.2 3.8-9zM3 12a9 9 0 0018 0 9 9 0 00-18 0z" />
             </svg>
-            <span id="langBtnLabel">PT</span>
+            <span id="langBtnLabel" class="text-sm">PT</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[#9A9A9A]" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -314,12 +321,24 @@
         <a href="/Frontend/login.html" data-i18n="btn_entrar"
           class="hidden sm:inline-block px-5 py-2.5 rounded text-sm font-semibold btn-outline-gold">Entrar</a>
         <a href="/Frontend/registo.html" data-i18n="btn_comecar"
-          class="px-5 py-2.5 text-sm rounded font-semibold btn-gold">Criar conta</a>
+          class="px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm rounded font-semibold btn-gold whitespace-nowrap">Criar
+          conta</a>
+
+        <!-- BOTÃO MENU HAMBÚRGUER (MOBILE) -->
+        <button id="mobileMenuBtn" type="button" aria-label="Abrir menu" aria-expanded="false"
+          aria-controls="mobileMenu"
+          class="md:hidden w-9 h-9 flex items-center justify-center rounded hover:bg-mist transition-colors shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
 
     <!-- BARRA DE PESQUISA MOBILE (EXPANSÍVEL) -->
-    <div id="mobileSearchBar" class="hidden lg:hidden px-6 pb-4">
+    <div id="mobileSearchBar"
+      class="hidden lg:hidden absolute left-0 right-0 top-full px-4 sm:px-6 py-4 bg-white border-b border-[#F0EEE9] shadow-lg z-30">
       <div class="relative">
         <svg xmlns="http://www.w3.org/2000/svg"
           class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9A9A9A]" fill="none" viewBox="0 0 24 24"
@@ -330,11 +349,25 @@
           class="w-full pl-10 pr-3 py-2.5 rounded border border-[#E5E1D8] bg-mist text-sm focus:outline-none focus:ring-2 focus:ring-[#0B4870]/30 focus:border-[#0B4870] focus:bg-white">
       </div>
     </div>
+
+    <!-- MENU DE NAVEGAÇÃO MOBILE -->
+    <nav id="mobileMenu"
+      class="hidden md:hidden absolute left-0 right-0 top-full px-4 sm:px-6 pb-4 pt-3 bg-white border-b border-[#F0EEE9] shadow-lg z-30">
+      <a href="#recursos" data-i18n="nav_recursos"
+        class="block px-2 py-2.5 rounded text-[15px] font-medium hover:bg-mist transition-colors">Funcionalidades</a>
+      <a href="#galeria" data-i18n="nav_galeria"
+        class="block px-2 py-2.5 rounded text-[15px] font-medium hover:bg-mist transition-colors">Galeria</a>
+      <a href="#dashboard" data-i18n="nav_sobre"
+        class="block px-2 py-2.5 rounded text-[15px] font-medium hover:bg-mist transition-colors">Sobre nós</a>
+      <a href="/Frontend/login.html" data-i18n="btn_entrar"
+        class="sm:hidden block mt-2 px-2 py-2.5 rounded text-[15px] font-semibold text-primary">Entrar</a>
+    </nav>
   </header>
 
 
   <!-- BANNER PRINCIPAL -->
-  <section id="hero-section" class="relative h-[870px] flex items-center justify-center text-center overflow-hidden">
+  <section id="hero-section"
+    class="relative h-[560px] sm:h-[680px] lg:h-[870px] flex items-center justify-center text-center overflow-hidden">
     <div class="hero-parallax" id="heroParallax">
       <img src="/Frontend/imgs/hero.jpg" alt="Casal ao pôr do sol"
         class="hero-img absolute inset-0 w-full h-full object-cover">
@@ -361,26 +394,26 @@
       </div>
     </div>
 
-    <div class="relative z-10 px-8 fade-up">
-      <p class="uppercase tracking-[0.3em] text-white/80 text-xs font-semibold mb-5">Planeamento de casamento, sem
+    <div class="relative z-10 px-5 sm:px-8 fade-up">
+      <span class="block mx-auto w-7 sm:w-12 h-[3px] sm:h-1 rounded-full bg-primary mb-3 sm:mb-4"></span>
+      <p class="uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/80 text-[11px] sm:text-xs font-semibold mb-4 sm:mb-5">
+        Planeamento de casamento, sem
         stress</p>
-      <h1 class="font-display text-white text-4xl sm:text-5xl lg:text-6xl leading-tight max-w-3xl mx-auto">
-        <span class="relative inline-block">
-          <span class="absolute left-1/3 -translate-x-1/2 -top-6 w-12 h-1 rounded-full bg-primary"></span>
-          Planeje
-        </span> o seu casamento perfeito
+      <h1 class="font-display text-white text-3xl sm:text-5xl lg:text-6xl leading-tight max-w-3xl mx-auto">
+        Planeje o seu casamento perfeito
       </h1>
-      <p class="text-white/85 mt-6 max-w-xl mx-auto text-base sm:text-lg">
+      <p class="text-white/85 mt-4 sm:mt-6 max-w-xl mx-auto text-sm sm:text-lg">
         Convidados, orçamento e fornecedores — tudo num só lugar, do "sim" ao grande dia.
       </p>
-      <a href="/Frontend/registo.html" class="inline-block mt-9 px-8 py-3.5 rounded font-semibold btn-gold">
+      <a href="/Frontend/registo.html"
+        class="inline-block mt-7 sm:mt-9 px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base rounded font-semibold btn-gold">
         Começar Agora
       </a>
     </div>
   </section>
 
   <!-- CARDS DE FUNCIONALIDADES -->
-  <section id="recursos" class="reveal py-24 px-6 lg:px-10 bg-mist">
+  <section id="recursos" class="reveal py-14 sm:py-24 px-4 sm:px-6 lg:px-10 bg-mist">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-16">
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Tudo organizado</p>
@@ -396,7 +429,8 @@
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <a href="/Frontend/dashboard.html?tab=orcamento" class="card bg-white rounded-2xl p-8 block cursor-pointer">
+        <a href="/Frontend/dashboard.html?tab=orcamento"
+          class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
@@ -409,7 +443,8 @@
             está o dinheiro.</p>
         </a>
 
-        <a href="/Frontend/dashboard.html?tab=fornecedores" class="card bg-white rounded-2xl p-8 block cursor-pointer">
+        <a href="/Frontend/dashboard.html?tab=fornecedores"
+          class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
@@ -423,7 +458,8 @@
             centralizados.</p>
         </a>
 
-        <a href="/Frontend/dashboard.html?tab=convidados" class="card bg-white rounded-2xl p-8 block cursor-pointer">
+        <a href="/Frontend/dashboard.html?tab=convidados"
+          class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
@@ -441,7 +477,7 @@
   </section>
 
   <!-- CALENDÁRIO EM TEMPO REAL -->
-  <section id="calendario" class="reveal py-24 px-6 lg:px-10 bg-white">
+  <section id="calendario" class="reveal py-14 sm:py-24 px-4 sm:px-6 lg:px-10 bg-white">
     <div class="max-w-6xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-16">
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Sempre atualizado</p>
@@ -635,7 +671,7 @@
   </script>
 
   <!-- FRASE INSPIRADORA -->
-  <section class="reveal relative py-28 px-6 lg:px-10 overflow-hidden bg-white">
+  <section class="reveal relative py-16 sm:py-28 px-4 sm:px-6 lg:px-10 overflow-hidden bg-white">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-stretch">
 
       <!-- MENSAGEM (ESQUERDA) -->
@@ -657,7 +693,7 @@
 
       <!-- FUNDO AZUL COM CAMPO DE EMAIL (DIREITA) -->
       <div id="inspiraAnelBg"
-        class="relative z-10 rounded flex flex-col items-center justify-center text-center p-10 sm:p-12 bg-primary aspect-[4/2] overflow-hidden">
+        class="relative z-10 rounded flex flex-col items-center justify-center text-center p-8 sm:p-12 min-h-[440px] sm:min-h-0 bg-primary aspect-auto sm:aspect-[4/2] overflow-hidden">
         <div class="relative z-10 flex flex-col items-center">
           <div class="tracos-casal-wrap" aria-hidden="true">
             <img src="/Frontend/imgs/casal-tracos.jpg" alt="" class="tracos-casal-img">
@@ -668,9 +704,10 @@
           <form id="inspiraNewsletterForm" class="w-full max-w-md flex flex-col sm:flex-row gap-3 mt-0">
             <label for="inspiraEmail" class="sr-only"> o seu email</label>
             <input id="inspiraEmail" name="email" type="email" required placeholder="o.seu@email.com"
-              class="flex-1 px-4 py-3 rounded text-sm text-[#1F1F1F] bg-white focus:outline-none focus:ring-2 focus:ring-white/60"
+              class="w-full flex-1 px-4 py-3 rounded text-base sm:text-sm text-[#1F1F1F] bg-white focus:outline-none focus:ring-2 focus:ring-white/60"
               style="min-width:0;">
-            <button type="submit" class="px-6 py-3 rounded font-semibold text-sm bg-white shrink-0 text-primary">
+            <button type="submit"
+              class="w-full sm:w-auto px-6 py-3 rounded font-semibold text-sm bg-white shrink-0 text-primary">
               Subscrever
             </button>
           </form>
@@ -698,7 +735,7 @@
   </script>
 
   <!-- GALERIA HORIZONTAL DE IMAGENS -->
-  <section id="galeria" class="reveal py-24 px-6 lg:px-10 bg-white overflow-hidden">
+  <section id="galeria" class="reveal py-14 sm:py-24 px-4 sm:px-6 lg:px-10 bg-white overflow-hidden">
     <div class="max-w-5xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-16">
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Momentos</p>
@@ -844,14 +881,14 @@
   </script>
 
   <!-- DASHBOARD DO CASAL -->
-  <section id="dashboard" class="reveal py-24 px-6 lg:px-10 bg-white">
+  <section id="dashboard" class="reveal py-14 sm:py-24 px-4 sm:px-6 lg:px-10 bg-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-14">
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Progresso </p>
         <h2 class="font-display text-3xl sm:text-4xl mt-3">O casamento, de relance</h2>
       </div>
 
-      <div class="rounded border border-[#EFEBE2] p-8 lg:p-10 bg-mist">
+      <div class="rounded border border-[#EFEBE2] p-5 sm:p-8 lg:p-10 bg-mist">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
             <p class="text-sm text-[#666]">Faltam</p>
@@ -876,7 +913,7 @@
   </section>
 
   <!-- SOBRE NÓS / PERGUNTAS FREQUENTES -->
-  <section id="sobre-nos" class="reveal py-24 px-6 lg:px-10 bg-mist">
+  <section id="sobre-nos" class="reveal py-14 sm:py-24 px-4 sm:px-6 lg:px-10 bg-mist">
     <div class="max-w-5xl mx-auto">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Sobre nós</p>
@@ -891,7 +928,7 @@
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button
-            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-4 sm:px-6 py-4 sm:py-5 font-display text-base sm:text-lg"
             aria-expanded="false">
             <span>Como funciona a Enlace?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
@@ -899,7 +936,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+          <div class="faq-answer px-4 sm:px-6 text-sm text-[#555] leading-relaxed">
             <p class="pb-5">Criam a vossa conta, adicionam os dados do casamento e o painel organiza automaticamente
               convidados, orçamento e fornecedores num só lugar, com progresso atualizado em tempo real.</p>
           </div>
@@ -907,7 +944,7 @@
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button
-            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-4 sm:px-6 py-4 sm:py-5 font-display text-base sm:text-lg"
             aria-expanded="false">
             <span>A Enlace tem algum custo?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
@@ -915,7 +952,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+          <div class="faq-answer px-4 sm:px-6 text-sm text-[#555] leading-relaxed">
             <p class="pb-5">Podem começar a usar as funcionalidades essenciais gratuitamente. Existem também planos com
               recursos adicionais para quem quer um acompanhamento mais completo.</p>
           </div>
@@ -923,7 +960,7 @@
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button
-            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-4 sm:px-6 py-4 sm:py-5 font-display text-base sm:text-lg"
             aria-expanded="false">
             <span>Posso gerir a lista de convidados e as mesas?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
@@ -931,7 +968,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+          <div class="faq-answer px-4 sm:px-6 text-sm text-[#555] leading-relaxed">
             <p class="pb-5">Sim. Podem organizar confirmações, distribuição por mesas e restrições alimentares
               diretamente no painel, com tudo atualizado automaticamente.</p>
           </div>
@@ -939,7 +976,7 @@
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button
-            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-4 sm:px-6 py-4 sm:py-5 font-display text-base sm:text-lg"
             aria-expanded="false">
             <span>Como acompanho o orçamento do casamento?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
@@ -947,7 +984,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+          <div class="faq-answer px-4 sm:px-6 text-sm text-[#555] leading-relaxed">
             <p class="pb-5">Cada despesa fica registada em tempo real, permitindo ver exatamente onde está o dinheiro e
               evitar surpresas antes do grande dia.</p>
           </div>
@@ -955,7 +992,7 @@
 
         <div class="faq-item rounded border border-[#EFEBE2] bg-white overflow-hidden">
           <button
-            class="faq-question w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display text-lg"
+            class="faq-question w-full flex items-center justify-between gap-4 text-left px-4 sm:px-6 py-4 sm:py-5 font-display text-base sm:text-lg"
             aria-expanded="false">
             <span>Consigo falar com os fornecedores pela plataforma?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
@@ -963,7 +1000,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="faq-answer px-6 text-sm text-[#555] leading-relaxed">
+          <div class="faq-answer px-4 sm:px-6 text-sm text-[#555] leading-relaxed">
             <p class="pb-5">Sim. Contratos, pagamentos e contactos de todos os fornecedores ficam centralizados,
               facilitando a comunicação em cada etapa do planeamento.</p>
           </div>
@@ -981,7 +1018,7 @@
     }
 
     .faq-item.open .faq-answer {
-      max-height: 220px;
+      max-height: 280px;
     }
 
     .faq-icon {
@@ -1021,14 +1058,15 @@
   </script>
 
   <!-- FOOTER -->
-  <footer class="py-10 px-6 lg:px-10 bg-paper">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-ink">
-      <span class="font-display text-lg text-primary">Enlace</span>
-      <p>© 2026 Enlace. Todos os direitos reservados.</p>
-      <div class="flex items-center gap-6">
+  <footer class="py-8 sm:py-10 px-4 sm:px-6 lg:px-10 bg-paper">
+    <div
+      class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left text-sm text-ink">
+      <span class="font-display text-lg text-primary">Enlace casamentos</span>
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 order-3 sm:order-none">
         <a href="#" class="hover:opacity-70 transition-colors">Política de Privacidade</a>
         <a href="#" class="hover:opacity-70 transition-colors">Termos de Serviço</a>
       </div>
+      <p class="order-2 sm:order-none">© 2026 Enlace. Todos os direitos reservados.</p>
     </div>
   </footer>
 
@@ -1220,13 +1258,40 @@
         }
       });
     })();
+
+    // ALTERNAR MENU DE NAVEGAÇÃO NO MOBILE
+    (function () {
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+
+      btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('hidden');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          menu.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Fecha o menu ao tocar num link
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
   </script>
 
   <!-- BOTÃO FLUTUANTE DE FEEDBACK (VERTICAL, MEIO DO LADO DIREITO) -->
   <button id="feedbackBtn" type="button" aria-haspopup="dialog" aria-controls="feedbackModal"
-    class="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2 px-2.5 py-4 rounded-l-lg font-semibold text-sm shadow-lg btn-gold"
+    class="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2.5 py-3 sm:py-4 rounded-l-lg font-semibold text-xs sm:text-sm shadow-lg btn-gold"
     style="box-shadow:0 12px 28px -10px rgba(11,72,112,.55);">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24"
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="none" viewBox="0 0 24 24"
       stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round"
         d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8-1.09 0-2.134-.174-3.096-.492L3 21l1.535-4.605C3.564 15.055 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -1236,9 +1301,9 @@
 
   <!-- ÍCONE FLUTUANTE DE WHATSAPP -->
   <a href="https://wa.me/SEUNUMERO" target="_blank" rel="noopener noreferrer" aria-label="Falar connosco no WhatsApp"
-    class="fixed bottom-6 left-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform duration-200 hover:-translate-y-1"
+    class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg transition-transform duration-200 hover:-translate-y-1"
     style="background:#25D366; box-shadow:0 12px 28px -10px rgba(37,211,102,.6);">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-8 h-8" fill="#FFFFFF">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-6 h-6 sm:w-8 sm:h-8" fill="#FFFFFF">
       <path
         d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.7 4.607 1.902 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.9c-1.94 0-3.75-.55-5.29-1.5l-.38-.23-4.58 1.11 1.13-4.47-.25-.39A9.86 9.86 0 0 1 6.1 15c0-5.46 4.44-9.9 9.9-9.9S25.9 9.54 25.9 15s-4.44 9.9-9.896 9.9zm5.43-7.41c-.297-.148-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.148-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.148-1.254-.462-2.388-1.472-.883-.788-1.48-1.762-1.653-2.06-.173-.297-.018-.458.13-.605.134-.133.297-.347.446-.52.148-.174.198-.298.297-.496.099-.198.05-.372-.025-.52-.075-.148-.67-1.612-.918-2.207-.242-.58-.487-.502-.67-.512l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.48s1.065 2.876 1.213 3.074c.148.198 2.096 3.2 5.078 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.412-.074-.124-.272-.198-.57-.347z" />
     </svg>
