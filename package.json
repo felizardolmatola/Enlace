@@ -1,4 +1,10 @@
 {
+  "name": "Enlace",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js",
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+  },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "tailwindcss": "^4.3.3"

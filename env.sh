@@ -1,0 +1,1 @@
+export PATH="/e/Enlace/node-v26.8.1-win-x64/node-v26.8.1-win-x64:$PATH"
