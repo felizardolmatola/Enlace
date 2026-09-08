@@ -257,11 +257,36 @@
 
   <!-- HEADER -->
   <header class="relative bg-white sticky top-0 z-40 border-b border-[#F0EEE9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between">
+    <!-- IMAGEM DE FUNDO NO LADO ESQUERDO DO HEADER -->
+    <div class="pointer-events-none absolute left-0 top-0 h-full w-50 sm:w-60 lg:w-72 -z-10 overflow-hidden">
+      <img src="./frontend/imgs/banner.png" alt="" class="h-full w-full object-cover" aria-hidden="true">
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between">
+      <!-- BOTÃO MENU HAMBÚRGUER (MOBILE) - lado esquerdo -->
+      <button id="mobileMenuBtn" type="button" aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="mobileMenu"
+        class="md:hidden w-9 h-9 flex items-center justify-center rounded hover:bg-mist transition-colors shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
       <!-- Logotipo -->
       <a href="#" class="flex items-center">
-        <img src="./frontend/imgs/logo.png" alt="Nome da Empresa" class="h-11 sm:h-16 w-auto">
+        <img src="./frontend/imgs/logo.png" alt="Nome da Empresa" class="h-16 sm:h-18 w-auto">
       </a>
+
+      <!-- ÍCONE DE PESQUISA (MOBILE) - ao lado direito do logotipo -->
+      <button id="mobileSearchBtn" type="button" aria-label="Pesquisar"
+        class="lg:hidden w-9 h-9 flex items-center justify-center rounded hover:bg-mist transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+        </svg>
+      </button>
+
       <nav class="hidden md:flex items-center gap-10 text-[15px] font-medium">
         <a href="#recursos" class="hover:text-[#0B4870] transition-colors" data-i18n="nav_recursos">Funcionalidades</a>
         <a href="#galeria" class="hover:text-[#0B4870] transition-colors" data-i18n="nav_galeria">Galeria</a>
@@ -280,16 +305,6 @@
       </div>
 
       <div class="flex items-center gap-1.5 sm:gap-3">
-        <!-- ÍCONE DE PESQUISA (MOBILE) -->
-        <button id="mobileSearchBtn" type="button" aria-label="Pesquisar"
-          class="lg:hidden w-9 h-9 flex items-center justify-center rounded hover:bg-mist transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
-          </svg>
-        </button>
-
         <!-- SELETOR DE IDIOMA -->
         <div class="relative">
           <button id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false"
@@ -323,16 +338,6 @@
         <a href="./frontend/registo.html" data-i18n="btn_comecar"
           class="px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm rounded font-semibold btn-gold whitespace-nowrap">Criar
           conta</a>
-
-        <!-- BOTÃO MENU HAMBÚRGUER (MOBILE) -->
-        <button id="mobileMenuBtn" type="button" aria-label="Abrir menu" aria-expanded="false"
-          aria-controls="mobileMenu"
-          class="md:hidden w-9 h-9 flex items-center justify-center rounded hover:bg-mist transition-colors shrink-0">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
       </div>
     </div>
 
@@ -1176,7 +1181,7 @@
           nav_galeria: 'Galeria',
           nav_sobre: 'Sobre nós',
           btn_entrar: 'Entrar',
-          btn_comecar: 'Começar agora',
+          btn_comecar: 'Criar conta',
           search_placeholder: 'Pesquisar...'
         },
         en: {
