@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Nosso Casamento — Planeamento</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -45,6 +45,17 @@
 
     .font-display {
       font-family: 'Playfair Display', serif;
+    }
+
+    /* IMPEDE O ZOOM AUTOMÁTICO DO IOS AO TOCAR EM CAMPOS/OPÇÕES NO MOBILE */
+    @media (max-width: 640px) {
+
+      input,
+      select,
+      textarea,
+      button {
+        font-size: 16px !important;
+      }
     }
 
     .btn-gold {
@@ -258,8 +269,9 @@
   <!-- HEADER -->
   <header class="relative bg-white sticky top-0 z-40">
     <!-- IMAGEM DE FUNDO NO LADO ESQUERDO DO HEADER -->
-    <div class="pointer-events-none absolute left-0 top-0 h-full w-50 sm:w-60 lg:w-72 -z-10 overflow-hidden">
-      <img src="./frontend/imgs/banner.png" alt="" class="h-full w-full object-cover" aria-hidden="true">
+    <div class="pointer-events-none absolute left-0 top-0 h-full w-24 sm:w-60 lg:w-72 -z-10 overflow-hidden">
+      <img src="./frontend/imgs/banner.png" alt=""
+        class="h-full w-full object-cover object-[center_25%] sm:object-center" aria-hidden="true">
     </div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between">
       <!-- BOTÃO MENU HAMBÚRGUER (MOBILE) - lado esquerdo -->
@@ -274,7 +286,8 @@
 
       <!-- Logotipo -->
       <a href="/index.html" class="flex items-center">
-        <img src="./frontend/imgs/logo.png" alt="Nome da Empresa" class="h-16 sm:h-18 w-auto">
+        <img src="./frontend/imgs/logo.png" alt="Nome da Empresa"
+          class="h-12 sm:h-16 lg:h-18 w-auto max-w-[130px] sm:max-w-none object-contain">
       </a>
 
       <!-- ÍCONE DE PESQUISA (MOBILE) - ao lado direito do logotipo -->
@@ -375,7 +388,7 @@
     class="relative h-[560px] sm:h-[680px] lg:h-[870px] flex items-center justify-center text-center overflow-hidden">
     <div class="hero-parallax" id="heroParallax">
       <img src="./frontend/imgs/hero.jpg" alt="Casal ao pôr do sol"
-        class="hero-img absolute inset-0 w-full h-full object-cover">
+        class="hero-img absolute inset-0 w-full h-full object-cover object-[center_25%] sm:object-center">
     </div>
     <!-- PARTICULAS DE LUZ AMBIENTE -->
     <div class="hero-glow" aria-hidden="true">
@@ -853,12 +866,20 @@
 
     @media (max-width:640px) {
       .galeria-horizontal-item {
-        width: 210px;
-        height: 290px;
+        width: 72vw;
+        max-width: 240px;
+        height: auto;
+        aspect-ratio: 3 / 4;
       }
 
       .galeria-horizontal-viewport {
-        max-width: calc(2 * 210px + 24px);
+        max-width: 100%;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .galeria-horizontal-track {
+        gap: 14px;
       }
     }
   </style>
