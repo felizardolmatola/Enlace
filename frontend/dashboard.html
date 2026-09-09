@@ -7,8 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="./output.css" rel="stylesheet">
-<link rel="icon" type="image/png" href="/Frontend/imgs/icon.png">
+<link rel="icon" type="image/png" href="./imgs/icon.png">
 <style>
   :root{
     --branco-gelo:#FFFFFF;
@@ -62,7 +61,7 @@
   <!-- SIDEBAR -->
   <aside id="sidebar" class="flex flex-col w-64 bg-white border-r border-[#EFEBE2] shrink-0 h-screen lg:h-auto">
     <div class="h-16 lg:h-20 flex items-center justify-between px-5 lg:px-7 border-b border-[#EFEBE2]">
-      <a href="/index.html" class="flex items-center">
+      <a href="../index.html" class="flex items-center">
         <img src="./imgs/logo.png" alt="Enlace" class="h-10 lg:h-12 w-auto">
       </a>
       <button id="sidebar-close-btn" class="lg:hidden p-2 -mr-2 text-[#888]" aria-label="Fechar menu">
@@ -108,7 +107,7 @@
         </button>
         <p id="page-title" class="font-display text-lg sm:text-2xl truncate">Visão geral</p>
       </div>
-      <a href="#" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded text-xs sm:text-sm font-semibold btn-gold shrink-0 whitespace-nowrap">+ Nova tarefa</a>
+      <button type="button" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded text-xs sm:text-sm font-semibold btn-gold shrink-0 whitespace-nowrap">+ Nova tarefa</button>
     </header>
 
     <main class="p-4 sm:p-6 lg:p-10 max-w-6xl mx-auto">
@@ -156,7 +155,7 @@
             <span class="status-pill" style="background:#F0EEE9; color:#888">0 por confirmar</span>
             <span class="status-pill" style="background:#F0EEE9; color:#888">0 recusados</span>
           </div>
-          <a href="#" class="px-4 py-2 rounded text-xs font-semibold btn-gold self-start sm:self-auto">+ Adicionar convidado</a>
+          <button type="button" class="px-4 py-2 rounded text-xs font-semibold btn-gold self-start sm:self-auto">+ Adicionar convidado</button>
         </div>
         <div class="card bg-white rounded-2xl border border-transparent overflow-hidden">
           <div class="overflow-x-auto">
