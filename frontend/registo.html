@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Criar conta — Enlace</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,32 @@
     --verde-salvia:#A3B18A;
     --cinza-claro:#F5F5F5;
   }
-  body{font-family:'Inter',sans-serif; color:var(--preto-grafite); background:var(--branco-gelo);}
+  html{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--preto-grafite);
+    background:var(--branco-gelo);
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+    touch-action:manipulation;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea{
+    touch-action:manipulation;
+  }
+
+  button,
+  a{
+    -webkit-tap-highlight-color:transparent;
+  }
   .font-display{font-family:'Playfair Display',serif;}
 
   .btn-gold{
