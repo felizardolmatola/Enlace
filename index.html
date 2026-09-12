@@ -28,7 +28,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/png" href="./frontend/imgs/icon.png">
+  <link rel="icon" type="image/png" href="/frontend/imgs/icons/icon.png">
   <style>
     :root {
       --branco-gelo: #FFFFFF;
@@ -333,9 +333,13 @@
         <button id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false"
           class="flex items-center gap-1.5 px-1.5 sm:px-3 py-2 rounded font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#0B4870]" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M3 12h18M12 3c2.5 2.8 3.8 6.2 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-6.2-3.8-9s1.3-6.2 3.8-9zM3 12a9 9 0 0018 0 9 9 0 00-18 0z" />
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 8 6 6" />
+            <path d="m4 14 6-6 2-3" />
+            <path d="M2 5h12" />
+            <path d="M7 2h1" />
+            <path d="m22 22-5-10-5 10" />
+            <path d="M14 18h6" />
           </svg>
           <span id="langBtnLabel" class="text-sm">PT</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[#9A9A9A]" fill="none" viewBox="0 0 24 24"
@@ -383,6 +387,133 @@
               d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
           </svg>
         </button>
+
+        <!-- ATALHO PARA A SECÇÃO FORNECEDORES (ABRE DROPDOWN COMPACTO COM TODOS OS FORNECEDORES) -->
+        <div class="relative">
+          <button id="fornecedoresBtn" type="button" aria-label="Ver fornecedores" title="Fornecedores"
+            aria-haspopup="true" aria-expanded="false" aria-controls="fornecedoresDrawer"
+            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded hover:bg-mist transition-colors shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-ink" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 9l1-5h16l1 5M4 9v10a1 1 0 001 1h14a1 1 0 001-1V9M4 9a2 2 0 002 2 2 2 0 002-2 2 2 0 002 2 2 2 0 002-2 2 2 0 002 2 2 2 0 002-2" />
+            </svg>
+          </button>
+
+          <!-- DROPDOWN COMPACTO COM TODOS OS FORNECEDORES (mesma lógica de slide+fade, ancorado como o de idioma) -->
+          <!-- No mobile fica fixo à viewport (esquerda/direita), evitando ultrapassar a tela; a partir de sm ancora ao botão -->
+          <div id="fornecedoresDrawer"
+            class="hidden fixed left-3 right-3 top-16 sm:absolute sm:left-auto sm:right-0 sm:top-full mt-2 sm:w-[340px] bg-white rounded-lg border border-[#EFEBE2] shadow-lg z-50 transform -translate-y-2 opacity-0 transition-all duration-300 ease-out">
+            <div class="px-4 py-4 sm:px-5 sm:py-5">
+              <div class="flex items-center justify-between mb-3 sm:mb-4">
+                <h3 id="fornecedoresDrawerTitle" class="font-display text-base sm:text-lg">Fornecedores</h3>
+                <button id="fornecedoresDrawerClose" type="button" aria-label="Fechar"
+                  class="w-8 h-8 flex items-center justify-center rounded hover:bg-mist transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <nav class="grid grid-cols-3 gap-1.5 sm:gap-2">
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M7 3v7a3 3 0 006 0V3M10 3v7M7 3h6M10 13v8M17 3v18M17 3c2 2 2 5 0 7" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Catering</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h4l1.5-2h5L16 7h4v12H4V7z" />
+                      <circle cx="12" cy="13" r="3.5" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Fotografia</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 18V6l10-2v12" />
+                      <circle cx="6.5" cy="18" r="3.5" />
+                      <circle cx="16.5" cy="16" r="3.5" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Música/DJ</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 21c0-5 0-9 4-12M12 15c-4 0-7-2-7-5 3-1 6 0 7 3M12 11c0-4 2-7 5-7 1 3 0 6-3 8M12 18c4-1 7 0 8 3-3 1-6 0-8-3z" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Decoração</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 4a3 3 0 006 0M10 7l-3 4 3 1-2 9h8l-2-9 3-1-3-4" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Vestidos e fatos</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M5 17h14l-1-7H6l-1 7zM7 10l1.5-4h7L17 10M7 17v2M17 17v2M7 14h.01M17 14h.01" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Viaturas</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 21c0-5 0-8 3-11M12 15c-3 0-6-2-6-5 3-1 6 0 6 3M12 11c0-3 2-6 5-6 1 3 0 6-3 7M12 17c3-1 6 0 7 3-3 1-6 0-7-3z" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Flores</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center text-center gap-1.5 px-1 py-2.5 rounded-lg hover:bg-mist transition-colors">
+                  <div class="w-9 h-9 shrink-0 rounded flex items-center justify-center bg-primary/15"><svg
+                      xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 21h18M5 21V9h14v12M3 9l9-6 9 6M8 12v6M12 12v6M16 12v6" />
+                    </svg></div>
+                  <p class="font-medium text-[11px] sm:text-xs leading-tight">Espaços</p>
+                </a>
+
+                <a href="./src/pages/fornecedores.html"
+                  class="flex flex-col items-center justify-center text-center gap-1.5 px-1 py-2.5 rounded-lg btn-gold">
+                  <p class="font-semibold text-[11px] sm:text-xs leading-tight">Ver todos</p>
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
 
         <!-- BOTÃO "ENTRAR" + BOTÃO QUADRADO AZUL (SETA) — UNIDOS, SEPARADOS POR LINHA BRANCA -->
         <div class="relative flex items-stretch">
@@ -450,7 +581,9 @@
         </button>
       </div>
     </nav>
+
   </header>
+
 
 
   <!-- BANNER PRINCIPAL -->
@@ -1232,15 +1365,119 @@
   </script>
 
   <!-- FOOTER -->
-  <footer class="py-8 sm:py-10 px-4 sm:px-6 lg:px-10 bg-paper">
-    <div
-      class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left text-sm text-ink">
-      <span class="font-display text-lg text-primary">Enlace casamentos</span>
-      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 order-3 sm:order-none">
-        <a href="#" class="hover:opacity-70 transition-colors">Política de Privacidade</a>
-        <a href="#" class="hover:opacity-70 transition-colors">Termos de Serviço</a>
+  <footer class="pt-14 sm:pt-16 pb-8 px-4 sm:px-6 lg:px-10 bg-paper border-t border-line">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 pb-10 sm:pb-12">
+
+        <!-- LOGOTIPO, DESCRIÇÃO E REDES SOCIAIS -->
+        <div class="sm:col-span-2 lg:col-span-1">
+          <span class="font-display text-2xl text-primary">Enlace casamentos</span>
+          <p class="text-sm text-[#666] leading-relaxed mt-4 max-w-xs">
+            Convidados, orçamento e fornecedores — tudo num só lugar, do "sim" ao grande dia.
+          </p>
+
+          <!-- ÍCONES DE REDES SOCIAIS -->
+          <div class="flex items-center gap-3 mt-6">
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+              class="w-9 h-9 flex items-center justify-center rounded-full border border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z" />
+              </svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+              class="w-9 h-9 flex items-center justify-center rounded-full border border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <path d="M17.5 6.5h.01" stroke-linecap="round" />
+              </svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"
+              class="w-9 h-9 flex items-center justify-center rounded-full border border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.63 7.86 6.35 9.32-.09-.79-.17-2.01.03-2.88.18-.78 1.17-4.97 1.17-4.97s-.3-.6-.3-1.48c0-1.39.8-2.42 1.81-2.42.85 0 1.26.64 1.26 1.41 0 .86-.55 2.14-.83 3.33-.24 1 .5 1.81 1.48 1.81 1.78 0 3.15-1.88 3.15-4.58 0-2.39-1.72-4.07-4.18-4.07-2.85 0-4.52 2.14-4.52 4.34 0 .86.33 1.78.74 2.28.08.1.09.18.07.28l-.28 1.14c-.04.19-.15.23-.34.14-1.26-.59-2.05-2.43-2.05-3.92 0-3.19 2.32-6.12 6.68-6.12 3.51 0 6.24 2.5 6.24 5.84 0 3.49-2.2 6.29-5.25 6.29-1.03 0-1.99-.53-2.32-1.16l-.63 2.4c-.23.87-.85 1.97-1.26 2.63.95.29 1.95.45 3 .45 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
+              </svg>
+            </a>
+            <a href="https://wa.me/875621738"_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+              class="w-9 h-9 flex items-center justify-center rounded-full border border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4" fill="currentColor">
+                <path
+                  d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.7 4.607 1.902 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.9c-1.94 0-3.75-.55-5.29-1.5l-.38-.23-4.58 1.11 1.13-4.47-.25-.39A9.86 9.86 0 0 1 6.1 15c0-5.46 4.44-9.9 9.9-9.9S25.9 9.54 25.9 15s-4.44 9.9-9.896 9.9zm5.43-7.41c-.297-.148-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.148-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.148-1.254-.462-2.388-1.472-.883-.788-1.48-1.762-1.653-2.06-.173-.297-.018-.458.13-.605.134-.133.297-.347.446-.52.148-.174.198-.298.297-.496.099-.198.05-.372-.025-.52-.075-.148-.67-1.612-.918-2.207-.242-.58-.487-.502-.67-.512l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.48s1.065 2.876 1.213 3.074c.148.198 2.096 3.2 5.078 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.412-.074-.124-.272-.198-.57-.347z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- NAVEGAÇÃO -->
+        <div>
+          <h4 class="font-display text-base mb-4">Navegação</h4>
+          <ul class="space-y-2.5 text-sm text-[#555]">
+            <li><a href="#recursos" class="hover:text-primary transition-colors">Funcionalidades</a></li>
+            <li><a href="#fornecedores" class="hover:text-primary transition-colors">Fornecedores</a></li>
+            <li><a href="#galeria" class="hover:text-primary transition-colors">Galeria</a></li>
+            <li><a href="#sobre-nos" class="hover:text-primary transition-colors">Sobre nós</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTA -->
+        <div>
+          <h4 class="font-display text-base mb-4">Conta</h4>
+          <ul class="space-y-2.5 text-sm text-[#555]">
+            <li><a href="./src/pages/login.html" class="hover:text-primary transition-colors">Entrar</a></li>
+            <li><a href="./src/pages/registo.html" class="hover:text-primary transition-colors">Criar conta</a></li>
+            <li><a href="./src/pages/fornecedores.html" class="hover:text-primary transition-colors">Todos os
+                fornecedores</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTACTOS -->
+        <div>
+          <h4 class="font-display text-base mb-4">Contactos</h4>
+          <ul class="space-y-3 text-sm text-[#555]">
+            <li class="flex items-start gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-primary shrink-0" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:contacto@enlacecasamentos.com.mz" class="hover:text-primary transition-colors">
+                contacto@enlacecasamentos.com.mz
+              </a>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-primary shrink-0" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.27 1.05L7.6 9.9a11.5 11.5 0 006.5 6.5l1.57-1.56a1 1 0 011.05-.27l3.6 1.2a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
+              </svg>
+              <a href="tel:+258875621738" class="hover:text-primary transition-colors">+258 875621738</a>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-primary shrink-0" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>Beira, Moçambique</span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <p class="order-2 sm:order-none">© 2026 Enlace casamentos. Todos os direitos reservados.</p>
+
+      <!-- LINHA INFERIOR -->
+      <div
+        class="pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left text-sm text-ink">
+        <p class="order-2 sm:order-none">© 2026 Enlace casamentos. Todos os direitos reservados.</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 order-3 sm:order-none">
+          <a href="#" class="hover:opacity-70 transition-colors">Política de Privacidade</a>
+          <a href="#" class="hover:opacity-70 transition-colors">Termos de Serviço</a>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -1512,6 +1749,50 @@
       });
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeDropdown();
+      });
+    })();
+
+    // ABRIR / FECHAR DROPDOWN COMPACTO DE FORNECEDORES (ATALHO NO HEADER, ANCORADO COMO O DE IDIOMA)
+    (function () {
+      const openBtn = document.getElementById('fornecedoresBtn');
+      const drawer = document.getElementById('fornecedoresDrawer');
+      const closeBtn = document.getElementById('fornecedoresDrawerClose');
+      if (!openBtn || !drawer) return;
+
+      function openDrawer() {
+        drawer.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          drawer.classList.remove('opacity-0', '-translate-y-2');
+        });
+        openBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDrawer() {
+        drawer.classList.add('opacity-0', '-translate-y-2');
+        openBtn.setAttribute('aria-expanded', 'false');
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+
+      openBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !drawer.classList.contains('hidden');
+        isOpen ? closeDrawer() : openDrawer();
+      });
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      // Fecha ao clicar fora do dropdown (igual ao seletor de idioma)
+      document.addEventListener('click', (e) => {
+        if (!drawer.classList.contains('hidden') && !drawer.contains(e.target) && e.target !== openBtn) {
+          closeDrawer();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !drawer.classList.contains('hidden')) closeDrawer();
+      });
+      // Fecha ao clicar num fornecedor da lista
+      drawer.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', closeDrawer);
       });
     })();
 
