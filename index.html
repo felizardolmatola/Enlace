@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Nosso Casamento — Planeamento</title>
+  <title>Enlace casamentos — Planeamento</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -307,7 +307,7 @@
   <header class="relative bg-white sticky top-0 z-40">
     <!-- IMAGEM DE FUNDO NO LADO ESQUERDO DO HEADER -->
     <div class="pointer-events-none absolute left-0 top-0 h-full w-24 sm:w-60 lg:w-72 -z-10 overflow-hidden">
-      <img src="./frontend/imgs/banner.png" alt=""
+      <img src="./frontend/imgs/icons/banner.png" alt=""
         class="h-full w-full object-cover object-[center_25%] sm:object-center" aria-hidden="true">
     </div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between">
@@ -324,7 +324,7 @@
 
       <!-- Logotipo -->
       <a href="/index.html" class="flex items-center mr-1 sm:mr-3 lg:mr-16">
-        <img src="./frontend/imgs/logo.png" alt="Nome da Empresa"
+        <img src="./frontend/imgs/icons/logo.png" alt="Enlace casamentos"
           class="h-12 sm:h-16 lg:h-18 w-auto max-w-[180px] sm:max-w-none object-contain">
       </a>
 
@@ -386,7 +386,7 @@
 
         <!-- BOTÃO "ENTRAR" + BOTÃO QUADRADO AZUL (SETA) — UNIDOS, SEPARADOS POR LINHA BRANCA -->
         <div class="relative flex items-stretch">
-          <a href="./frontend/login.html"
+          <a href="./src/pages/login.html"
             class="flex items-center px-2.5 sm:px-5 py-2.5 sm:py-2.5 text-[11px] sm:text-sm rounded-l font-semibold btn-gold whitespace-nowrap border-r-2 border-white">
             <svg class="entrar-icon w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">
@@ -406,7 +406,7 @@
           </button>
           <div id="headerEntrarDropdown"
             class="hidden absolute right-0 top-full mt-1.5 w-40 rounded border border-[#F0EEE9] bg-white shadow-lg overflow-hidden z-50">
-            <a href="./frontend/registo.html" data-i18n="btn_comecar"
+            <a href="./src/pages/registo.html" data-i18n="btn_comecar"
               class="block px-4 py-2.5 text-sm font-medium hover:bg-mist transition-colors">Criar conta</a>
           </div>
         </div>
@@ -457,7 +457,7 @@
   <section id="hero-section"
     class="relative h-[560px] sm:h-[680px] lg:h-[870px] flex items-center justify-center text-center overflow-hidden">
     <div class="hero-parallax" id="heroParallax">
-      <img src="./frontend/imgs/hero.jpg" alt="Casal ao pôr do sol"
+      <img src="./frontend/imgs/icons/hero.jpg" alt="Casal ao pôr do sol"
         class="hero-img absolute inset-0 w-full h-full object-cover object-[center_25%] sm:object-center">
     </div>
     <!-- PARTICULAS DE LUZ AMBIENTE -->
@@ -495,7 +495,7 @@
       <p class="text-white/85 mt-4 sm:mt-6 max-w-xl mx-auto text-sm sm:text-lg">
         Convidados, orçamento e fornecedores — tudo num só lugar, do "sim" ao grande dia.
       </p>
-      <a href="./frontend/registo.html"
+      <a href="./src/pages/registo.html"
         class="inline-block mt-7 sm:mt-9 px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base rounded font-semibold btn-gold">
         Começar Agora
       </a>
@@ -519,9 +519,9 @@
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <a href="./frontend/dashboard.html?tab=orcamento"
+        <a href="./src/pages/dashboard.html"
           class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
+          <div class="w-12 h-12 rounded flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -533,9 +533,9 @@
             está o dinheiro.</p>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/dashboard.html"
           class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
+          <div class="w-12 h-12 rounded flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -548,9 +548,9 @@
             centralizados.</p>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=convidados"
+        <a href="./src/pages/dashboard.html"
           class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
+          <div class="w-12 h-12 rounded flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -562,9 +562,9 @@
             à mesa num só lugar.</p>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=tarefas"
+        <a href="./src/pages/dashboard.html"
           class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
+          <div class="w-12 h-12 rounded flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 11l3 3L22 4" />
@@ -575,9 +575,9 @@
           <p class="text-sm text-[#555] leading-relaxed">Organize tudo o que precisa ser feito e acompanhe as tarefas até ao grande dia.</p>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=mesas"
+        <a href="./src/pages/dashboard.html"
           class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
+          <div class="w-12 h-12 rounded flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v14H4z" />
@@ -588,9 +588,9 @@
           <p class="text-sm text-[#555] leading-relaxed">Planeie a disposição das mesas e organize os convidados de forma simples.</p>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=documentos"
+        <a href="./src/pages/dashboard.html"
           class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
+          <div class="w-12 h-12 rounded flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 3h9l4 4v14H6z" />
@@ -601,9 +601,9 @@
           <p class="text-sm text-[#555] leading-relaxed">Guarde contratos, comprovativos e outros documentos importantes num só lugar.</p>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=notas"
+        <a href="./src/pages/dashboard.html"
           class="card bg-white rounded-2xl p-6 sm:p-8 block cursor-pointer">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-primary/15">
+          <div class="w-12 h-12 rounded flex items-center justify-center mb-6 bg-primary/15">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" />
@@ -635,7 +635,7 @@
           momento.
         </p>
         <footer class="mt-8 uppercase tracking-[0.25em] text-xs font-semibold text-primary">
-          Equipa Enlace
+          Equipa Enlace casamentos
         </footer>
       </blockquote>
 
@@ -644,7 +644,7 @@
         class="relative z-10 rounded flex flex-col items-center justify-center text-center p-8 sm:p-12 min-h-[440px] sm:min-h-0 bg-primary aspect-auto sm:aspect-[4/2] overflow-hidden">
         <div class="relative z-10 flex flex-col items-center">
           <div class="tracos-casal-wrap" aria-hidden="true">
-            <img src="./frontend/imgs/casal-tracos.jpg" alt="" class="tracos-casal-img">
+            <img src="./frontend/imgs/icons/casal-tracos.jpg" alt="" class="tracos-casal-img">
           </div>
           <h3 class="font-display text-2xl sm:text-2xl text-white leading-snug mb-3">Fique a par das novidades</h3>
           <p class="text-white/85 text-sm sm:text-base mb-4 max-w-md">Subscreva e receba dicas de planeamento
@@ -681,7 +681,7 @@
 
       <div class="flex flex-col rounded-3xl overflow-hidden border border-black/5">
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-white hover:bg-mist/60 transition">
           <div class="p-8 sm:p-10 flex flex-col justify-center order-2 sm:order-1">
             <div class="w-12 h-12 rounded flex items-center justify-center mb-5 bg-primary/15"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 3v7a3 3 0 006 0V3M10 3v7M7 3h6M10 13v8M17 3v18M17 3c2 2 2 5 0 7"/></svg></div>
@@ -696,7 +696,7 @@
           </div>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-mist/40 hover:bg-mist/70 transition">
           <div class="h-56 sm:h-auto overflow-hidden">
             <img src="./frontend/imgs/fornecidores/fotografia.jpg" alt="Fotógrafo a fotografar casal de noivos"
@@ -711,7 +711,7 @@
           </div>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-white hover:bg-mist/60 transition">
           <div class="p-8 sm:p-10 flex flex-col justify-center order-2 sm:order-1">
             <div class="w-12 h-12 rounded flex items-center justify-center mb-5 bg-primary/15"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="3.5"/><circle cx="16.5" cy="16" r="3.5"/></svg></div>
@@ -726,7 +726,7 @@
           </div>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-mist/40 hover:bg-mist/70 transition">
           <div class="h-56 sm:h-auto overflow-hidden">
             <img src="./frontend/imgs/fornecidores/dacoracao.jpg" alt="Decoração de mesa de casamento"
@@ -741,7 +741,7 @@
           </div>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-white hover:bg-mist/60 transition">
           <div class="p-8 sm:p-10 flex flex-col justify-center order-2 sm:order-1">
             <div class="w-12 h-12 rounded flex items-center justify-center mb-5 bg-primary/15"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4a3 3 0 006 0M10 7l-3 4 3 1-2 9h8l-2-9 3-1-3-4"/></svg></div>
@@ -756,7 +756,7 @@
           </div>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-mist/40 hover:bg-mist/70 transition">
           <div class="h-56 sm:h-auto overflow-hidden">
             <img src="./frontend/imgs/fornecidores/viaturas.jpg" alt="Viaturas de luxo alinhadas para casamento"
@@ -771,7 +771,7 @@
           </div>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-white hover:bg-mist/60 transition">
           <div class="p-8 sm:p-10 flex flex-col justify-center order-2 sm:order-1">
             <div class="w-12 h-12 rounded flex items-center justify-center mb-5 bg-primary/15"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c0-5 0-8 3-11M12 15c-3 0-6-2-6-5 3-1 6 0 6 3M12 11c0-3 2-6 5-6 1 3 0 6-3 7M12 17c3-1 6 0 7 3-3 1-6 0-7-3z"/></svg></div>
@@ -786,7 +786,7 @@
           </div>
         </a>
 
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="fornecedor-row group grid sm:grid-cols-2 items-stretch bg-mist/40 hover:bg-mist/70 transition">
           <div class="h-56 sm:h-auto overflow-hidden">
             <img src="./frontend/imgs/fornecidores/salao.jpg" alt="Salão decorado para receção de casamento"
@@ -804,7 +804,7 @@
       </div>
 
       <div class="text-center mt-10">
-        <a href="./frontend/dashboard.html?tab=fornecedores"
+        <a href="./src/pages/fornecedores.html"
           class="inline-block px-7 py-3 rounded font-semibold btn-gold">
           Ver todos os fornecedores
         </a>
@@ -840,27 +840,19 @@
       <div class="galeria-horizontal-viewport">
         <div class="galeria-horizontal-track" id="galeriaHorizontalTrack">
           <div class="galeria-horizontal-item">
-            <img src="./frontend/imgs/hero.jpg" alt="Decoração de casamento"
+            <img src="./frontend/imgs/momentos/IMG_5730.png" alt="Decoração de casamento"
               onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/C8A951?text=Foto+1&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="./frontend/imgs/hero.jpg" alt="Buquê de noiva"
+            <img src="./frontend/imgs/momentos/IMG_5732.png" alt="Buquê de noiva"
               onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/1F1F1F?text=Foto+2&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="./frontend/imgs/hero.jpg" alt="Mesa de convidados"
+            <img src="./frontend/imgs/momentos/IMG_5731.png" alt="Mesa de convidados"
               onerror="this.onerror=null;this.src='https://placehold.co/420x560/C8A951/1F1F1F?text=Foto+3&font=playfair-display';">
           </div>
           <div class="galeria-horizontal-item">
-            <img src="./frontend/imgs/hero.jpg" alt="Aliancas de casamento"
-              onerror="this.onerror=null;this.src='https://placehold.co/420x560/1F1F1F/A3B18A?text=Foto+4&font=playfair-display';">
-          </div>
-          <div class="galeria-horizontal-item">
-            <img src="./frontend/imgs/hero.jpg" alt="Bolo de casamento"
-              onerror="this.onerror=null;this.src='https://placehold.co/420x560/F5F5F5/1F1F1F?text=Foto+5&font=playfair-display';">
-          </div>
-          <div class="galeria-horizontal-item">
-            <img src="./frontend/imgs/hero.jpg" alt="Casal a dancar"
+            <img src="./frontend/imgs/momentos/IMG_5733.png" alt="Casal a dancar"
               onerror="this.onerror=null;this.src='https://placehold.co/420x560/A3B18A/FFFFFF?text=Foto+6&font=playfair-display';">
           </div>
         </div>
@@ -1027,7 +1019,7 @@
         viewport.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
       });
 
-      // LIGHTBOX: abrir imagem em tela cheia ao clicar, com opção de sair
+      // LIGHTBOX: abrir imagem em ecrã inteiro ao clicar, com opção de sair
       const lightbox = document.getElementById('galeriaLightbox');
       const lightboxImg = document.getElementById('galeriaLightboxImg');
       const lightboxClose = document.getElementById('galeriaLightboxClose');
@@ -1101,7 +1093,7 @@
         <p class="uppercase tracking-[0.25em] text-xs font-semibold text-primary">Sobre nós</p>
         <h2 class="font-display text-3xl sm:text-4xl mt-3">Quem somos e como podemos ajudar</h2>
         <p class="text-sm sm:text-base text-[#555] leading-relaxed mt-6">
-          A Enlace nasceu para simplificar o planeamento de casamentos. Juntamos convidados, orçamento e fornecedores
+          A Enlace casamentos nasceu para simplificar o planeamento de casamentos. Juntamos convidados, orçamento e fornecedores
           num único painel, para que cada casal viva a preparação do grande dia com calma, clareza e menos stress.
         </p>
       </div>
@@ -1112,7 +1104,7 @@
           <button
             class="faq-question w-full flex items-center justify-between gap-4 text-left px-4 sm:px-6 py-4 sm:py-5 font-display text-base sm:text-lg"
             aria-expanded="false">
-            <span>Como funciona a Enlace?</span>
+            <span>Como funciona a Enlace casamentos?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -1128,7 +1120,7 @@
           <button
             class="faq-question w-full flex items-center justify-between gap-4 text-left px-4 sm:px-6 py-4 sm:py-5 font-display text-base sm:text-lg"
             aria-expanded="false">
-            <span>A Enlace tem algum custo?</span>
+            <span>A Enlace casamentos tem algum custo?</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon w-5 h-5 shrink-0 text-primary" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -1248,7 +1240,7 @@
         <a href="#" class="hover:opacity-70 transition-colors">Política de Privacidade</a>
         <a href="#" class="hover:opacity-70 transition-colors">Termos de Serviço</a>
       </div>
-      <p class="order-2 sm:order-none">© 2026 Enlace. Todos os direitos reservados.</p>
+      <p class="order-2 sm:order-none">© 2026 Enlace casamentos. Todos os direitos reservados.</p>
     </div>
   </footer>
 
